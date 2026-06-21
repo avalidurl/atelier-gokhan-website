@@ -1,5 +1,11 @@
 # atelier-gokhan-website
 
-Coming-soon landing for **Atelier Gökhan** — an agent accelerator studio. Target domain: **gokhan.vc** (Cloudflare Pages).
+Astro static site for the Atelier Gökhan Turhan venture-studio one-pager (gokhan.vc), deployed to Cloudflare Pages.
 
-Pending: `assets/banner.png` (Midjourney art — CDN blocks direct download, add manually) · confirm X handle.
+## Scripts
+
+- `npm run dev` (Astro dev server on :4321)
+- `npm run build` (static output to `dist/`)
+- `npm run check` (Astro typecheck)
+- `npm run lint` (Prettier check)
+- `npm test` (Vitest)
