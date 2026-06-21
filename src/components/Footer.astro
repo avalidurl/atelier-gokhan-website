@@ -5,28 +5,34 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-  <nav class="footer-nav" aria-label="Site">
-    <ul class="footer-links">
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/terms">Terms</a></li>
-      <li><a href="/privacy">Privacy</a></li>
-      <li><a href="/cookies">Cookies</a></li>
-      <li><a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a></li>
-    </ul>
-  </nav>
-  <p class="copyright">© {year} {site.name}</p>
+  <div class="dither-divider" aria-hidden="true"></div>
+  <div class="site-footer-inner">
+    <nav class="footer-nav" aria-label="Site">
+      <ul class="footer-links">
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/terms">Terms</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/cookies">Cookies</a></li>
+        <li>
+          <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>
+        </li>
+      </ul>
+    </nav>
+    <p class="copyright">© {year} {site.name}</p>
+  </div>
 </footer>
 
 <style>
   .site-footer {
-    border-top: 1px solid #cdcdcd;
-    padding: 24px;
-    background: #fff;
-    color: #141414;
+    background: var(--bg);
+    color: var(--ink);
     font-size: 14px;
   }
+  .site-footer-inner {
+    padding: var(--space-4);
+  }
   .footer-nav {
-    margin: 0 0 8px 0;
+    margin: 0 0 var(--space-2) 0;
   }
   .footer-links {
     list-style: none;
@@ -34,23 +40,18 @@ const year = new Date().getFullYear();
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: var(--space-3);
   }
   .footer-links a {
-    color: #141414;
+    color: var(--accent-purple);
     text-decoration: none;
   }
   .footer-links a:hover,
   .footer-links a:focus-visible {
-    color: #8466c4;
     text-decoration: underline;
-  }
-  .footer-links a:focus-visible {
-    outline: 2px solid #8466c4;
-    outline-offset: 2px;
   }
   .copyright {
     margin: 0;
-    color: #7c7c7c;
+    color: var(--muted);
   }
 </style>
