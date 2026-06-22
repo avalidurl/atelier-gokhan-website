@@ -1,0 +1,206 @@
+---
+import { domains } from '../data/links';
+---
+
+<section class="tree-section" aria-labelledby="pedigree-title">
+  <p class="tree-stamp" id="pedigree-title">Pedigree · three domains, one studio</p>
+  <ul class="tree" role="list">
+    {
+      domains.map((domain) => (
+        <li class="branch">
+          <h2 class="branch-root sheet" id={`branch-${domain.id}`}>
+            <span class="branch-label">{domain.label}</span>
+            <span class="branch-owner">{domain.owner}</span>
+          </h2>
+          <ul class="leaves" role="list" aria-labelledby={`branch-${domain.id}`}>
+            {domain.socials.map((leaf) => (
+              <li class="leaf">
+                <a
+                  class="leaf-link"
+                  href={leaf.href}
+                  {...(leaf.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                >
+                  <span class="leaf-platform">{leaf.platform}</span>
+                  <span class="leaf-note">{leaf.note}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .tree-section {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 var(--space-3) var(--space-7);
+  }
+
+  .tree-stamp {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 var(--space-5);
+  }
+
+  .tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .branch {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  /* Branch root — a visually elevated neo-brutalist tile parenting its leaves. */
+  .branch-root {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    margin: 0;
+    padding: var(--space-3);
+    font-size: 18px;
+  }
+
+  .branch-label {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    overflow-wrap: anywhere;
+  }
+
+  .branch-owner {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  /* Connector dropping from the root tile down to the leaf trunk. */
+  .branch-root::after {
+    content: '';
+    position: absolute;
+    left: 9px;
+    bottom: calc(-1 * var(--space-3));
+    height: var(--space-3);
+    border-left: 2px solid var(--hard);
+  }
+
+  .leaves {
+    list-style: none;
+    margin: var(--space-3) 0 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .leaf {
+    position: relative;
+    padding: var(--space-1) 0 var(--space-1) 28px;
+  }
+
+  /* Vertical trunk segment running through each leaf. */
+  .leaf::before {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: -2px;
+    bottom: 0;
+    border-left: 2px solid var(--hard);
+  }
+
+  /* Reach up to meet the root connector. */
+  .leaf:first-child::before {
+    top: calc(-1 * var(--space-3) - 2px);
+  }
+
+  /* The trunk stops at the last leaf's horizontal stub (clean tree foot). */
+  .leaf:last-child::before {
+    bottom: auto;
+    height: calc(50% + 2px);
+  }
+
+  /* Horizontal connector from the trunk to each leaf. */
+  .leaf::after {
+    content: '';
+    position: absolute;
+    left: 9px;
+    top: 50%;
+    width: 17px;
+    border-top: 2px solid var(--hard);
+  }
+
+  .leaf-link {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    max-width: 100%;
+    padding: 3px var(--space-2);
+    border: 2px solid transparent;
+    text-decoration: none;
+    transition:
+      box-shadow 80ms ease-out,
+      border-color 80ms ease-out,
+      background 80ms ease-out;
+  }
+
+  .leaf-platform {
+    font-weight: 700;
+    color: var(--accent-purple);
+  }
+
+  .leaf-note {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+
+  /* Uniform, clearly visible affordance on hover AND keyboard focus. */
+  .leaf-link:hover,
+  .leaf-link:focus-visible {
+    background: var(--paper);
+    border-color: var(--ink);
+    box-shadow: var(--shadow-hard);
+  }
+
+  .leaf-link:hover .leaf-platform,
+  .leaf-link:focus-visible .leaf-platform {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+
+  /* Keep the keyboard focus ring from the global :focus-visible, just tightened. */
+  .leaf-link:focus-visible {
+    outline: 2px solid var(--accent-purple);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 820px) {
+    .tree {
+      grid-template-columns: 1fr;
+      gap: var(--space-6);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tree-section {
+      padding-bottom: var(--space-6);
+    }
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LinkTree from '../components/LinkTree.astro';
 import { site } from '../data/site';
 import { heroSegments } from '../data/hero';
 
@@ -22,6 +23,8 @@ const title = `${site.name} — venture studio`;
       </h1>
     </div>
   </section>
+  <div class="dither-divider" aria-hidden="true"></div>
+  <LinkTree />
 </BaseLayout>
 
 <style>
