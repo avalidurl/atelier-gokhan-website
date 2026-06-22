@@ -1,0 +1,122 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+import { publishedPosts, postPath, formatPostDate, isoDate } from '../../utils/blog';
+
+const posts = publishedPosts(await getCollection('blog'));
+const title = `Blog — ${site.name}`;
+const description = `Writing and notes from ${site.name}.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="blog-index">
+    <header class="blog-head">
+      <p class="blog-stamp">Journal</p>
+      <h1 class="blog-title">Blog</h1>
+    </header>
+    <div class="dither-divider" aria-hidden="true"></div>
+
+    {
+      posts.length === 0 ? (
+        <p class="blog-empty">No posts yet — check back soon.</p>
+      ) : (
+        <ul class="post-list" role="list">
+          {posts.map((post) => (
+            <li class="post-item">
+              <a class="post-link" href={postPath(post)}>
+                <h2 class="post-item-title">{post.data.title}</h2>
+              </a>
+              <time class="post-item-date" datetime={isoDate(post.data.pubDate)}>
+                {formatPostDate(post.data.pubDate)}
+              </time>
+              <p class="post-item-desc">{post.data.description}</p>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-index {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4) var(--space-7);
+  }
+
+  .blog-stamp {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 var(--space-1);
+  }
+
+  .blog-title {
+    margin: 0 0 var(--space-4);
+    font-size: clamp(32px, 6vw, 48px);
+    letter-spacing: -0.015em;
+  }
+
+  .blog-empty {
+    font-family: var(--font-mono);
+    color: var(--muted);
+    margin: var(--space-5) 0 0;
+  }
+
+  .post-list {
+    list-style: none;
+    margin: var(--space-5) 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+
+  .post-item {
+    padding-bottom: var(--space-5);
+    border-bottom: var(--border-hairline);
+  }
+
+  .post-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .post-link {
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .post-item-title {
+    margin: 0;
+    font-size: clamp(20px, 3vw, 26px);
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .post-link:hover .post-item-title,
+  .post-link:focus-visible .post-item-title {
+    color: var(--accent-purple);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .post-item-date {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    margin: var(--space-2) 0;
+  }
+
+  .post-item-desc {
+    margin: 0;
+    color: var(--ink);
+  }
+</style>

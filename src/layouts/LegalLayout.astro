@@ -1,0 +1,133 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { site } from '../data/site';
+
+interface Props {
+  /** The page's single <h1> and the basis of the document <title>. */
+  heading: string;
+  /** Meta description for this legal page. */
+  description: string;
+  /** Concrete, human-readable "Last updated" date. */
+  lastUpdated: string;
+}
+
+const { heading, description, lastUpdated } = Astro.props;
+const title = `${heading} — ${site.name}`;
+// No `canonical` prop is passed: BaseLayout derives the correct per-page
+// canonical from the request path (fixes numetal's homepage-canonical bug).
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="legal">
+    <h1 class="legal-title">{heading}</h1>
+    <p class="legal-updated">Last updated: {lastUpdated}</p>
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+  .legal {
+    counter-reset: section;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4) var(--space-7);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .legal-title {
+    font-family: var(--font-mono);
+    font-size: clamp(26px, 5vw, 34px);
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--space-1);
+  }
+
+  .legal-updated {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 var(--space-6);
+  }
+
+  .legal :global(h2) {
+    display: flex;
+    gap: var(--space-2);
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin: var(--space-6) 0 var(--space-3);
+  }
+
+  .legal :global(h2)::before {
+    counter-increment: section;
+    content: counter(section, decimal-leading-zero);
+    color: var(--accent-purple);
+    font-weight: 700;
+  }
+
+  .legal :global(p),
+  .legal :global(li) {
+    margin: 0 0 var(--space-3);
+  }
+
+  .legal :global(ul) {
+    padding-left: var(--space-4);
+    margin: 0 0 var(--space-3);
+  }
+
+  .legal :global(strong) {
+    color: var(--ink);
+  }
+
+  /* Callout box (neo-brutalist hard border). */
+  .legal :global(.note) {
+    border: var(--border-hard);
+    box-shadow: var(--shadow-hard);
+    background: var(--paper);
+    padding: var(--space-3) var(--space-4);
+    margin: 0 0 var(--space-4);
+  }
+
+  .legal :global(.note) :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  /* Cookie table. */
+  .legal :global(.cookie-table-wrap) {
+    overflow-x: auto;
+    margin: 0 0 var(--space-4);
+  }
+
+  .legal :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .legal :global(th),
+  .legal :global(td) {
+    border: var(--border-hairline);
+    padding: var(--space-2) var(--space-3);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .legal :global(th) {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--bg);
+  }
+
+  .legal :global(code) {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: var(--bg);
+    padding: 1px 5px;
+  }
+</style>
