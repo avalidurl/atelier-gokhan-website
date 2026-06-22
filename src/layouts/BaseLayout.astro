@@ -37,6 +37,45 @@ function buildCanonicalUrl(pathname: string): string {
 }
 const canonicalUrl = canonical ?? buildCanonicalUrl(Astro.url.pathname);
 const ogImageUrl = new URL(ogImage, site.url).toString();
+
+// Site-wide structured data (Organization + Person + WebSite). Rendered as an
+// application/ld+json data block — not executable JS, so it does not violate
+// the strict CSP `script-src 'self'`. Pages may override via the `jsonLd` prop.
+const defaultStructuredData = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${site.url}/#organization`,
+      name: site.name,
+      url: site.url,
+      email: site.contactEmail,
+      description: site.description,
+      sameAs: ['https://x.com/ateliergokhan', 'https://github.com/gokhan-vc'],
+    },
+    {
+      '@type': 'Person',
+      '@id': `${site.url}/#person`,
+      name: 'Gökhan Turhan',
+      url: 'https://gokhanturhan.com',
+      worksFor: { '@id': `${site.url}/#organization` },
+      sameAs: [
+        'https://x.com/goekhan',
+        'https://github.com/avalidurl',
+        'https://www.linkedin.com/in/goekhanturhan/',
+        'https://gokhan.substack.com',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${site.url}/#website`,
+      name: site.name,
+      url: site.url,
+      publisher: { '@id': `${site.url}/#organization` },
+    },
+  ],
+});
+const structuredData = jsonLd ?? defaultStructuredData;
 ---
 
 <!doctype html>
@@ -73,7 +112,7 @@ const ogImageUrl = new URL(ogImage, site.url).toString();
     <meta name="twitter:title" content={ogTitle ?? title} />
     <meta name="twitter:description" content={ogDescription ?? description} />
     <meta name="twitter:image" content={ogImageUrl} />
-    {jsonLd && <script type="application/ld+json" set:html={jsonLd} is:inline />}
+    <script type="application/ld+json" set:html={structuredData} is:inline />
     <slot name="head" />
   </head>
   <body>

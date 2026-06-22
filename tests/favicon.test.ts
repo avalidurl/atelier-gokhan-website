@@ -21,6 +21,11 @@ describe('boiling pot favicon SVG', () => {
     expect(svg).toMatch(/viewBox="0 0 16 16"/);
   });
 
+  it('announces the brand with the correct UTF-8 ö (Gökhan, not Gokhan)', () => {
+    expect(svg).toMatch(/aria-label="[^"]*Gökhan[^"]*"/);
+    expect(svg).not.toMatch(/Gokhan/);
+  });
+
   it('keeps the agentbounty framed-tile spirit (inset dark frame)', () => {
     expect(svg).toMatch(
       /<rect[^>]*x="0"[^>]*y="0"[^>]*width="16"[^>]*height="16"[^>]*fill="#111111"/i,
