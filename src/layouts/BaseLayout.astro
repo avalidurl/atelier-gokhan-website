@@ -29,7 +29,10 @@ const {
 } = Astro.props;
 
 function buildCanonicalUrl(pathname: string): string {
-  let path = pathname.replace(/index\.html$/, '');
+  // build.format:'file' yields paths like '/terms.html'; Cloudflare Pages serves
+  // these at the extensionless, slash-free URL. Strip 'index.html'/'.html' and any
+  // trailing slash so the canonical matches the served URL (home stays 'https://gokhan.vc/').
+  let path = pathname.replace(/index\.html$/, '').replace(/\.html$/, '');
   if (path !== '/' && path.endsWith('/')) {
     path = path.slice(0, -1);
   }
