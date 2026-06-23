@@ -46,6 +46,19 @@ describe('link tree data — structure', () => {
     expect(domains.map((d) => d.socials.length)).toEqual([3, 8, 3]);
     expect(allLeaves).toHaveLength(14);
   });
+
+  it('every domain root has a valid absolute https URL (the clickable root target)', () => {
+    for (const d of domains) {
+      expect(d.url).toMatch(/^https:\/\//);
+      expect(() => new URL(d.url)).not.toThrow();
+    }
+    // the three roots map to their own domains
+    expect(domains.map((d) => d.url)).toEqual([
+      'https://gokhan.vc',
+      'https://gokhanturhan.com',
+      'https://numetal.xyz',
+    ]);
+  });
 });
 
 describe('link tree data — byte-exact hrefs', () => {
