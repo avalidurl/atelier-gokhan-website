@@ -1,0 +1,3 @@
+# Blog posts (Markdown) live here. Ships empty by design — the pipeline
+# (collection → /blog → /blog/[slug] → /feed.xml) is fully wired and renders
+# a graceful empty state until the first post is added.

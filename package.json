@@ -1,0 +1,40 @@
+{
+  "name": "atelier-gokhan-website",
+  "type": "module",
+  "private": true,
+  "version": "0.1.0",
+  "description": "gokhan.vc — Atelier Gökhan Turhan one-pager (Astro static, Cloudflare Pages).",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "lint": "prettier --check ."
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource-variable/archivo": "^5.2.8",
+    "astro": "6.4.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^6.0.3",
+    "vitest": "4.1.8"
+  },
+  "overrides": {
+    "nanoid": "3.3.12",
+    "rollup": "4.62.0",
+    "semver": "7.8.4",
+    "fast-xml-parser": "5.8.0",
+    "strnum": "2.4.0",
+    "@clack/core": "1.4.1",
+    "@clack/prompts": "1.5.1",
+    "anynum": "1.0.0",
+    "path-expression-matcher": "1.5.0",
+    "yargs": "17.7.2"
+  }
+}

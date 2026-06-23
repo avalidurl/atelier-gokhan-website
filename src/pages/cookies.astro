@@ -1,0 +1,97 @@
+---
+import LegalLayout from '../layouts/LegalLayout.astro';
+---
+
+<LegalLayout
+  heading="Cookie Policy"
+  description="Cookie Policy for gokhan.vc. Only strictly-necessary Cloudflare security cookies are used — no advertising, analytics, or tracking, and no consent banner required."
+  lastUpdated="22 June 2026"
+>
+  <div class="note">
+    <p>
+      gokhan.vc uses <strong
+        >no advertising, analytics, profiling, or cross-site tracking cookies</strong
+      >, embeds no third-party marketing pixels, and loads no consent-management platform. The only
+      cookies that may be set are <strong>strictly necessary security cookies</strong> placed by our infrastructure
+      provider, Cloudflare, to protect the site against bots and abuse and to deliver content.
+    </p>
+  </div>
+
+  <h2>Why there is no consent banner</h2>
+  <p>
+    Under Article 5(3) of the ePrivacy Directive (2002/58/EC) and its national transpositions — UK
+    PECR reg. 6(4), Germany’s TDDDG §25(2), and France via the CNIL —
+    <strong>strictly necessary cookies are exempt from prior consent</strong>. Because the site sets
+    only such cookies and no non-essential storage, GDPR’s consent machinery is not triggered. Our
+    obligation is <strong>transparency</strong>, met by this page — not a consent prompt. Adding a
+    banner would itself introduce unnecessary storage, so we deliberately do not.
+  </p>
+
+  <h2>Cookies that may be set</h2>
+  <div class="cookie-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Cookie</th>
+          <th>Set by</th>
+          <th>Purpose</th>
+          <th>Duration</th>
+          <th>Type / legal basis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>__cf_bm</code></td>
+          <td>Cloudflare</td>
+          <td>
+            Bot management — distinguishes humans from automated traffic to protect the site. Not
+            used for advertising or cross-site tracking.
+          </td>
+          <td>~30 min (rolling)</td>
+          <td>
+            Strictly necessary — exempt from consent (ePrivacy Art 5(3)); security processing under
+            GDPR Art 6(1)(f)
+          </td>
+        </tr>
+        <tr>
+          <td><code>cf_clearance</code></td>
+          <td>Cloudflare</td>
+          <td>
+            Stores the result of a security challenge so a verified visitor is not re-challenged on
+            every request.
+          </td>
+          <td>~30 min</td>
+          <td>Strictly necessary — exempt from consent; GDPR Art 6(1)(f)</td>
+        </tr>
+        <tr>
+          <td><code>__cflb</code> / <code>cf_use_ob</code></td>
+          <td>Cloudflare</td>
+          <td>Session routing for load balancing (may not appear on this site).</td>
+          <td>Session / short-lived</td>
+          <td>Strictly necessary — exempt from consent</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What we do not do</h2>
+  <p>
+    We set <strong>no first-party cookies</strong>. We do not sell or share any data derived from
+    these cookies, and we do not use them for advertising, profiling, or targeted advertising
+    (CCPA/CPRA).
+  </p>
+
+  <h2>Managing cookies</h2>
+  <p>
+    Because these cookies are strictly necessary, blocking them in your browser may break security
+    challenges and prevent the site from loading. You can still delete them at any time via your
+    browser settings. For how Cloudflare processes request data, see Cloudflare’s cookie
+    documentation and privacy policy.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about cookies or privacy: <a href="mailto:contact@gokhan.vc">contact@gokhan.vc</a>.
+    See also our <a href="/privacy">Privacy Policy</a>.
+  </p>
+</LegalLayout>

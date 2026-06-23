@@ -1,0 +1,48 @@
+---
+import { site } from '../data/site';
+---
+
+<header class="site-header">
+  <a class="wordmark tile" href="/" aria-label={`${site.name} — home`}>
+    <span class="wordmark-dot" aria-hidden="true"></span>
+    <span class="wordmark-text">{site.name}</span>
+  </a>
+</header>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: var(--space-4);
+    background: var(--bg);
+    border-bottom: 1px solid var(--hard);
+  }
+  .wordmark {
+    color: var(--accent-purple);
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+  .wordmark-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-purple);
+    box-shadow:
+      0 0 0 2px var(--paper),
+      0 0 0 3px var(--ink);
+    flex: none;
+  }
+  .wordmark-text {
+    white-space: nowrap;
+  }
+  @media (max-width: 480px) {
+    .site-header {
+      padding: var(--space-3);
+    }
+    .wordmark {
+      font-size: 14px;
+    }
+  }
+</style>

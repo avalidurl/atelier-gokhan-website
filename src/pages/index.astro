@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LinkTree from '../components/LinkTree.astro';
+import { site } from '../data/site';
+import { heroSegments } from '../data/hero';
+
+const title = `${site.name} — venture studio`;
+---
+
+<BaseLayout title={title} description={site.blurb}>
+  <section class="hero" aria-labelledby="hero-blurb">
+    <div class="hero-sheet sheet">
+      <h1 id="hero-blurb" class="hero-blurb">
+        {
+          heroSegments.map((segment) =>
+            segment.accent ? (
+              <span class={`hero-accent accent-${segment.accent}`}>{segment.text}</span>
+            ) : (
+              segment.text
+            ),
+          )
+        }
+      </h1>
+    </div>
+  </section>
+  <div class="dither-divider" aria-hidden="true"></div>
+  <LinkTree />
+</BaseLayout>
+
+<style>
+  .hero {
+    display: flex;
+    justify-content: center;
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .hero-sheet {
+    width: 100%;
+    max-width: 960px;
+    padding: clamp(24px, 5vw, 64px);
+  }
+
+  .hero-blurb {
+    margin: 0;
+    font-size: clamp(28px, 5.4vw, 56px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    overflow-wrap: break-word;
+    hyphens: manual;
+    text-wrap: balance;
+  }
+
+  .hero-accent {
+    font-weight: inherit;
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: var(--space-4) var(--space-3);
+    }
+
+    .hero-sheet {
+      padding: var(--space-4);
+    }
+  }
+</style>

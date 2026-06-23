@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const title = `Page not found — ${site.name}`;
+---
+
+<BaseLayout
+  title={title}
+  description="The page you were looking for does not exist."
+  robots="noindex, follow"
+>
+  <section class="notfound">
+    <div class="notfound-sheet sheet">
+      <p class="notfound-code">404</p>
+      <h1 class="notfound-title">Page not found</h1>
+      <p class="notfound-body">
+        That page doesn’t exist. It may have moved, or the link was mistyped.
+      </p>
+      <p class="notfound-actions">
+        <a class="tile" href="/">← Back to home</a>
+        <a class="tile" href="/blog">Blog</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    display: flex;
+    justify-content: center;
+    padding: var(--space-7) var(--space-3);
+  }
+
+  .notfound-sheet {
+    width: 100%;
+    max-width: 640px;
+    padding: clamp(24px, 5vw, 48px);
+  }
+
+  .notfound-code {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    color: var(--accent-purple);
+    margin: 0 0 var(--space-2);
+  }
+
+  .notfound-title {
+    margin: 0 0 var(--space-3);
+    font-size: clamp(28px, 5vw, 44px);
+    letter-spacing: -0.015em;
+  }
+
+  .notfound-body {
+    margin: 0 0 var(--space-5);
+    color: var(--ink);
+    font-size: 17px;
+  }
+
+  .notfound-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: 0;
+  }
+</style>
