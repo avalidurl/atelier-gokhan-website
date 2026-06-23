@@ -9,3 +9,6 @@
   Cross-Origin-Resource-Policy: same-origin
 /og-image.png
   Cross-Origin-Resource-Policy: cross-origin
+/brand/*
+  Cross-Origin-Resource-Policy: cross-origin
+  Cache-Control: public, max-age=86400
