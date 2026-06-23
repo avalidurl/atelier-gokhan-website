@@ -118,7 +118,7 @@ export const domains: readonly LinkDomain[] = [
     id: 'numetalxyz',
     label: 'numetal.xyz',
     url: 'https://numetal.xyz',
-    owner: 'Numetal',
+    owner: 'Numetal — agent accelerator studio + bureau',
     socials: [
       { platform: 'X', note: '@numetalxyz', href: 'https://x.com/numetalxyz', external: true },
       { platform: 'Telegram', note: 'Numetal', href: 'https://t.me/numetalxyz', external: true },
