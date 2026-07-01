@@ -142,6 +142,6 @@ from scratch in its own tokens and does not vendor their assets.
 
 ## License
 
-No `LICENSE` file is present in this repository. **License: TBD — all rights reserved by the repository
+This project is licensed under the **MIT License** — remix freely with attribution. See [LICENSE](./LICENSE).
 owner** unless and until a license is added. If you want to reuse anything here, contact
 [contact@gokhan.vc](mailto:contact@gokhan.vc).
