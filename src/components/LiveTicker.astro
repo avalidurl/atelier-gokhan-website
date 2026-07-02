@@ -1,103 +1,103 @@
 ---
 /**
- * LiveTicker — a rolling "ISHTAR IS LIVE" banner pinned above the hero.
- * One link, one message, repeated into a seamless marquee. The track is
- * duplicated (aria-hidden on the copy) so the loop wraps without a gap.
- * Respects prefers-reduced-motion: the strip stands still and stays readable.
- * House style: strictly monochrome — inverted bar, hierarchy by weight only.
+ * LiveTicker — rolling Ishtar-launch band, site-wide (rendered in BaseLayout).
+ * Same wording + phase (32s, translateX -25% over 4 segments) as numetal.xyz's
+ * ticker, but strictly MONOCHROME per the house style: black bar, white text,
+ * inverted white LIVE tag, separators/glyphs by opacity — never hue.
+ * Pauses on hover; static under prefers-reduced-motion.
  */
-const MESSAGE = 'ISHTAR IS LIVE';
-const HOST = 'ishtar.numetal.xyz';
-const REPEATS = 8;
-const items = Array.from({ length: REPEATS });
+const HREF = 'https://ishtar.numetal.xyz';
+const LABEL = 'Ishtar is live. Agentic dating. Use Ishtar at ishtar.numetal.xyz';
 ---
 
-<a
-  class="ticker"
-  href="https://ishtar.numetal.xyz"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label={`${MESSAGE} — ${HOST}`}
->
-  <div class="ticker-track" aria-hidden="true">
-    {
-      [0, 1].map(() => (
-        <div class="ticker-run">
-          {items.map(() => (
-            <span class="ticker-item">
-              <strong>{MESSAGE}</strong>
-              <span class="ticker-host">{HOST}</span>
-              <span class="ticker-dot">·</span>
-            </span>
-          ))}
-        </div>
-      ))
-    }
-  </div>
-  <span class="sr-only">{MESSAGE} — {HOST}</span>
+<a class="ticker" href={HREF} target="_blank" rel="noopener noreferrer" aria-label={LABEL}>
+  <span class="ticker-tag">● LIVE</span>
+  <span class="ticker-win">
+    <span class="ticker-track" aria-hidden="true">
+      {
+        [0, 1, 2, 3].map(() => (
+          <span class="ticker-seg">
+            <b>ISHTAR</b> <i class="up">▲</i> LIVE <em>◆</em> AGENTIC DATING <em>◆</em> YOUR AGENT DOES THE DATING <em>◆</em> USE ISHTAR <span class="hrt">♥</span> <em>◆</em> ishtar.numetal.xyz <em>◆</em>&nbsp;
+          </span>
+        ))
+      }
+    </span>
+  </span>
+  <span class="sr-only">{LABEL}</span>
 </a>
 
 <style>
   .ticker {
-    display: block;
+    display: flex;
+    align-items: stretch;
     overflow: hidden;
-    background: var(--accent-purple, #141414);
+    background: #141414;
     color: #fff;
     text-decoration: none;
-    border-bottom: 1px solid var(--line, #cdcdcd);
-    white-space: nowrap;
-  }
-
-  .ticker-track {
-    display: inline-flex;
-  }
-
-  .ticker-run {
-    display: inline-flex;
-    animation: ticker-roll 24s linear infinite;
-  }
-
-  .ticker-item {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.6em;
-    padding: 7px 0.6em 7px 0;
     font-family: var(--font-mono, ui-monospace, monospace);
     font-size: 12px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--hard, #141414);
   }
-
-  .ticker-item strong {
+  .ticker-tag {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #fff;
+    color: #141414;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    padding: 0 12px;
+    font-size: 11px;
+  }
+  .ticker-win {
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    padding: 7px 0;
+    animation: ticker-roll 32s linear infinite;
+  }
+  .ticker-seg {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .ticker-seg b {
     font-weight: 700;
   }
-
-  .ticker-host {
-    opacity: 0.72;
+  .ticker-seg .up {
+    font-style: normal;
+    font-size: 10px;
+    opacity: 0.85;
   }
-
-  .ticker-dot {
-    opacity: 0.45;
+  .ticker-seg .hrt {
+    opacity: 0.9;
   }
-
-  .ticker:hover .ticker-run {
+  .ticker-seg em {
+    font-style: normal;
+    opacity: 0.4;
+    padding: 0 0.55rem;
+  }
+  .ticker:hover .ticker-track,
+  .ticker:focus-visible .ticker-track {
     animation-play-state: paused;
   }
-
   @keyframes ticker-roll {
     from {
       transform: translateX(0);
     }
     to {
-      transform: translateX(-100%);
+      transform: translateX(-25%);
     }
   }
-
   @media (prefers-reduced-motion: reduce) {
-    .ticker-run {
+    .ticker-track {
       animation: none;
     }
   }
-
   .sr-only {
     position: absolute;
     width: 1px;

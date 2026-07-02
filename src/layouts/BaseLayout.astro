@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { site } from '../data/site';
 import Header from '../components/Header.astro';
+import LiveTicker from '../components/LiveTicker.astro';
 import Footer from '../components/Footer.astro';
 
 interface Props {
@@ -120,7 +121,10 @@ const structuredData = jsonLd ?? defaultStructuredData;
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <Header />
+    <div class="site-sticky">
+      <LiveTicker />
+      <Header />
+    </div>
     <main id="main">
       <slot />
     </main>

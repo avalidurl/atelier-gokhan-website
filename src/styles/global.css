@@ -164,3 +164,6 @@ h2,
 h3 {
   scroll-margin-top: 1rem;
 }
+
+/* sticky top unit: ticker band + header persist on scroll (all pages) */
+.site-sticky{position:sticky;top:0;z-index:100}
