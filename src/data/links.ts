@@ -61,6 +61,12 @@ export const domains: readonly LinkDomain[] = [
         href: 'mailto:contact@gokhan.vc',
         external: false,
       },
+      {
+        platform: 'Ishtar',
+        note: 'ishtar.numetal.xyz',
+        href: 'https://ishtar.numetal.xyz',
+        external: true,
+      },
     ],
   },
   {

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LinkTree from '../components/LinkTree.astro';
+import LiveTicker from '../components/LiveTicker.astro';
 import { site } from '../data/site';
 import { heroSegments } from '../data/hero';
 
@@ -8,6 +9,7 @@ const title = `${site.name} — venture studio`;
 ---
 
 <BaseLayout title={title} description={site.blurb}>
+  <LiveTicker />
   <section class="hero" aria-labelledby="hero-blurb">
     <div class="hero-sheet sheet">
       <h1 id="hero-blurb" class="hero-blurb">

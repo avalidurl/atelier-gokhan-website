@@ -1,0 +1,112 @@
+---
+/**
+ * LiveTicker — a rolling "ISHTAR IS LIVE" banner pinned above the hero.
+ * One link, one message, repeated into a seamless marquee. The track is
+ * duplicated (aria-hidden on the copy) so the loop wraps without a gap.
+ * Respects prefers-reduced-motion: the strip stands still and stays readable.
+ * House style: strictly monochrome — inverted bar, hierarchy by weight only.
+ */
+const MESSAGE = 'ISHTAR IS LIVE';
+const HOST = 'ishtar.numetal.xyz';
+const REPEATS = 8;
+const items = Array.from({ length: REPEATS });
+---
+
+<a
+  class="ticker"
+  href="https://ishtar.numetal.xyz"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${MESSAGE} — ${HOST}`}
+>
+  <div class="ticker-track" aria-hidden="true">
+    {
+      [0, 1].map(() => (
+        <div class="ticker-run">
+          {items.map(() => (
+            <span class="ticker-item">
+              <strong>{MESSAGE}</strong>
+              <span class="ticker-host">{HOST}</span>
+              <span class="ticker-dot">·</span>
+            </span>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+  <span class="sr-only">{MESSAGE} — {HOST}</span>
+</a>
+
+<style>
+  .ticker {
+    display: block;
+    overflow: hidden;
+    background: var(--accent-purple, #141414);
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line, #cdcdcd);
+    white-space: nowrap;
+  }
+
+  .ticker-track {
+    display: inline-flex;
+  }
+
+  .ticker-run {
+    display: inline-flex;
+    animation: ticker-roll 24s linear infinite;
+  }
+
+  .ticker-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.6em;
+    padding: 7px 0.6em 7px 0;
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .ticker-item strong {
+    font-weight: 700;
+  }
+
+  .ticker-host {
+    opacity: 0.72;
+  }
+
+  .ticker-dot {
+    opacity: 0.45;
+  }
+
+  .ticker:hover .ticker-run {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker-roll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-run {
+      animation: none;
+    }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

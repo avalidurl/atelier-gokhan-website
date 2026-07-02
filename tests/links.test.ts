@@ -11,6 +11,7 @@ const EXPECTED: Record<string, { label: string; leaves: Record<string, string> }
       X: 'https://x.com/ateliergokhan',
       GitHub: 'https://github.com/gokhan-vc',
       Email: 'mailto:contact@gokhan.vc',
+      Ishtar: 'https://ishtar.numetal.xyz',
     },
   },
   gokhanturhancom: {
@@ -42,9 +43,9 @@ describe('link tree data — structure', () => {
     expect(domains.map((d) => d.label)).toEqual(['gokhan.vc', 'gokhanturhan.com', 'numetal.xyz']);
   });
 
-  it('has 3 / 8 / 3 leaves per domain (14 total)', () => {
-    expect(domains.map((d) => d.socials.length)).toEqual([3, 8, 3]);
-    expect(allLeaves).toHaveLength(14);
+  it('has 4 / 8 / 3 leaves per domain (15 total)', () => {
+    expect(domains.map((d) => d.socials.length)).toEqual([4, 8, 3]);
+    expect(allLeaves).toHaveLength(15);
   });
 
   it('every domain root has a valid absolute https URL (the clickable root target)', () => {
@@ -81,9 +82,9 @@ describe('link tree data — link hygiene', () => {
     expect(mailtos[0].external).toBe(false);
   });
 
-  it('has 13 external leaves, all absolute https URLs opened in a new tab', () => {
+  it('has 14 external leaves, all absolute https URLs opened in a new tab', () => {
     const external = allLeaves.filter((l) => l.external);
-    expect(external).toHaveLength(13);
+    expect(external).toHaveLength(14);
     for (const leaf of external) {
       expect(leaf.href).toMatch(/^https:\/\//);
       expect(() => new URL(leaf.href)).not.toThrow();
