@@ -7,10 +7,13 @@ const PUBLIC_DIR = resolve(REPO_ROOT, 'public');
 
 const PNG_MAGIC = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 
+// Monochrome accent trio — house style is strictly black & white; hierarchy is
+// carried by weight and value, never hue. The purple/rose/green keys are kept as
+// the primary/mid/light neutral slots so the gradient semantics stay meaningful.
 const ACCENTS = {
-  purple: '#8466C4',
-  rose: '#E06699',
-  green: '#1F9E6B',
+  purple: '#141414',
+  rose: '#5A5A5A',
+  green: '#7C7C7C',
 };
 
 describe('boiling pot favicon SVG', () => {
@@ -32,7 +35,7 @@ describe('boiling pot favicon SVG', () => {
     );
   });
 
-  it('blends all three accents inside a gradient (not as flat blocks)', () => {
+  it('blends all three monochrome accents inside a gradient (not as flat blocks)', () => {
     const accentRegex = new RegExp(`stop[^>]+stop-color="${ACCENTS.purple}"`, 'i');
     const roseRegex = new RegExp(`stop[^>]+stop-color="${ACCENTS.rose}"`, 'i');
     const greenRegex = new RegExp(`stop[^>]+stop-color="${ACCENTS.green}"`, 'i');
@@ -42,7 +45,7 @@ describe('boiling pot favicon SVG', () => {
     expect(svg).toMatch(/<radialGradient[^>]*id="boil"[\s\S]*?<\/radialGradient>/i);
   });
 
-  it('places purple at the leading/central stop of the primary gradient', () => {
+  it('places the primary accent (#141414) at the leading/central stop of the primary gradient', () => {
     const primary = svg.match(/<radialGradient[^>]*id="boil"[\s\S]*?<\/radialGradient>/i);
     expect(primary).not.toBeNull();
     const stops = [
@@ -60,9 +63,9 @@ describe('boiling pot favicon SVG', () => {
   });
 
   it('does not render the three accents as disjoint flat blocks', () => {
-    const flatPurpleRect = /<rect[^>]+fill="#8466C4"[^>]*\/>/i;
-    const flatRoseRect = /<rect[^>]+fill="#E06699"[^>]*\/>/i;
-    const flatGreenRect = /<rect[^>]+fill="#1F9E6B"[^>]*\/>/i;
+    const flatPurpleRect = new RegExp(`<rect[^>]+fill="${ACCENTS.purple}"[^>]*/>`, 'i');
+    const flatRoseRect = new RegExp(`<rect[^>]+fill="${ACCENTS.rose}"[^>]*/>`, 'i');
+    const flatGreenRect = new RegExp(`<rect[^>]+fill="${ACCENTS.green}"[^>]*/>`, 'i');
     expect(svg).not.toMatch(flatPurpleRect);
     expect(svg).not.toMatch(flatRoseRect);
     expect(svg).not.toMatch(flatGreenRect);

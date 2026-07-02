@@ -16,10 +16,12 @@ describe('design tokens', () => {
     expect(tokensCss).toMatch(/--hard:\s*#8c8c8c/i);
   });
 
-  it('exposes the accent trio with purple as the primary token', () => {
-    expect(tokensCss).toMatch(/--accent-purple:\s*#8466c4/i);
-    expect(tokensCss).toMatch(/--accent-rose:\s*#e06699/i);
-    expect(tokensCss).toMatch(/--accent-green:\s*#1f9e6b/i);
+  it('exposes the monochrome accent trio with #141414 as the primary token', () => {
+    // House style is strictly black & white: hierarchy by weight/value, never hue.
+    // The accent-* var names are kept, but every value is now a neutral grey.
+    expect(tokensCss).toMatch(/--accent-purple:\s*#141414/i);
+    expect(tokensCss).toMatch(/--accent-rose:\s*#5a5a5a/i);
+    expect(tokensCss).toMatch(/--accent-green:\s*#7c7c7c/i);
   });
 
   it('declares a system color-scheme of light', () => {

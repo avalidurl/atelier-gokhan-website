@@ -24,7 +24,7 @@ describe('site data', () => {
     expect(site.blurb.endsWith('.')).toBe(true);
   });
 
-  it('uses the primary purple accent as theme color', () => {
-    expect(site.themeColor).toBe('#8466C4');
+  it('uses the primary monochrome accent (#141414) as theme color', () => {
+    expect(site.themeColor).toBe('#141414');
   });
 });

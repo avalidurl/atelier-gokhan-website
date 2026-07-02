@@ -6,9 +6,11 @@
   --line: #cdcdcd;
   --hard: #8c8c8c;
 
-  --accent-purple: #8466c4;
-  --accent-rose: #e06699;
-  --accent-green: #1f9e6b;
+  /* Monochrome accents — the house style is strictly black & white; hierarchy is
+     carried by weight and value, never hue. Var names kept so no component changes. */
+  --accent-purple: #141414;
+  --accent-rose: #5a5a5a;
+  --accent-green: #7c7c7c;
 
   --font-sans: 'Archivo Variable', Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
