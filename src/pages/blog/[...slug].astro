@@ -11,8 +11,16 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 const title = `${post.data.title} — ${site.name}`;
+
+// Table of contents — section headings (h2/h3) only. The heading ids are set at
+// build time by rehype-slug (see astro.config.mjs), so h.slug is the anchor.
+// rehype-autolink-headings appends a "#" permalink into each heading, which
+// leaks into h.text — strip that single trailing "#" for clean TOC labels.
+const toc = headings
+  .filter((h) => h.depth >= 2 && h.depth <= 3)
+  .map((h) => ({ ...h, text: h.text.replace(/#$/, '').trimEnd() }));
 ---
 
 <BaseLayout
@@ -39,6 +47,20 @@ const title = `${post.data.title} — ${site.name}`;
       }
     </p>
     <div class="dither-divider" aria-hidden="true"></div>
+    {
+      toc.length > 0 && (
+        <nav class="post-toc" aria-label="Contents">
+          <p class="post-toc-label">Contents</p>
+          <ul>
+            {toc.map((h) => (
+              <li class:list={[`post-toc-d${h.depth}`]}>
+                <a href={`#${h.slug}`}>{h.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )
+    }
     <div class="post-body">
       <Content />
     </div>
@@ -87,6 +109,55 @@ const title = `${post.data.title} — ${site.name}`;
 
   .post-back-foot {
     margin-top: var(--space-6);
+  }
+
+  /* Table of contents — hanging list behind a thin hairline. Monochrome:
+     hierarchy by weight/value, never hue. Depth-3 items indent under their h2. */
+  .post-toc {
+    margin: var(--space-5) 0 var(--space-6);
+    padding: var(--space-3) 0 var(--space-1) var(--space-3);
+    border-left: 1px solid var(--hard);
+  }
+
+  .post-toc-label {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .post-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .post-toc li {
+    margin: 0 0 var(--space-1);
+    line-height: 1.4;
+  }
+
+  .post-toc-d2 {
+    font-weight: 600;
+  }
+
+  .post-toc-d3 {
+    padding-left: var(--space-3);
+    font-weight: 400;
+  }
+
+  .post-toc a {
+    font-size: 14px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .post-toc a:hover,
+  .post-toc a:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .post-body {

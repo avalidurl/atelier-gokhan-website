@@ -167,3 +167,17 @@ h3 {
 
 /* sticky top unit: ticker band + header persist on scroll (all pages) */
 .site-sticky{position:sticky;top:0;z-index:100}
+
+/* Syndication note — the "originally published at Ishtar" line at the top of a
+   post. Plain paragraph, NOT a blockquote: no left border, no indent. Small and
+   muted so it reads as metadata, not body copy. Monochrome. */
+.syndication-note {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.syndication-note a {
+  color: var(--muted);
+}
+
