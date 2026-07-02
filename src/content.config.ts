@@ -12,6 +12,10 @@ const blog = defineCollection({
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     draft: z.boolean().default(false),
+    // Syndication: point rel=canonical + og:url off-site to the original source.
+    canonicalUrl: z.string().url().optional(),
+    // Per-post social image (root-relative, e.g. '/og-foo.png'). Defaults site-wide.
+    ogImage: z.string().optional(),
   }),
 });
 
