@@ -49,8 +49,8 @@ const toc = headings
     <div class="dither-divider" aria-hidden="true"></div>
     {
       toc.length > 0 && (
-        <nav class="post-toc" aria-label="Contents">
-          <p class="post-toc-label">Contents</p>
+        <details class="post-toc" open>
+          <summary class="post-toc-label">Contents</summary>
           <ul>
             {toc.map((h) => (
               <li class:list={[`post-toc-d${h.depth}`]}>
@@ -58,7 +58,7 @@ const toc = headings
               </li>
             ))}
           </ul>
-        </nav>
+        </details>
       )
     }
     <div class="post-body">
@@ -126,7 +126,14 @@ const toc = headings
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
   }
+  .post-toc-label::-webkit-details-marker { display: none; }
+  .post-toc-label::before { content: "▸  "; color: var(--ink); }
+  .post-toc[open] > .post-toc-label::before { content: "▾  "; }
+  .post-toc:not([open]) > .post-toc-label { margin-bottom: 0; }
 
   .post-toc ul {
     list-style: none;
