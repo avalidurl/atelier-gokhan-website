@@ -9,7 +9,7 @@ ogImage: '/og-not-raising-a-preseed.png'
 
 <p class="syndication-note">This post was originally published at <a href="https://ishtar.numetal.xyz/blog/not-raising-a-preseed/">Ishtar</a>.</p>
 
-<aside class="tldr" style="border:1px solid var(--hard,#141414);border-left:3px solid var(--ink,#141414);padding:14px 18px;margin:0 0 26px;font-size:15px;line-height:1.55">
+<aside class="tldr" style="border:1.5px solid var(--hard,#141414);background:#fff;padding:14px 18px;margin:0 0 26px;font-size:15px;line-height:1.55;box-shadow:5px 5px 0 var(--ink,#141414)">
 <strong style="font-family:var(--font-mono,monospace);font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:8px">TL;DR</strong>
 <ul style="margin:0;padding-left:18px">
 <li>It's <strong>not a pre-seed</strong>. It's <strong>$20k total, $4k a head, for future equity</strong> — terms are a conversation, not a form.</li>

@@ -137,6 +137,7 @@ const toc = headings
 
   .post-toc ul {
     list-style: none;
+    counter-reset: toc;
     margin: 0;
     padding: 0;
   }
@@ -147,12 +148,30 @@ const toc = headings
   }
 
   .post-toc-d2 {
+    counter-increment: toc;
     font-weight: 600;
+    display: flex;
+    gap: 0.55rem;
+  }
+  .post-toc-d2::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    flex: 0 0 auto;
+    padding-top: 0.12em;
   }
 
   .post-toc-d3 {
     padding-left: var(--space-3);
     font-weight: 400;
+    display: flex;
+    gap: 0.5rem;
+  }
+  .post-toc-d3::before {
+    content: "–";
+    color: var(--muted);
+    flex: 0 0 auto;
   }
 
   .post-toc a {
