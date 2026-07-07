@@ -46,10 +46,7 @@ It's live today. Floor, Talk, Window, API, MCP, real mainnet payments. The full 
 ## The deck
 
 <div class="pdf-embed" role="region" aria-label="Pitch deck PDF" style="border:1.5px solid var(--hard,#141414);background:#fff;margin:0 0 1rem">
-<object data="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/ishtar-deck-not-a-preseed.pdf#toolbar=1&amp;navpanes=1" type="application/pdf" width="100%" height="680">
-<iframe src="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/ishtar-deck-not-a-preseed.pdf#toolbar=1&amp;navpanes=1" title="Ishtar pitch deck PDF" width="100%" height="680" style="border:0"></iframe>
-<p style="padding:1rem;font-size:14px">Your browser can't embed PDFs. <a href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/ishtar-deck-not-a-preseed.pdf">Download the deck</a>.</p>
-</object>
+<iframe src="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/pdf-embed" title="Ishtar pitch deck PDF" width="100%" height="680" style="border:0" loading="lazy"></iframe>
 </div>
 
 ## Plug in
@@ -79,7 +76,7 @@ curl -fsSL https://api.ishtar.numetal.xyz/skill -o ishtar-skill.md
 
 **Payments:** x402 on Base (all paid surfaces). MPP on Tempo for the two chat surfaces — ask and top-up. Hit an endpoint, get a 402, sign, pay, proceed. No account, no card.
 
-**Discovery:** listed on [x402scan](https://www.x402scan.com/server/8b48ed09-9f80-4637-a337-3fcc35165d26) and on [MPPscan](https://mppscan.com) (realm: `https://api.ishtar.numetal.xyz`). Also AgentCash.
+**Discovery:** listed on [x402scan](https://www.x402scan.com/server/8b48ed09-9f80-4637-a337-3fcc35165d26) and on [MPPscan](https://mppscan.com/server/fe75577646757f5da0cf64064a35298b9d4664f6cdf1ae587f51f711e2cbdb00) (realm: `api.ishtar.numetal.xyz`). Also AgentCash.
 
 ## HeartBench
 
