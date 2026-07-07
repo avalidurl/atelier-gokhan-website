@@ -80,6 +80,17 @@ const defaultStructuredData = JSON.stringify({
   ],
 });
 const structuredData = jsonLd ?? defaultStructuredData;
+
+function normalizePathname(pathname: string): string {
+  let path = pathname.replace(/index\.html$/, '').replace(/\.html$/, '');
+  if (path !== '/' && path.endsWith('/')) {
+    path = path.slice(0, -1);
+  }
+  return path === '' ? '/' : path;
+}
+
+const pagePath = normalizePathname(Astro.url.pathname);
+const isBlog = pagePath === '/blog' || pagePath.startsWith('/blog/');
 ---
 
 <!doctype html>
@@ -137,7 +148,7 @@ const structuredData = jsonLd ?? defaultStructuredData;
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer showSubscribe={!isBlog} />
     <script src="/blog-collapse.js" defer></script>
   </body>
 </html>

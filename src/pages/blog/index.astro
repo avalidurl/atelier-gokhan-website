@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubscribeBlock from '../../components/SubscribeBlock.astro';
 import { site } from '../../data/site';
 import { publishedPosts, postPath, formatPostDate, isoDate } from '../../utils/blog';
 
@@ -12,7 +13,7 @@ const description = `Writing and notes from ${site.name}.`;
 <BaseLayout title={title} description={description}>
   <section class="blog-index">
     <header class="blog-head">
-      <p class="blog-stamp">Journal</p>
+      <p class="blog-stamp">Blog</p>
       <h1 class="blog-title">Blog</h1>
     </header>
     <div class="dither-divider" aria-hidden="true"></div>
@@ -37,6 +38,7 @@ const description = `Writing and notes from ${site.name}.`;
       )
     }
   </section>
+  <SubscribeBlock />
 </BaseLayout>
 
 <style>

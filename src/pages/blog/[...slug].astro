@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import SubscribeBlock from '../../components/SubscribeBlock.astro';
 import { site } from '../../data/site';
 import { isPublished, formatPostDate, isoDate } from '../../utils/blog';
 
@@ -46,6 +47,15 @@ const toc = headings
         )
       }
     </p>
+    {
+      post.id === 'not-raising-a-preseed' && (
+        <p class="deck-links">
+          <a class="deck-pdf" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/ishtar-deck-not-a-preseed.pdf" download>Download PDF</a>
+          <a class="deck-view" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/">View deck →</a>
+          <a class="deck-md" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/deck.md">deck.md</a>
+        </p>
+      )
+    }
     <div class="dither-divider" aria-hidden="true"></div>
     {
       toc.length > 0 && (
@@ -66,6 +76,7 @@ const toc = headings
     </div>
     <p class="post-back-foot"><a href="/blog">← Back to blog</a></p>
   </article>
+  <SubscribeBlock maxWidth="720px" />
 </BaseLayout>
 
 <style>
@@ -105,6 +116,44 @@ const toc = headings
     font-size: 12px;
     color: var(--muted);
     margin: 0 0 var(--space-4);
+  }
+
+  .deck-links {
+    margin: 0 0 var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem 0.75rem;
+  }
+
+  .deck-pdf {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    padding: 0.45rem 0.85rem;
+    background: var(--paper);
+    font-weight: 700;
+  }
+
+  .deck-view {
+    color: var(--ink);
+    border-bottom: 1px solid var(--hard);
+    font-family: var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 11px;
+    text-decoration: none;
+  }
+
+  .deck-md {
+    color: var(--muted);
+    border-bottom: 1px solid var(--hard);
+    font-size: 13px;
+    text-decoration: none;
   }
 
   .post-back-foot {

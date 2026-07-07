@@ -1,52 +1,102 @@
 ---
-import { domains } from '../data/links';
-import { site } from '../data/site';
+import { properties } from '../data/links';
+
+function leafAttrs(leaf: { href: string; external: boolean; tooltip: string }) {
+  return {
+    'data-tip': leaf.tooltip,
+    ...(leaf.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}),
+  };
+}
 ---
 
 <section class="tree-section" aria-labelledby="pedigree-title">
-  <p class="tree-stamp" id="pedigree-title">Pedigree · three domains, one studio</p>
-  <ul class="tree" role="list">
+  <p class="tree-stamp" id="pedigree-title">Portfolio · four properties, one studio</p>
+
+  <div class="kanban-board" role="list">
     {
-      domains.map((domain) => {
-        const isSelf = domain.url === site.url;
-        const rootHref = isSelf ? '/' : domain.url;
-        return (
-          <li class="branch">
-            <h2 class="branch-root sheet" id={`branch-${domain.id}`}>
-              <a
-                class="branch-link"
-                href={rootHref}
-                {...(isSelf ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
-              >
-                <span class="branch-label">{domain.label}</span>
-                <span class="branch-owner">{domain.owner}</span>
-              </a>
-            </h2>
-            <ul class="leaves" role="list" aria-labelledby={`branch-${domain.id}`}>
-              {domain.socials.map((leaf) => (
+      properties.map((property) => (
+        <article class="kanban-col" role="listitem">
+          <details class="board-details">
+            <summary class="board-header sheet" id={`board-${property.id}`}>
+              <span class="board-chevron" aria-hidden="true" />
+              <span class="board-summary">
+                <span class="board-label">{property.label}</span>
+                <span class="board-domain">{property.domain}</span>
+                <span class="board-owner">{property.owner}</span>
+              </span>
+            </summary>
+            <div class="board-body" aria-labelledby={`board-${property.id}`}>
+              <ul class="leaves" role="list">
+                {property.apiTools.map((leaf) => (
+                  <li class="leaf">
+                    <a class="leaf-link" href={leaf.href} {...leafAttrs(leaf)}>
+                      <span class="leaf-platform">{leaf.platform}</span>
+                      <span class="leaf-note">{leaf.note}</span>
+                    </a>
+                  </li>
+                ))}
                 <li class="leaf">
                   <a
                     class="leaf-link"
-                    href={leaf.href}
-                    {...(leaf.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    href={property.website.href}
+                    {...leafAttrs(property.website)}
                   >
-                    <span class="leaf-platform">{leaf.platform}</span>
-                    <span class="leaf-note">{leaf.note}</span>
+                    <span class="leaf-platform">{property.website.platform}</span>
+                    <span class="leaf-note">{property.website.note}</span>
                   </a>
                 </li>
-              ))}
-            </ul>
-          </li>
-        );
-      })
+                {property.blog && (
+                  <li class="leaf">
+                    <a class="leaf-link" href={property.blog.href} {...leafAttrs(property.blog)}>
+                      <span class="leaf-platform">{property.blog.platform}</span>
+                      <span class="leaf-note">{property.blog.note}</span>
+                    </a>
+                  </li>
+                )}
+                {property.docs && (
+                  <li class="leaf">
+                    <a class="leaf-link" href={property.docs.href} {...leafAttrs(property.docs)}>
+                      <span class="leaf-platform">{property.docs.platform}</span>
+                      <span class="leaf-note">{property.docs.note}</span>
+                    </a>
+                  </li>
+                )}
+                {property.socials.length > 0 && (
+                  <li class="leaf-heading" aria-hidden="false">
+                    <h3 class="socials-heading">Socials</h3>
+                  </li>
+                )}
+                {property.socials.map((leaf) => (
+                  <li class="leaf">
+                    <a class="leaf-link" href={leaf.href} {...leafAttrs(leaf)}>
+                      <span class="leaf-platform">{leaf.platform}</span>
+                      <span class="leaf-note">{leaf.note}</span>
+                    </a>
+                  </li>
+                ))}
+                {property.contacts.map((leaf) => (
+                  <li class="leaf leaf-contact">
+                    <a class="leaf-link" href={leaf.href} {...leafAttrs(leaf)}>
+                      <span class="leaf-platform">{leaf.platform}</span>
+                      <span class="leaf-note">{leaf.note}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </details>
+        </article>
+      ))
     }
-  </ul>
+  </div>
 </section>
+
+<script src="/link-popups.js" defer></script>
 
 <style>
   .tree-section {
     width: 100%;
-    max-width: 960px;
+    max-width: 1280px;
     margin: 0 auto;
     padding: 0 var(--space-3) var(--space-7);
   }
@@ -58,133 +108,185 @@ import { site } from '../data/site';
     text-transform: uppercase;
     color: var(--muted);
     margin: 0 0 var(--space-5);
+    text-align: center;
   }
 
-  .tree {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .kanban-board {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-5);
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
     align-items: start;
   }
 
-  .branch {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
+  @media (min-width: 640px) {
+    .kanban-board {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  /* Branch root — a visually elevated neo-brutalist tile parenting its leaves. */
-  .branch-root {
+  @media (min-width: 1100px) {
+    .kanban-board {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .kanban-col {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .board-details {
+    border: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .board-header {
     position: relative;
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 16px;
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-2);
   }
 
-  /* The whole root tile is the clickable link to that domain. */
-  .branch-link {
+  .board-header::-webkit-details-marker,
+  .board-header::marker {
+    display: none;
+  }
+
+  .board-chevron {
+    flex: 0 0 auto;
+    width: 8px;
+    height: 8px;
+    margin: 16px 0 0 12px;
+    border-right: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    transform: rotate(-45deg);
+    transition: transform 120ms ease-out;
+  }
+
+  .board-details[open] > .board-header .board-chevron {
+    transform: rotate(45deg);
+    margin-top: 13px;
+  }
+
+  .board-summary {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: 2px;
     padding: var(--space-3);
-    color: inherit;
-    text-decoration: none;
+    flex: 1;
+    min-width: 0;
   }
 
-  .branch-link:hover .branch-label,
-  .branch-link:focus-visible .branch-label {
-    color: var(--accent-purple);
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 3px;
-  }
-
-  /* Lift the tile on hover/focus of its link (neo-brutalist press affordance). */
-  .branch-root:has(.branch-link:hover),
-  .branch-root:has(.branch-link:focus-visible) {
+  .board-header:hover,
+  .board-header:focus-visible {
     box-shadow: var(--shadow-hard-strong);
   }
 
-  .branch-link:focus-visible {
+  .board-header:focus-visible {
     outline: 2px solid var(--accent-purple);
     outline-offset: 2px;
   }
 
-  .branch-label {
+  .board-label {
     font-weight: 700;
     letter-spacing: 0.01em;
     color: var(--ink);
     overflow-wrap: anywhere;
+    font-size: 17px;
   }
 
-  .branch-owner {
+  .board-domain {
     font-family: var(--font-mono);
-    font-size: 12px;
-    font-weight: 400;
+    font-size: 11px;
+    font-weight: 500;
     letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  .board-owner {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.03em;
     color: var(--muted);
   }
 
-  /* Connector dropping from the root tile down to the leaf trunk. */
-  .branch-root::after {
-    content: '';
-    position: absolute;
-    left: 9px;
-    bottom: calc(-1 * var(--space-3));
-    height: var(--space-3);
-    border-left: 2px solid var(--hard);
+  .board-body {
+    padding: 0 var(--space-2) var(--space-3);
+    flex: 1;
   }
 
   .leaves {
     list-style: none;
-    margin: var(--space-3) 0 0;
-    padding: 0;
+    margin: var(--space-2) 0 0;
+    padding: 0 0 0 var(--space-2);
     position: relative;
+    border-left: 2px solid var(--hard);
   }
 
   .leaf {
     position: relative;
-    padding: var(--space-1) 0 var(--space-1) 28px;
+    padding: var(--space-1) 0 var(--space-1) 20px;
   }
 
-  /* Vertical trunk segment running through each leaf. */
   .leaf::before {
     content: '';
     position: absolute;
-    left: 9px;
-    top: -2px;
-    bottom: 0;
-    border-left: 2px solid var(--hard);
+    left: -2px;
+    top: 50%;
+    width: 14px;
+    border-top: 2px solid var(--hard);
   }
 
-  /* Reach up to meet the root connector. */
-  .leaf:first-child::before {
-    top: calc(-1 * var(--space-3) - 2px);
+  .leaf-heading {
+    list-style: none;
+    padding: var(--space-3) 0 var(--space-1) 20px;
+    position: relative;
   }
 
-  /* The trunk stops at the last leaf's horizontal stub (clean tree foot). */
-  .leaf:last-child::before {
-    bottom: auto;
-    height: calc(50% + 2px);
-  }
-
-  /* Horizontal connector from the trunk to each leaf. */
-  .leaf::after {
+  .leaf-heading::before {
     content: '';
     position: absolute;
-    left: 9px;
+    left: -2px;
     top: 50%;
-    width: 17px;
+    width: 14px;
     border-top: 2px solid var(--hard);
+  }
+
+  .socials-heading {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .leaf-contact {
+    margin-top: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: 1px dashed var(--line);
+  }
+
+  .leaf-contact::before {
+    display: none;
   }
 
   .leaf-link {
     display: inline-flex;
-    align-items: baseline;
-    gap: var(--space-2);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
     max-width: 100%;
     padding: 3px var(--space-2);
     border: 2px solid transparent;
@@ -197,17 +299,18 @@ import { site } from '../data/site';
 
   .leaf-platform {
     font-weight: 700;
+    font-size: 13px;
     color: var(--accent-purple);
   }
 
   .leaf-note {
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 11px;
     color: var(--muted);
     overflow-wrap: anywhere;
+    line-height: 1.35;
   }
 
-  /* Uniform, clearly visible affordance on hover AND keyboard focus. */
   .leaf-link:hover,
   .leaf-link:focus-visible {
     background: var(--paper);
@@ -222,22 +325,18 @@ import { site } from '../data/site';
     text-underline-offset: 3px;
   }
 
-  /* Keep the keyboard focus ring from the global :focus-visible, just tightened. */
   .leaf-link:focus-visible {
     outline: 2px solid var(--accent-purple);
     outline-offset: 2px;
   }
 
-  @media (max-width: 820px) {
-    .tree {
-      grid-template-columns: 1fr;
-      gap: var(--space-6);
-    }
-  }
-
   @media (max-width: 480px) {
     .tree-section {
       padding-bottom: var(--space-6);
+    }
+
+    .board-chevron {
+      margin-left: 10px;
     }
   }
 </style>

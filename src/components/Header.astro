@@ -7,6 +7,11 @@ import { site } from '../data/site';
     <span class="wordmark-dot" aria-hidden="true"></span>
     <span class="wordmark-text">{site.name}</span>
   </a>
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="/blog/">Blog</a>
+    <a href="https://ishtar.numetal.xyz" target="_blank" rel="noopener noreferrer">Ishtar<span class="nav-live" aria-hidden="true">live</span><span class="nav-ext" aria-hidden="true">↗</span></a>
+    <a href="https://numetal.xyz" target="_blank" rel="noopener noreferrer">Numetal Lab<span class="nav-ext" aria-hidden="true">↗</span></a>
+  </nav>
 </header>
 
 <style>
@@ -43,6 +48,46 @@ import { site } from '../data/site';
     }
     .wordmark {
       font-size: 14px;
+    }
+  }
+
+  .main-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .main-nav a {
+    color: var(--muted-foreground);
+    text-decoration: none;
+    transition: color 0.1s ease;
+  }
+  .main-nav a:hover,
+  .main-nav a:focus-visible {
+    color: var(--foreground);
+  }
+  .nav-ext {
+    font-size: 0.8em;
+    opacity: 0.6;
+    margin-left: 2px;
+  }
+  .nav-live {
+    font-size: 0.65em;
+    background: var(--accent-purple);
+    color: var(--background);
+    padding: 0 3px;
+    border-radius: 2px;
+    margin-left: 2px;
+    vertical-align: middle;
+  }
+
+  @media (max-width: 768px) {
+    .main-nav {
+      display: none;
     }
   }
 </style>

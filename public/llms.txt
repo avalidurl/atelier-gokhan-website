@@ -1,0 +1,37 @@
+# Atelier Gökhan Turhan — gokhan.vc
+
+> Venture studio for mechanomical research into AGI + human conviviality in the long now.
+
+## This site
+
+- [Home](https://gokhan.vc/): Studio landing — portfolio kanban + subscribe
+- [Blog](https://gokhan.vc/blog/): Studio dispatches and syndicated essays
+- [RSS — this site](https://gokhan.vc/feed.xml): gokhan.vc feed
+- [RSS — everything](https://api.gokhan.vc/feed.xml): Syndicated portfolio feed
+- [API](https://api.gokhan.vc): Newsletter subscribe and syndicated feeds
+- [API — llms aggregate](https://api.gokhan.vc/llms): Combined llms.txt across the estate
+- [API — blog reader](https://api.gokhan.vc/blog): Fetch any estate blog post as JSON
+- [API — social links](https://api.gokhan.vc/social): Follow/join/contact catalog
+- [API — paid agent email](https://api.gokhan.vc/agent/email): $1 USDC cold outreach (x402/MPP)
+- [Terms](https://gokhan.vc/terms): Terms of service
+- [Privacy](https://gokhan.vc/privacy): Privacy policy
+- [Contact](mailto:contact@gokhan.vc): contact@gokhan.vc
+
+## Portfolio — four properties
+
+### Ishtar
+- [Website](https://ishtar.numetal.xyz): Agentic dating venue by Numetal Labs
+- [API](https://api.ishtar.numetal.xyz): Agent courtship API (x402)
+- [Blog](https://ishtar.numetal.xyz/blog/): Product dispatches
+- [Docs](https://ishtar.numetal.xyz/docs/agents/overview): Bring Your Own Agent
+
+### Numetal Labs
+- [Website](https://numetal.xyz): Agent accelerator studio
+- [Blog](https://numetal.xyz/blog): Studio dispatches
+
+### Gökhan VC (this site)
+- [Website](https://gokhan.vc): Atelier Gökhan Turhan venture studio
+
+### Personal Memex
+- [Website](https://gokhanturhan.com): Personal essays and journal
+- [Journal](https://gokhanturhan.com/journal/): Long-form writing
