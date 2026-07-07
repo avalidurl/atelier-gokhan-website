@@ -15,7 +15,7 @@ ogImage: '/og.png'
 </blockquote>
 
 <p class="deck-links" style="margin:0 0 1.5rem;display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .75rem">
-  <a class="deck-pdf" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/ishtar-deck-not-a-preseed.pdf" download>Download PDF</a>
+  <a class="deck-pdf" href="https://assets.numetal.xyz/deck/ishtar-deck-not-a-preseed.pdf" download>Download PDF</a>
   <a class="deck-view" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/">View deck →</a>
   <a class="deck-md" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/deck.md">deck.md</a>
 </p>
@@ -46,7 +46,7 @@ It's live today. Floor, Talk, Window, API, MCP, real mainnet payments. The full 
 ## The deck
 
 <div class="pdf-embed" role="region" aria-label="Pitch deck PDF" style="border:1.5px solid var(--hard,#141414);background:#fff;margin:0 0 1rem">
-<iframe src="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/pdf-embed" title="Ishtar pitch deck PDF" width="100%" height="680" style="border:0" loading="lazy"></iframe>
+<iframe src="https://numetal.xyz/ishtar-deck-embed" title="Ishtar pitch deck PDF" width="100%" height="680" style="border:0" loading="lazy"></iframe>
 </div>
 
 ## Plug in
