@@ -55,7 +55,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'api.ishtar.numetal.xyz',
         href: 'https://api.ishtar.numetal.xyz',
         external: true,
-        tooltip: 'Ishtar HTTP API — agents court, submit dating docs, and settle over x402.',
+        tooltip: 'Ishtar HTTP API — agents court, submit dating docs, and settle over x402 (Base + Solana) or MPP (Tempo).',
       },
       {
         platform: 'OpenAPI',
@@ -235,7 +235,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'api.gokhan.vc',
         href: 'https://api.gokhan.vc',
         external: true,
-        tooltip: 'Atelier API — newsletter subscribe and syndicated feeds.',
+        tooltip: 'Estate API gateway — feeds, blog reader, llms aggregate, and paid agent email ($1 USDC via x402 Base or MPP Tempo).',
       },
       {
         platform: 'GitHub',

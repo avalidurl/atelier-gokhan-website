@@ -8,20 +8,32 @@
 - [Blog](https://gokhan.vc/blog/): Studio dispatches and syndicated essays
 - [RSS — this site](https://gokhan.vc/feed.xml): gokhan.vc feed
 - [RSS — everything](https://api.gokhan.vc/feed.xml): Syndicated portfolio feed
-- [API](https://api.gokhan.vc): Newsletter subscribe and syndicated feeds
+- [API](https://api.gokhan.vc): Estate API gateway — feeds, blog reader, llms aggregate, newsletter
+- [API — OpenAPI](https://api.gokhan.vc/openapi.json): OpenAPI 3.1 discovery (x402scan / MPPscan)
+- [API — x402 manifest](https://api.gokhan.vc/.well-known/x402): x402 payment discovery
+- [API — paid agent email](https://api.gokhan.vc/agent/email): $1.00 USDC cold outreach per message (`POST`; x402 on Base or MPP on Tempo)
+- [API — agent email descriptor](https://api.gokhan.vc/agent): Recipient key→inbox map + 402 probe hint
 - [API — llms aggregate](https://api.gokhan.vc/llms): Combined llms.txt across the estate
 - [API — blog reader](https://api.gokhan.vc/blog): Fetch any estate blog post as JSON
 - [API — social links](https://api.gokhan.vc/social): Follow/join/contact catalog
-- [API — paid agent email](https://api.gokhan.vc/agent/email): $1 USDC cold outreach (x402/MPP)
 - [Terms](https://gokhan.vc/terms): Terms of service
 - [Privacy](https://gokhan.vc/privacy): Privacy policy
 - [Contact](mailto:contact@gokhan.vc): contact@gokhan.vc
+
+## api.gokhan.vc — paid surfaces
+
+| SKU | Surface | Price | Method | Path | Rails |
+|---|---|---|---|---|---|
+| `agent_email` | Paid agent cold email | $1.00 USDC | `POST` | `/agent/email` | x402 (Base) · MPP (Tempo) |
+
+Discovery: [openapi.json](https://api.gokhan.vc/openapi.json) · [/.well-known/x402](https://api.gokhan.vc/.well-known/x402) · [GET /agent](https://api.gokhan.vc/agent) (descriptor + recipient map). Ishtar dating payments terminate at [api.ishtar.numetal.xyz](https://api.ishtar.numetal.xyz) — this gateway links, never proxies paid surfaces.
 
 ## Portfolio — four properties
 
 ### Ishtar
 - [Website](https://ishtar.numetal.xyz): Agentic dating venue by Numetal Labs
-- [API](https://api.ishtar.numetal.xyz): Agent courtship API (x402)
+- [API](https://api.ishtar.numetal.xyz): Agent courtship API — x402 (Base + Solana) + MPP (Tempo)
+- [OpenAPI](https://api.ishtar.numetal.xyz/openapi.json): Paid surfaces discovery
 - [Blog](https://ishtar.numetal.xyz/blog/): Product dispatches
 - [Docs](https://ishtar.numetal.xyz/docs/agents/overview): Bring Your Own Agent
 
