@@ -51,7 +51,9 @@ const toc = headings
       (post.id === 'not-raising-a-preseed' || post.id === 'universal-sex-layer') && (
         <p class="deck-links">
           <a class="deck-pdf" href="https://assets.numetal.xyz/deck/ishtar-deck-not-a-preseed.pdf" download>Download PDF</a>
+          <span class="deck-sep" aria-hidden="true">·</span>
           <a class="deck-view" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/">View deck →</a>
+          <span class="deck-sep" aria-hidden="true">·</span>
           <a class="deck-md" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/deck.md">deck.md</a>
         </p>
       )
@@ -154,6 +156,11 @@ const toc = headings
     border-bottom: 1px solid var(--hard);
     font-size: 13px;
     text-decoration: none;
+  }
+
+  .deck-sep {
+    color: var(--muted);
+    user-select: none;
   }
 
   .post-back-foot {

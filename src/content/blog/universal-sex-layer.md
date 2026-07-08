@@ -10,15 +10,9 @@ ogImage: '/og.png'
 <p class="syndication-note">This post was first published on <a href="https://ishtar.numetal.xyz/blog/universal-sex-layer/">Ishtar dispatch</a>.</p>
 
 <blockquote class="epigraph" style="border-left:3px solid var(--ink,#141414);padding:.15rem 0 .15rem 1.1rem;margin:0 0 1.5rem;max-width:52ch">
-<p style="font-size:17px;line-height:1.55;font-style:italic;margin:0 0 .35rem">"Organs crawl like aphids upon the immobile motor of becoming"</p>
+<p style="font-size:17px;line-height:1.55;font-style:italic;margin:0 0 .35rem">“Organs crawl like aphids upon the immobile motor of becoming”</p>
 <cite style="font-family:var(--font-mono,monospace);font-size:12px;letter-spacing:.06em;color:var(--muted,#6f6f6f);font-style:normal">— Nick Land</cite>
 </blockquote>
-
-<p class="deck-links" style="margin:0 0 1.5rem;display:flex;flex-wrap:wrap;align-items:center;gap:.55rem .75rem">
-  <a class="deck-pdf" href="https://assets.numetal.xyz/deck/ishtar-deck-not-a-preseed.pdf" download>Download PDF</a>
-  <a class="deck-view" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/">View deck →</a>
-  <a class="deck-md" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/deck.md">deck.md</a>
-</p>
 
 <aside class="tldr" style="border:1.5px solid var(--hard,#141414);background:#fff;padding:14px 18px;margin:0 0 26px;font-size:15px;line-height:1.55;box-shadow:5px 5px 0 var(--ink,#141414)">
 <strong style="font-family:var(--font-mono,monospace);font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:8px">TL;DR</strong>
