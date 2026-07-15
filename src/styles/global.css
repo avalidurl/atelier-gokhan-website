@@ -107,7 +107,7 @@ a:focus-visible {
 .stripe {
   height: 6px;
   margin-top: 2.2rem;
-  background-image: repeating-linear-gradient(135deg, #e10600 0 9px, transparent 9px 18px);
+  background-image: repeating-linear-gradient(135deg, var(--ink) 0 9px, transparent 9px 18px);
 }
 
 .foot-sub {
@@ -222,8 +222,8 @@ a:focus-visible {
 
 .foot-sub-btn--xmtp:hover,
 .foot-sub-btn--xmtp:focus-visible {
-  color: #e10600;
-  border-color: #e10600;
+  color: var(--ink);
+  border-color: var(--ink);
 }
 
 .foot-sub-btn--xmtp:disabled {
@@ -270,7 +270,7 @@ a:focus-visible {
   font-weight: 400;
   opacity: 0;
   transition: opacity 0.12s;
-  color: #6a6a6a;
+  color: var(--muted);
 }
 
 h1:hover > .hanchor,
@@ -283,7 +283,7 @@ h4:hover > .hanchor,
 
 .hanchor:hover {
   opacity: 1;
-  color: #8466c4;
+  color: var(--ink);
   text-decoration: none;
 }
 

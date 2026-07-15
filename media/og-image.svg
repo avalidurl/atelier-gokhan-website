@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <radialGradient id="boil" cx="50%" cy="50%" r="78%">
-      <stop offset="0%" stop-color="#8466C4" />
-      <stop offset="55%" stop-color="#E06699" />
-      <stop offset="100%" stop-color="#1F9E6B" />
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="55%" stop-color="#5a5a5a" />
+      <stop offset="100%" stop-color="#7c7c7c" />
     </radialGradient>
     <radialGradient id="core" cx="50%" cy="50%" r="42%">
-      <stop offset="0%" stop-color="#8466C4" stop-opacity="0.95" />
-      <stop offset="100%" stop-color="#8466C4" stop-opacity="0" />
+      <stop offset="0%" stop-color="#141414" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#141414" stop-opacity="0" />
     </radialGradient>
   </defs>
 
@@ -36,18 +36,18 @@
 
   <!-- accentuated blurb (purple/rose/green key phrases, mirrors the hero) -->
   <text x="112" y="338" font-family="Archivo, Arial, Helvetica, sans-serif" font-weight="600"
-        font-size="40" fill="#141414">a <tspan fill="#E06699">mechanomical</tspan> research into the</text>
+        font-size="40" fill="#141414">a <tspan fill="#5a5a5a">mechanomical</tspan> research into the</text>
   <text x="112" y="392" font-family="Archivo, Arial, Helvetica, sans-serif" font-weight="600"
-        font-size="40" fill="#141414">techniques of <tspan fill="#1F9E6B">AGI + human conviviality</tspan></text>
+        font-size="40" fill="#141414">techniques of <tspan fill="#7c7c7c">AGI + human conviviality</tspan></text>
   <text x="112" y="446" font-family="Archivo, Arial, Helvetica, sans-serif" font-weight="600"
         font-size="40" fill="#141414">in the long now.</text>
 
   <!-- accent swatches + domain -->
   <g transform="translate(112,500)">
-    <rect x="0" y="0" width="26" height="26" fill="#8466C4" stroke="#141414" stroke-width="2" />
-    <rect x="34" y="0" width="26" height="26" fill="#E06699" stroke="#141414" stroke-width="2" />
-    <rect x="68" y="0" width="26" height="26" fill="#1F9E6B" stroke="#141414" stroke-width="2" />
+    <rect x="0" y="0" width="26" height="26" fill="#141414" stroke="#141414" stroke-width="2" />
+    <rect x="34" y="0" width="26" height="26" fill="#5a5a5a" stroke="#141414" stroke-width="2" />
+    <rect x="68" y="0" width="26" height="26" fill="#7c7c7c" stroke="#141414" stroke-width="2" />
   </g>
   <text x="998" y="520" text-anchor="end" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
-        font-size="26" font-weight="700" fill="#8466C4">gokhan.vc</text>
+        font-size="26" font-weight="700" fill="#141414">gokhan.vc</text>
 </svg>

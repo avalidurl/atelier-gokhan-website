@@ -28,7 +28,7 @@
 
 Discovery: [openapi.json](https://api.gokhan.vc/openapi.json) · [/.well-known/x402](https://api.gokhan.vc/.well-known/x402) · [GET /agent](https://api.gokhan.vc/agent) (descriptor + recipient map). Ishtar dating payments terminate at [api.ishtar.numetal.xyz](https://api.ishtar.numetal.xyz) — this gateway links, never proxies paid surfaces.
 
-## Portfolio — four properties
+## Portfolio — six tiles
 
 ### Ishtar
 - [Website](https://ishtar.numetal.xyz): Agentic dating venue by Numetal Labs
@@ -41,9 +41,27 @@ Discovery: [openapi.json](https://api.gokhan.vc/openapi.json) · [/.well-known/x
 - [Website](https://numetal.xyz): Agent accelerator studio
 - [Blog](https://numetal.xyz/blog): Studio dispatches
 
+### CURB
+- [Website](https://curb.numetal.xyz): Agent-to-agent excess inference swap — the swap rail
+- [API](https://api.curb.numetal.xyz): Hub API — offers, intents, matches; x402 USDC on Base
+- [MCP](https://curb.numetal.xyz/mcp): MCP endpoint for agents
+- [Skill](https://curb.numetal.xyz/skill.md): Drop-in agent skill
+- [Install](https://curb.numetal.xyz/install): One-line install
+- [Docs](https://curb.numetal.xyz/docs/): Offer → match → pay → grant → fulfill
+- [Fees](https://curb.numetal.xyz/fees): 0xSplits single payment — seller cut + 5% protocol fee
+- [x402 manifest](https://curb.numetal.xyz/.well-known/x402): Payment discovery
+
 ### Gökhan VC (this site)
 - [Website](https://gokhan.vc): Atelier Gökhan Turhan venture studio
 
 ### Personal Memex
 - [Website](https://gokhanturhan.com): Personal essays and journal
 - [Journal](https://gokhanturhan.com/journal/): Long-form writing
+
+### Hobby Projects
+- [tickerline](https://claudelines.com/statuslines/tickerline): Claude Code statusline — rolling ticker tape of stocks, crypto, and Polymarket resolved live from the conversation
+- [tickerline source](https://github.com/avalidurl/tickerline): GitHub repo
+- [S&P 100 CapEx tracker](https://sp100-financial-tracker.pages.dev): Real-time CapEx + financials for S&P 100 companies via SEC EDGAR
+- [S&P 100 CapEx source](https://github.com/avalidurl/sp100-financial-tracker): GitHub repo
+- [NVIDIA vs crypto](https://market-cap-tracker.vercel.app): Real-time NVIDIA market cap versus total cryptocurrency market cap
+- [NVIDIA vs crypto source](https://github.com/avalidurl/market-cap-tracker): GitHub repo

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { properties, allLeaves } from '../src/data/links';
 
-const EXPECTED_ORDER = ['ishtar', 'numetal', 'gokhanvc', 'memex'] as const;
+const EXPECTED_ORDER = ['ishtar', 'numetal', 'curb', 'gokhanvc', 'memex', 'hobby'] as const;
 
 const EXPECTED_HREFS: Record<string, string[]> = {
   ishtar: [
@@ -30,6 +30,19 @@ const EXPECTED_HREFS: Record<string, string[]> = {
     'https://discord.gg/MC4DYumPMz',
     'mailto:contact@numetal.xyz',
   ],
+  curb: [
+    'https://api.curb.numetal.xyz',
+    'https://curb.numetal.xyz/mcp',
+    'https://curb.numetal.xyz/skill.md',
+    'https://curb.numetal.xyz/install',
+    'https://curb.numetal.xyz/fees',
+    'https://curb.numetal.xyz/.well-known/x402',
+    'https://curb.numetal.xyz',
+    'https://curb.numetal.xyz/docs/',
+    'https://x.com/numetalxyz',
+    'https://t.me/numetalxyz',
+    'mailto:contact@numetal.xyz',
+  ],
   gokhanvc: [
     'https://api.gokhan.vc',
     'https://github.com/gokhan-vc',
@@ -52,13 +65,26 @@ const EXPECTED_HREFS: Record<string, string[]> = {
     'https://discord.gg/ZcxcwRPT7R',
     'mailto:contact@gokhanturhan.com',
   ],
+  hobby: [
+    'https://claudelines.com/statuslines/tickerline',
+    'https://github.com/avalidurl/tickerline',
+    'https://sp100-financial-tracker.pages.dev',
+    'https://github.com/avalidurl/sp100-financial-tracker',
+    'https://market-cap-tracker.vercel.app',
+    'https://github.com/avalidurl/market-cap-tracker',
+    'https://github.com/avalidurl',
+    'https://x.com/goekhan',
+    'mailto:contact@gokhanturhan.com',
+  ],
 };
 
 const EXPECTED_CONTACTS: Record<string, string> = {
   ishtar: 'contact@numetal.xyz',
   numetal: 'contact@numetal.xyz',
+  curb: 'contact@numetal.xyz',
   gokhanvc: 'contact@gokhan.vc',
   memex: 'contact@gokhanturhan.com',
+  hobby: 'contact@gokhanturhan.com',
 };
 
 function leavesForProperty(id: string) {
@@ -75,13 +101,15 @@ function leavesForProperty(id: string) {
 }
 
 describe('link tree data — structure', () => {
-  it('has exactly four properties in founder order', () => {
+  it('has exactly six properties in founder order', () => {
     expect(properties.map((p) => p.id)).toEqual([...EXPECTED_ORDER]);
     expect(properties.map((p) => p.label)).toEqual([
       'Ishtar',
       'Numetal Labs',
+      'CURB',
       'Gökhan VC',
       'Personal Memex',
+      'Hobby Projects',
     ]);
   });
 
@@ -121,11 +149,13 @@ describe('link tree data — byte-exact hrefs', () => {
 });
 
 describe('link tree data — link hygiene', () => {
-  it('has exactly four mailto leaves with correct addresses', () => {
+  it('has exactly six mailto leaves with correct addresses', () => {
     const mailtos = allLeaves.filter((leaf) => leaf.href.startsWith('mailto:'));
     expect(mailtos.map((leaf) => leaf.href).sort()).toEqual([
       'mailto:contact@gokhan.vc',
       'mailto:contact@gokhanturhan.com',
+      'mailto:contact@gokhanturhan.com',
+      'mailto:contact@numetal.xyz',
       'mailto:contact@numetal.xyz',
       'mailto:contact@numetal.xyz',
     ]);

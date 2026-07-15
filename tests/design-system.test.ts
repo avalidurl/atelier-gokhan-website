@@ -58,4 +58,12 @@ describe('global stylesheet', () => {
   it('uses the Archivo Variable family in the body font stack', () => {
     expect(tokensCss).toMatch(/--font-sans:[^;]*Archivo Variable/);
   });
+
+  it('carries no residual accent hues — strictly monochrome', () => {
+    // The legacy red/purple accents must never return to the stylesheet layer.
+    expect(globalCss).not.toMatch(/#e10600/i);
+    expect(globalCss).not.toMatch(/#8466c4/i);
+    expect(tokensCss).not.toMatch(/#e10600/i);
+    expect(tokensCss).not.toMatch(/#8466c4/i);
+  });
 });

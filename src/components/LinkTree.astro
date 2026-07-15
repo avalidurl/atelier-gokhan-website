@@ -1,5 +1,6 @@
 ---
 import { properties } from '../data/links';
+import type { LinkProperty } from '../data/links';
 
 function leafAttrs(leaf: { href: string; external: boolean; tooltip: string }) {
   return {
@@ -7,22 +8,41 @@ function leafAttrs(leaf: { href: string; external: boolean; tooltip: string }) {
     ...(leaf.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}),
   };
 }
+
+function leafCount(property: LinkProperty): number {
+  return (
+    property.apiTools.length +
+    1 +
+    (property.blog ? 1 : 0) +
+    (property.docs ? 1 : 0) +
+    property.socials.length +
+    property.contacts.length
+  );
+}
 ---
 
 <section class="tree-section" aria-labelledby="pedigree-title">
-  <p class="tree-stamp" id="pedigree-title">Portfolio · four properties, one studio</p>
+  <p class="tree-stamp" id="pedigree-title">Portfolio · six tiles, one studio</p>
 
   <div class="kanban-board" role="list">
     {
-      properties.map((property) => (
+      properties.map((property, index) => (
         <article class="kanban-col" role="listitem">
           <details class="board-details">
             <summary class="board-header sheet" id={`board-${property.id}`}>
-              <span class="board-chevron" aria-hidden="true" />
+              <span class="board-meta" aria-hidden="true">
+                <span class="board-index">{String(index + 1).padStart(2, '0')}</span>
+                <span class="board-count">{leafCount(property)} links</span>
+              </span>
               <span class="board-summary">
                 <span class="board-label">{property.label}</span>
                 <span class="board-domain">{property.domain}</span>
                 <span class="board-owner">{property.owner}</span>
+              </span>
+              <span class="board-toggle" aria-hidden="true">
+                <span class="board-toggle-open">Open</span>
+                <span class="board-toggle-close">Close</span>
+                <span class="board-chevron" />
               </span>
             </summary>
             <div class="board-body" aria-labelledby={`board-${property.id}`}>
@@ -126,7 +146,7 @@ function leafAttrs(leaf: { href: string; external: boolean; tooltip: string }) {
 
   @media (min-width: 1100px) {
     .kanban-board {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
@@ -148,13 +168,15 @@ function leafAttrs(leaf: { href: string; external: boolean; tooltip: string }) {
   .board-header {
     position: relative;
     margin: 0;
-    padding: 0;
+    padding: var(--space-3);
     font-size: 16px;
     list-style: none;
     cursor: pointer;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: stretch;
     gap: var(--space-2);
+    aspect-ratio: 1 / 1;
   }
 
   .board-header::-webkit-details-marker,
@@ -162,28 +184,74 @@ function leafAttrs(leaf: { href: string; external: boolean; tooltip: string }) {
     display: none;
   }
 
+  .board-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .board-index {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .board-count {
+    color: var(--muted);
+  }
+
+  .board-toggle {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .board-toggle-close {
+    display: none;
+  }
+
+  .board-details[open] > .board-header .board-toggle-open {
+    display: none;
+  }
+
+  .board-details[open] > .board-header .board-toggle-close {
+    display: inline;
+  }
+
   .board-chevron {
     flex: 0 0 auto;
     width: 8px;
     height: 8px;
-    margin: 16px 0 0 12px;
+    margin-bottom: 3px;
     border-right: 2px solid var(--ink);
     border-bottom: 2px solid var(--ink);
-    transform: rotate(-45deg);
+    transform: rotate(45deg);
     transition: transform 120ms ease-out;
   }
 
   .board-details[open] > .board-header .board-chevron {
-    transform: rotate(45deg);
-    margin-top: 13px;
+    transform: rotate(-135deg);
+    margin-bottom: -2px;
   }
 
   .board-summary {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    padding: var(--space-3);
-    flex: 1;
+    padding: 0;
+    flex: 0 0 auto;
     min-width: 0;
   }
 
@@ -202,7 +270,7 @@ function leafAttrs(leaf: { href: string; external: boolean; tooltip: string }) {
     letter-spacing: 0.01em;
     color: var(--ink);
     overflow-wrap: anywhere;
-    font-size: 17px;
+    font-size: 21px;
   }
 
   .board-domain {
@@ -335,8 +403,9 @@ function leafAttrs(leaf: { href: string; external: boolean; tooltip: string }) {
       padding-bottom: var(--space-6);
     }
 
-    .board-chevron {
-      margin-left: 10px;
+    .board-header {
+      aspect-ratio: auto;
+      min-height: 220px;
     }
   }
 </style>
