@@ -28,8 +28,8 @@ function leafCount(property: LinkProperty): number {
     {
       properties.map((property, index) => (
         <article class="kanban-col" role="listitem">
-          <details class="board-details">
-            <summary class="board-header sheet" id={`board-${property.id}`}>
+          <details class="board-details sheet" open>
+            <summary class="board-header" id={`board-${property.id}`}>
               <span class="board-meta" aria-hidden="true">
                 <span class="board-index">{String(index + 1).padStart(2, '0')}</span>
                 <span class="board-count">{leafCount(property)} links</span>
@@ -176,7 +176,10 @@ function leafCount(property: LinkProperty): number {
     flex-direction: column;
     align-items: stretch;
     gap: var(--space-2);
-    aspect-ratio: 1 / 1;
+  }
+
+  .board-details[open] > .board-header {
+    border-bottom: 2px solid var(--ink);
   }
 
   .board-header::-webkit-details-marker,
@@ -205,7 +208,6 @@ function leafCount(property: LinkProperty): number {
   }
 
   .board-toggle {
-    margin-top: auto;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -255,9 +257,8 @@ function leafCount(property: LinkProperty): number {
     min-width: 0;
   }
 
-  .board-header:hover,
-  .board-header:focus-visible {
-    box-shadow: var(--shadow-hard-strong);
+  .board-header:hover {
+    background: var(--bg);
   }
 
   .board-header:focus-visible {
@@ -290,7 +291,7 @@ function leafCount(property: LinkProperty): number {
   }
 
   .board-body {
-    padding: 0 var(--space-2) var(--space-3);
+    padding: 0 var(--space-3) var(--space-3);
     flex: 1;
   }
 
@@ -401,11 +402,6 @@ function leafCount(property: LinkProperty): number {
   @media (max-width: 480px) {
     .tree-section {
       padding-bottom: var(--space-6);
-    }
-
-    .board-header {
-      aspect-ratio: auto;
-      min-height: 220px;
     }
   }
 </style>
