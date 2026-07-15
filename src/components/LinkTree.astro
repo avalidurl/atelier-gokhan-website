@@ -28,7 +28,7 @@ function leafCount(property: LinkProperty): number {
     {
       properties.map((property, index) => (
         <article class="kanban-col" role="listitem">
-          <details class="board-details sheet" open>
+          <details class="board-details sheet">
             <summary class="board-header" id={`board-${property.id}`}>
               <span class="board-meta" aria-hidden="true">
                 <span class="board-index">{String(index + 1).padStart(2, '0')}</span>
