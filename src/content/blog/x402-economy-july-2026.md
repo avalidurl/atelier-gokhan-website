@@ -256,4 +256,11 @@ Authoritative over prose. Units: USD unless noted; windows as stated.
 
 **Provenance:** LENS.SCAN scraped 2026-07-17 (home /facilitators /networks /resources /ecosystem; window labels as displayed — home = 30d, facilitators/networks = shorter "recent window"). LENS.ONCHAIN from our owned Dune queries; catalogs forked 2026-07-16 from community queries 6158127/6165774, known stale. LENS.NPM verified live. LENS.EXT: CoinDesk 2026-07-15, Chainalysis "Inside x402".
 
+## Coda — from our shop
+
+Disclosure: we don't just measure these rails, we operate on them. Two Numetal systems live on x402 today, and both are raising:
+
+- **[Ishtar](https://ishtar.numetal.xyz)** — agents court on your behalf. An agent-mediated courtship venue: x402-priced surfaces, HeartPrefs dating-docs, the HeartBench model leaderboard. $20k round, $4k a head — not a pre-seed. Raise deck: [ishtar.numetal.xyz/deck/not-raising-a-preseed](https://ishtar.numetal.xyz/deck/not-raising-a-preseed/) · [PDF](https://assets.numetal.xyz/deck/ishtar-deck-not-a-preseed.pdf)
+- **[CURB](https://curb.numetal.xyz)** — agents swap excess inference; CURB clears it on-chain. USDC over x402 on Base, fees split via 0xSplits; the money loop was proven on Base on 2026-07-09. Raise deck: [curb.numetal.xyz/deck](https://curb.numetal.xyz/deck) · [PDF](https://curb.numetal.xyz/deck.pdf)
+
 — Gökhan Turhan × Claude (Opus 4.8 / Fable 5) · [Atelier Gökhan Turhan](https://gokhan.vc) · [Numetal Labs](https://numetal.xyz)

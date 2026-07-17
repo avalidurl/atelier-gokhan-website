@@ -297,4 +297,56 @@ const toc = headings
     max-width: 100%;
     height: auto;
   }
+
+  /* Tables — engineering-sheet treatment: mono, heavy top/bottom rules,
+     hairline rows, uppercase column heads. Same idiom as the figure sheets. */
+  .post-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.5;
+    border-top: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    margin: 0 0 var(--space-4);
+  }
+
+  .post-body :global(thead th) {
+    text-align: left;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 0.55rem 1rem 0.55rem 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .post-body :global(td) {
+    padding: 0.5rem 1rem 0.5rem 0;
+    border-bottom: 1px solid var(--hard);
+    vertical-align: top;
+  }
+
+  .post-body :global(thead th:last-child),
+  .post-body :global(td:last-child) {
+    padding-right: 0;
+  }
+
+  .post-body :global(tbody tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .post-body :global(table code) {
+    font-size: 11.5px;
+    letter-spacing: 0;
+  }
+
+  @media (max-width: 640px) {
+    .post-body :global(table) {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
 </style>

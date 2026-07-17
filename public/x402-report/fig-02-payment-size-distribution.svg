@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 380" font-family='IBM Plex Mono,SF Mono,Menlo,monospace'>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 428" font-family='IBM Plex Mono,SF Mono,Menlo,monospace'>
 <defs><pattern id="hx" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#575755" stroke-width="1"/></pattern></defs>
-<rect width="760" height="380" fill="#ffffff"/>
-<rect x="0.5" y="0.5" width="759" height="379" fill="none" stroke="#0a0a0a" stroke-width="1"/>
+<rect width="760" height="428" fill="#ffffff"/>
+<rect x="0.5" y="0.5" width="759" height="427" fill="none" stroke="#0a0a0a" stroke-width="1"/>
 <text x="16" y="26" font-size="11" fill="#0a0a0a" letter-spacing="1.5">FIG. 02</text>
 <text x="16" y="44" font-size="13" fill="#0a0a0a" letter-spacing="0.5">PAYMENT SIZE DISTRIBUTION — SOLANA, SCRUBBED (TWZRD)</text>
 <line x1="16" y1="54" x2="744" y2="54" stroke="#0a0a0a" stroke-width="1"/>
@@ -15,7 +15,7 @@
 <rect x="200" y="242" width="36.9" height="10" fill="#0a0a0a"/><text x="242.9" y="251" font-size="9" fill="#575755">7.8% CNT</text>
 <rect x="200" y="256" width="252.0" height="10" fill="url(#hx)" stroke="#575755" stroke-width="0.5"/><text x="458.0" y="265" font-size="9" fill="#575755">53.6% VAL</text><text x="190" y="310" font-size="11" fill="#0a0a0a" text-anchor="end">$10+</text>
 <rect x="200" y="294" width="0.5" height="10" fill="#0a0a0a"/><text x="206.5" y="303" font-size="9" fill="#575755">0.1% CNT</text>
-<rect x="200" y="308" width="88.5" height="10" fill="url(#hx)" stroke="#575755" stroke-width="0.5"/><text x="294.5" y="317" font-size="9" fill="#575755">18.8% VAL</text><text x="200" y="354" font-size="9" fill="#575755" letter-spacing="1">SOLID = SHARE OF PAYMENT COUNT · HATCH = SHARE OF USD VALUE · N=1,506,245 / $409,308</text>
-<line x1="16" y1="350" x2="744" y2="350" stroke="#d9d9d4" stroke-width="1"/>
-<text x="16" y="367" font-size="9" fill="#575755" letter-spacing="1">X402-ECON PIPELINE · 2026-07-17 · G.TURHAN × CLAUDE (OPUS 4.8 / FABLE 5) · LENS: DUNE 8001313</text>
+<rect x="200" y="308" width="88.5" height="10" fill="url(#hx)" stroke="#575755" stroke-width="0.5"/><text x="294.5" y="317" font-size="9" fill="#575755">18.8% VAL</text><text x="200" y="356" font-size="9" fill="#575755" letter-spacing="1">SOLID = SHARE OF PAYMENT COUNT · HATCH = SHARE OF USD VALUE</text><text x="200" y="372" font-size="9" fill="#575755" letter-spacing="1">N = 1,506,245 PAYMENTS / $409,308</text>
+<line x1="16" y1="398" x2="744" y2="398" stroke="#d9d9d4" stroke-width="1"/>
+<text x="16" y="415" font-size="9" fill="#575755" letter-spacing="1">X402-ECON PIPELINE · 2026-07-17 · G.TURHAN × CLAUDE (OPUS 4.8 / FABLE 5) · LENS: DUNE 8001313</text>
 </svg>
