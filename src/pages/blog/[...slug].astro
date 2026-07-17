@@ -79,6 +79,45 @@ const toc = headings
     <p class="post-back-foot"><a href="/blog">← Back to blog</a></p>
   </article>
   <SubscribeBlock maxWidth="720px" />
+  <script>
+    // Footnote hover popups: on hover/focus of a superscript ref, float the
+    // footnote's content (sans backref arrow) next to it. Click behavior is
+    // untouched — refs jump to the endnote, backrefs scroll back inline.
+    function initFootnotePopups() {
+      let pop: HTMLElement | null = null;
+      const kill = () => {
+        pop?.remove();
+        pop = null;
+      };
+      document.querySelectorAll<HTMLAnchorElement>('a[data-footnote-ref]').forEach((ref) => {
+        const show = () => {
+          kill();
+          const id = decodeURIComponent((ref.getAttribute('href') || '').slice(1));
+          const note = document.getElementById(id);
+          if (!note) return;
+          pop = document.createElement('div');
+          pop.className = 'fn-pop';
+          const clone = note.cloneNode(true) as HTMLElement;
+          clone.querySelectorAll('a[data-footnote-backref]').forEach((b) => b.remove());
+          pop.innerHTML = clone.innerHTML;
+          const body = ref.closest('.post-body') as HTMLElement | null;
+          if (!body) return;
+          if (getComputedStyle(body).position === 'static') body.style.position = 'relative';
+          body.appendChild(pop);
+          const r = ref.getBoundingClientRect();
+          const b = body.getBoundingClientRect();
+          const left = Math.max(0, Math.min(r.left - b.left, b.width - pop.offsetWidth - 8));
+          pop.style.left = `${left}px`;
+          pop.style.top = `${r.bottom - b.top + 8}px`;
+        };
+        ref.addEventListener('mouseenter', show);
+        ref.addEventListener('focus', show);
+        ref.addEventListener('mouseleave', kill);
+        ref.addEventListener('blur', kill);
+      });
+    }
+    initFootnotePopups();
+  </script>
 </BaseLayout>
 
 <style>
@@ -348,5 +387,71 @@ const toc = headings
       overflow-x: auto;
       white-space: nowrap;
     }
+  }
+
+  /* Footnotes — superscript refs, hairline-ruled endnote list, hover popups.
+     GFM markup: sup > a[data-footnote-ref] … section[data-footnotes] with
+     backref arrows that scroll to the inline position. */
+  .post-body :global(sup:has(a[data-footnote-ref])) {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 0;
+  }
+
+  .post-body :global(a[data-footnote-ref]) {
+    text-decoration: none;
+    padding: 0 1px;
+  }
+
+  .post-body :global(section[data-footnotes]) {
+    margin-top: var(--space-6);
+    border-top: 2px solid var(--ink);
+    padding-top: var(--space-3);
+    font-size: 14px;
+  }
+
+  .post-body :global(section[data-footnotes] h2) {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 var(--space-2);
+  }
+
+  .post-body :global(section[data-footnotes] ol) {
+    padding-left: var(--space-4);
+  }
+
+  .post-body :global(section[data-footnotes] li) {
+    margin: 0 0 var(--space-1);
+    line-height: 1.55;
+  }
+
+  .post-body :global(section[data-footnotes] li:target) {
+    background: var(--paper);
+    outline: 1px solid var(--hard);
+    outline-offset: 4px;
+  }
+
+  .post-body :global(a[data-footnote-backref]) {
+    font-family: var(--font-mono);
+    text-decoration: none;
+  }
+
+  .post-body :global(.fn-pop) {
+    position: absolute;
+    z-index: 60;
+    max-width: 380px;
+    background: var(--paper, #fff);
+    border: 1px solid var(--ink);
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    box-shadow: none;
+  }
+
+  .post-body :global(.fn-pop a) {
+    word-break: break-all;
   }
 </style>
