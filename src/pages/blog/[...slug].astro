@@ -89,7 +89,17 @@ const toc = headings
         pop?.remove();
         pop = null;
       };
-      document.querySelectorAll<HTMLAnchorElement>('a[data-footnote-ref]').forEach((ref) => {
+      const refs = document.querySelectorAll<HTMLAnchorElement>('a[data-footnote-ref]');
+      // DOM marker: proves this module executed in the page realm (verifiable
+      // from isolated worlds), and native-title fallback so hover summaries
+      // work even where the floating popup can't render.
+      document.documentElement.dataset.fnpops = String(refs.length);
+      refs.forEach((ref) => {
+        const id = decodeURIComponent((ref.getAttribute('href') || '').slice(1));
+        const note = document.getElementById(id);
+        if (note) ref.title = (note.textContent || '').replace(/\s+/g, ' ').replace(/↩.*$/, '').trim().slice(0, 280);
+      });
+      refs.forEach((ref) => {
         const show = () => {
           kill();
           const id = decodeURIComponent((ref.getAttribute('href') || '').slice(1));
