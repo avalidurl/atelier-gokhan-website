@@ -48,7 +48,12 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
               </div>
             </div>
           </form>
-          <p class="foot-sub-status foot-sub-status--footer" data-xmtp-status role="status" aria-live="polite" />
+          <p
+            class="foot-sub-status foot-sub-status--footer"
+            data-xmtp-status
+            role="status"
+            aria-live="polite"
+          />
         </div>
       )
     }
@@ -66,6 +71,10 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
       </ul>
     </nav>
     <p class="copyright">© {year} {site.name}</p>
+    <p class="colophon">
+      <span>Atelier Gökhan Turhan · gokhan.vc · Rev 2026-07-17</span>
+      <span>Filed as public record — monochrome, monospace</span>
+    </p>
   </div>
 </footer>
 
@@ -73,9 +82,9 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
 
 <style>
   .site-footer {
-    background: var(--bg);
+    background: var(--paper);
     color: var(--ink);
-    font-size: 14px;
+    font-size: 13px;
   }
   .site-footer-inner {
     padding: var(--space-4);
@@ -83,20 +92,17 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
   .footer-subscribe {
     margin: 0 0 var(--space-4);
     padding-bottom: var(--space-4);
-    border-bottom: var(--border-hairline);
+    border-bottom: 1px solid var(--ink);
   }
   .footer-subscribe-copy {
     margin: 0 0 var(--space-2);
     font-size: 13px;
-    color: var(--muted);
+    color: var(--dim);
     line-height: 1.45;
   }
   .footer-subscribe-copy a {
-    color: var(--muted);
-    text-decoration: underline;
-  }
-  .footer-subscribe-copy a:hover {
     color: var(--ink);
+    text-decoration: underline;
   }
   .footer-nav {
     margin: 0 0 var(--space-2) 0;
@@ -110,15 +116,13 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
     gap: var(--space-3);
   }
   .footer-links a {
-    color: var(--accent-purple);
-    text-decoration: none;
-  }
-  .footer-links a:hover,
-  .footer-links a:focus-visible {
+    color: var(--ink);
     text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
   }
   .copyright {
-    margin: 0;
-    color: var(--muted);
+    margin: 0 0 var(--space-3);
+    color: var(--dim);
   }
 </style>

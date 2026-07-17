@@ -9,12 +9,12 @@ ogImage: '/og.png'
 
 <p class="syndication-note">This post was first published on <a href="https://ishtar.numetal.xyz/blog/universal-sex-layer/">Ishtar dispatch</a>.</p>
 
-<blockquote class="epigraph" style="border-left:3px solid var(--ink,#141414);padding:.15rem 0 .15rem 1.1rem;margin:0 0 1.5rem;max-width:52ch">
-<p style="font-size:17px;line-height:1.55;font-style:italic;margin:0 0 .35rem">“Organs crawl like aphids upon the immobile motor of becoming”</p>
-<cite style="font-family:var(--font-mono,monospace);font-size:12px;letter-spacing:.06em;color:var(--muted,#6f6f6f);font-style:normal">— Nick Land</cite>
+<blockquote class="epigraph" style="border-left:2px solid var(--ink,#0a0a0a);padding:.15rem 0 .15rem 1.1rem;margin:0 0 1.5rem;max-width:52ch">
+<p style="font-size:15px;line-height:1.55;font-style:italic;margin:0 0 .35rem">“Organs crawl like aphids upon the immobile motor of becoming”</p>
+<cite style="font-family:var(--font-mono,monospace);font-size:12px;letter-spacing:.06em;color:var(--dim,#5c5c5c);font-style:normal">— Nick Land</cite>
 </blockquote>
 
-<aside class="tldr" style="border:1.5px solid var(--hard,#141414);background:#fff;padding:14px 18px;margin:0 0 26px;font-size:15px;line-height:1.55;box-shadow:5px 5px 0 var(--ink,#141414)">
+<aside class="tldr" style="border:2px solid var(--ink,#0a0a0a);background:var(--paper,#f4f4f2);padding:14px 18px;margin:0 0 26px;font-size:14px;line-height:1.55">
 <strong style="font-family:var(--font-mono,monospace);font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:8px">TL;DR</strong>
 <ul style="margin:0;padding-left:18px">
 <li><strong>Ishtar is the universal sex layer</strong> — agent-native courtship infrastructure, not another swipe app.</li>

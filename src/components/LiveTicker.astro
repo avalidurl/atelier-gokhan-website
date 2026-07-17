@@ -1,27 +1,20 @@
 ---
 /**
- * LiveTicker — rolling Ishtar-launch band, site-wide (rendered in BaseLayout).
- * Same wording + phase (32s, translateX -25% over 4 segments) as numetal.xyz's
- * ticker, but strictly MONOCHROME per the house style: black bar, white text,
- * inverted white LIVE tag, separators/glyphs by opacity — never hue.
- * Pauses on hover; static under prefers-reduced-motion.
+ * LiveTicker — Ishtar-launch notice band, site-wide (rendered in BaseLayout).
+ * House style: a static ruled row on the paper plane — no marquee, no glyphs,
+ * hierarchy by weight and casing only. Same wording and accessible label as
+ * before; the moving track is retired (the house style is print-like and
+ * static).
  */
 const HREF = 'https://ishtar.numetal.xyz';
 const LABEL = 'Ishtar is live. Agentic dating. Use Ishtar at ishtar.numetal.xyz';
 ---
 
 <a class="ticker" href={HREF} target="_blank" rel="noopener noreferrer" aria-label={LABEL}>
-  <span class="ticker-tag">● LIVE</span>
-  <span class="ticker-win">
-    <span class="ticker-track" aria-hidden="true">
-      {
-        [0, 1, 2, 3].map(() => (
-          <span class="ticker-seg">
-            <b>ISHTAR</b> <i class="up">▲</i> LIVE <em>◆</em> AGENTIC DATING <em>◆</em> YOUR AGENT DOES THE DATING <em>◆</em> USE ISHTAR <span class="hrt">♥</span> <em>◆</em> ishtar.numetal.xyz <em>◆</em>&nbsp;
-          </span>
-        ))
-      }
-    </span>
+  <span class="ticker-tag">LIVE</span>
+  <span class="ticker-line" aria-hidden="true">
+    <b>ISHTAR</b> LIVE <em>·</em> AGENTIC DATING <em>·</em> YOUR AGENT DOES THE DATING <em>·</em> USE
+    ISHTAR <em>·</em> ishtar.numetal.xyz
   </span>
   <span class="sr-only">{LABEL}</span>
 </a>
@@ -31,72 +24,43 @@ const LABEL = 'Ishtar is live. Agentic dating. Use Ishtar at ishtar.numetal.xyz'
     display: flex;
     align-items: stretch;
     overflow: hidden;
-    background: #141414;
-    color: #fff;
+    background: var(--paper);
+    color: var(--ink);
     text-decoration: none;
-    font-family: var(--font-mono, ui-monospace, monospace);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    border-bottom: 1px solid var(--hard, #141414);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    border-bottom: 1px solid var(--ink);
   }
   .ticker-tag {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
-    gap: 5px;
-    background: #fff;
-    color: #141414;
     font-weight: 700;
     letter-spacing: 0.16em;
     padding: 0 12px;
-    font-size: 11px;
+    font-size: 10px;
+    border-right: 1px solid var(--ink);
   }
-  .ticker-win {
+  .ticker-line {
     flex: 1 1 auto;
     overflow: hidden;
-  }
-  .ticker-track {
-    display: flex;
-    width: max-content;
-    padding: 7px 0;
-    animation: ticker-roll 32s linear infinite;
-  }
-  .ticker-seg {
-    flex: 0 0 auto;
     white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 7px 12px;
+    text-transform: uppercase;
   }
-  .ticker-seg b {
+  .ticker-line b {
     font-weight: 700;
   }
-  .ticker-seg .up {
+  .ticker-line em {
     font-style: normal;
-    font-size: 10px;
-    opacity: 0.85;
+    color: var(--dim);
+    padding: 0 0.35rem;
   }
-  .ticker-seg .hrt {
-    opacity: 0.9;
-  }
-  .ticker-seg em {
-    font-style: normal;
-    opacity: 0.4;
-    padding: 0 0.55rem;
-  }
-  .ticker:hover .ticker-track,
-  .ticker:focus-visible .ticker-track {
-    animation-play-state: paused;
-  }
-  @keyframes ticker-roll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-25%);
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .ticker-track {
-      animation: none;
-    }
+  .ticker:hover .ticker-line b,
+  .ticker:focus-visible .ticker-line b {
+    text-decoration: underline;
   }
   .sr-only {
     position: absolute;

@@ -24,7 +24,7 @@ describe('site data', () => {
     expect(site.blurb.endsWith('.')).toBe(true);
   });
 
-  it('uses the primary monochrome accent (#141414) as theme color', () => {
-    expect(site.themeColor).toBe('#141414');
+  it('uses the ink token (#0a0a0a) as theme color', () => {
+    expect(site.themeColor).toBe('#0a0a0a');
   });
 });

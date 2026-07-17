@@ -1,17 +1,17 @@
-/* Link-tree hover popups (Gwern-style, bureau palette). Reads data-tip on .leaf-link
-   anchors inside .kanban-board. Desktop hover/focus only; no-op on touch. CSP-clean. */
+/* Link-tree hover popups (house style: ruled monochrome box). Reads data-tip on
+   .leaf-link anchors inside .kanban-board. Desktop hover/focus only; no-op on
+   touch. CSP-clean. */
 (function () {
   if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
 
   var CSS =
-    '.lp{position:absolute;z-index:9999;max-width:300px;width:max-content;border:2px solid var(--ink,#141414);' +
-    'background:var(--paper,#fff);color:var(--ink,#141414);box-shadow:4px 4px 0 var(--ink,#141414);' +
-    'padding:.65rem .8rem;font-family:var(--font-sans,system-ui,sans-serif);opacity:0;transform:translateY(4px);' +
-    'transition:opacity .12s,transform .12s;pointer-events:none}' +
-    '.lp.show{opacity:1;transform:translateY(0);pointer-events:auto}' +
+    '.lp{position:absolute;z-index:9999;max-width:300px;width:max-content;border:2px solid var(--ink,#0a0a0a);' +
+    'background:var(--paper,#f4f4f2);color:var(--ink,#0a0a0a);' +
+    'padding:.65rem .8rem;font-family:var(--font-mono,ui-monospace,monospace);opacity:0;' +
+    'pointer-events:none}' +
+    '.lp.show{opacity:1;pointer-events:auto}' +
     '.lp .lp-t{font-weight:700;font-size:13px;line-height:1.3;margin:0 0 .25rem}' +
-    '.lp .lp-d{font-family:var(--font-mono,ui-monospace,monospace);font-size:11px;line-height:1.45;color:var(--muted,#7c7c7c)}' +
-    '@media (prefers-reduced-motion:reduce){.lp{transition:none}}';
+    '.lp .lp-d{font-family:var(--font-mono,ui-monospace,monospace);font-size:11px;line-height:1.45;color:var(--dim,#5c5c5c)}';
   var st = document.createElement('style');
   st.textContent = CSS;
   document.head.appendChild(st);

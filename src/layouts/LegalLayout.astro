@@ -32,21 +32,25 @@ const title = `${heading} — ${site.name}`;
     max-width: 760px;
     margin: 0 auto;
     padding: var(--space-6) var(--space-4) var(--space-7);
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.65;
   }
 
   .legal-title {
     font-family: var(--font-mono);
-    font-size: clamp(26px, 5vw, 34px);
-    letter-spacing: -0.01em;
+    font-size: clamp(26px, 5.5vw, 34px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
     margin: 0 0 var(--space-1);
   }
 
   .legal-updated {
     font-family: var(--font-mono);
     font-size: 12px;
-    color: var(--muted);
+    color: var(--dim);
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: var(--space-3);
     margin: 0 0 var(--space-6);
   }
 
@@ -55,17 +59,20 @@ const title = `${heading} — ${site.name}`;
     gap: var(--space-2);
     align-items: baseline;
     font-family: var(--font-mono);
-    font-size: 15px;
-    letter-spacing: 0.03em;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: var(--space-1);
     margin: var(--space-6) 0 var(--space-3);
   }
 
   .legal :global(h2)::before {
     counter-increment: section;
     content: counter(section, decimal-leading-zero);
-    color: var(--accent-purple);
-    font-weight: 700;
+    color: var(--dim);
+    font-weight: 400;
   }
 
   .legal :global(p),
@@ -82,10 +89,9 @@ const title = `${heading} — ${site.name}`;
     color: var(--ink);
   }
 
-  /* Callout box (neo-brutalist hard border). */
+  /* Callout box — ruled 2px ink frame on the paper plane. */
   .legal :global(.note) {
-    border: var(--border-hard);
-    box-shadow: var(--shadow-hard);
+    border: 2px solid var(--ink);
     background: var(--paper);
     padding: var(--space-3) var(--space-4);
     margin: 0 0 var(--space-4);
@@ -109,7 +115,7 @@ const title = `${heading} — ${site.name}`;
 
   .legal :global(th),
   .legal :global(td) {
-    border: var(--border-hairline);
+    border: 1px solid var(--ink);
     padding: var(--space-2) var(--space-3);
     text-align: left;
     vertical-align: top;
@@ -117,17 +123,17 @@ const title = `${heading} — ${site.name}`;
 
   .legal :global(th) {
     font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.04em;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--muted);
-    background: var(--bg);
+    color: var(--ink);
+    background: var(--faint);
   }
 
   .legal :global(code) {
     font-family: var(--font-mono);
-    font-size: 13px;
-    background: var(--bg);
+    font-size: 12.5px;
+    background: var(--faint);
     padding: 1px 5px;
   }
 </style>

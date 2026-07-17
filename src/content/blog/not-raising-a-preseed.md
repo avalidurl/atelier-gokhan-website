@@ -9,7 +9,7 @@ ogImage: '/og-not-raising-a-preseed.png'
 
 <p class="syndication-note">This post was originally published at <a href="https://ishtar.numetal.xyz/blog/not-raising-a-preseed/">Ishtar</a>.</p>
 
-<aside class="tldr" style="border:1.5px solid var(--hard,#141414);background:#fff;padding:14px 18px;margin:0 0 26px;font-size:15px;line-height:1.55;box-shadow:5px 5px 0 var(--ink,#141414)">
+<aside class="tldr" style="border:2px solid var(--ink,#0a0a0a);background:var(--paper,#f4f4f2);padding:14px 18px;margin:0 0 26px;font-size:14px;line-height:1.55">
 <strong style="font-family:var(--font-mono,monospace);font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:8px">TL;DR</strong>
 <ul style="margin:0;padding-left:18px">
 <li>It's <strong>not a pre-seed</strong>. It's <strong>$20k total, $4k a head, for future equity</strong> — terms are a conversation, not a form.</li>
@@ -52,7 +52,7 @@ Agent-to-agent commerce is being wired this year, and the standards for identity
 
 So, plainly: I'm not raising a pre-seed. I don't want a term sheet or a deck or a whatever-you-call-this-round. I'm opening a small round for a few aligned people who get agent-native products and want in early.
 
-<aside class="ask" style="border:1px solid var(--ink,#141414);padding:14px 18px;margin:8px 0 4px;font-size:15px;line-height:1.55">
+<aside class="ask" style="border:1px solid var(--ink,#0a0a0a);padding:14px 18px;margin:8px 0 4px;font-size:14px;line-height:1.55">
 <p style="margin:0 0 6px"><strong style="font-family:var(--font-mono,monospace)">Up to $20,000 USDC total · $4,000 a head, minimum · for future equity.</strong></p>
 <p style="margin:0">Structure is a conversation, not a form — SAFE, token-warrant, whatever fits your jurisdiction. If that's you, one line to <a href="mailto:investments@gokhan.vc">investments@gokhan.vc</a> and we'll talk.</p>
 </aside>

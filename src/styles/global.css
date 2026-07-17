@@ -1,6 +1,8 @@
-@import '@fontsource-variable/archivo/wght.css';
-@import '@fontsource-variable/geist-mono/wght.css';
 @import './tokens.css';
+
+/* House stylesheet — filed technical document. Print-like and static:
+   monospace only, four color tokens, ruled boxes on one paper plane,
+   no shadows, no radius, no animation. */
 
 *,
 *::before,
@@ -15,36 +17,38 @@ body {
 }
 
 body {
-  font-family: var(--font-sans);
-  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.55;
+  font-variant-numeric: tabular-nums;
+  background: var(--paper);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-feature-settings:
-    'kern' 1,
-    'liga' 1;
+  text-align: left;
 }
 
 a {
-  color: var(--accent-purple);
-  text-decoration-thickness: 2px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 
 a:hover,
 a:focus-visible {
-  color: var(--accent-purple);
+  color: var(--ink);
   text-decoration: underline;
 }
 
 a:focus-visible {
-  outline: 2px solid var(--accent-purple);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent-purple);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
 
@@ -65,6 +69,7 @@ a:focus-visible {
   top: var(--space-2);
 }
 
+/* Ruled box primitive — 2px ink frame on the paper plane. No shadow, no radius. */
 .tile {
   display: inline-flex;
   align-items: center;
@@ -72,47 +77,152 @@ a:focus-visible {
   background: var(--paper);
   color: var(--ink);
   border: var(--border-hard);
-  box-shadow: var(--shadow-hard);
   padding: var(--space-2) var(--space-3);
   text-decoration: none;
   font-weight: 700;
-  transition:
-    transform 80ms ease-out,
-    box-shadow 80ms ease-out;
 }
 
 .tile:hover,
 .tile:focus-visible {
-  box-shadow: var(--shadow-hard-strong);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
-.tile:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0 0 0 0 var(--ink);
+.sheet {
+  background: var(--paper);
+  border: var(--border-hard);
+  padding: var(--space-4);
 }
 
+/* Perforation bar — the one permitted graphic, used once per page as the
+   divider before the colophon. */
 .dither-divider {
   display: block;
   width: 100%;
-  height: 12px;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6' viewBox='0 0 6 6'><rect x='0' y='0' width='2' height='2' fill='%238c8c8c'/><rect x='3' y='3' width='2' height='2' fill='%238c8c8c'/></svg>");
-  background-size: 6px 6px;
-  background-repeat: repeat;
-  border-top: 1px solid var(--hard);
-  border-bottom: 1px solid var(--hard);
+  height: 10px;
+  background-image: repeating-linear-gradient(90deg, var(--ink) 0 6px, transparent 6px 12px);
 }
 
-/* Caution stripe + footer subscribe — Ishtar dispatches pattern */
+/* Section rule — plain 2px ink rule for in-page separation. */
 .stripe {
-  height: 6px;
+  display: block;
+  width: 100%;
+  height: 0;
+  border-top: 2px solid var(--ink);
   margin-top: 2.2rem;
-  background-image: repeating-linear-gradient(135deg, var(--ink) 0 9px, transparent 9px 18px);
+}
+
+/* Masthead — 2px ink box of stacked rows separated by 1px rules. */
+.masthead {
+  border: 2px solid var(--ink);
+  background: var(--paper);
+}
+
+.mast-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 var(--space-3);
+  border-bottom: 1px solid var(--ink);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mast-row > span {
+  padding: 0.45rem 0.8rem;
+  border-right: 1px solid var(--ink);
+}
+
+.mast-row > span:last-child {
+  border-right: 0;
+}
+
+.mast-title {
+  padding: var(--space-4) var(--space-3);
+  border-bottom: 1px solid var(--ink);
+}
+
+.mast-row--foot {
+  border-bottom: 0;
+}
+
+/* Doc line — per-page filing reference, tiny uppercase dim. */
+.doc-line {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--dim);
+}
+
+/* Code highlighting — Shiki css-variables theme mapped onto the four tokens.
+   Ink for code, dim for comments and punctuation; hue never appears. */
+:root {
+  --astro-code-color-text: var(--ink);
+  --astro-code-color-background: var(--faint);
+  --astro-code-token-constant: var(--ink);
+  --astro-code-token-string: var(--ink);
+  --astro-code-token-comment: var(--dim);
+  --astro-code-token-keyword: var(--ink);
+  --astro-code-token-parameter: var(--ink);
+  --astro-code-token-function: var(--ink);
+  --astro-code-token-string-expression: var(--dim);
+  --astro-code-token-punctuation: var(--dim);
+  --astro-code-token-link: var(--ink);
+}
+
+/* Section heading — tiny uppercase over a 2px rule, flush-right section
+   number in dim (set per-page via the .section-no span). */
+.doc-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: var(--space-1);
+  margin: 0 0 var(--space-3);
+}
+
+.doc-heading .section-no {
+  color: var(--dim);
+  font-weight: 400;
+  flex: none;
+}
+
+/* Stamp — the only rotated element on any page. */
+.stamp {
+  display: inline-block;
+  border: 2px solid var(--ink);
+  padding: 0.3rem 0.7rem;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transform: rotate(-1.6deg);
+}
+
+/* Colophon — 2px top rule, two tiny uppercase dim strings pushed apart. */
+.colophon {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  border-top: 2px solid var(--ink);
+  padding-top: var(--space-2);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
 }
 
 .foot-sub {
   padding: 1.2rem 0 0.2rem;
-  color: var(--muted);
+  color: var(--dim);
 }
 
 .foot-sub-form {
@@ -151,27 +261,23 @@ a:focus-visible {
 .foot-sub-status--footer {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--muted);
+  color: var(--dim);
   margin: 0.35rem 0 0;
   min-height: 1.2em;
 }
 
 .foot-sub a {
-  color: var(--muted);
-  text-decoration: underline;
-}
-
-.foot-sub a:hover {
   color: var(--ink);
+  text-decoration: underline;
 }
 
 .foot-sub-input {
   flex: 1;
   min-width: 0;
   padding: 10px 12px;
-  border: 1px solid currentColor;
-  background: transparent;
-  color: inherit;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
   font: inherit;
   box-sizing: border-box;
 }
@@ -183,12 +289,15 @@ a:focus-visible {
 
 .foot-sub-btn {
   padding: 10px 18px;
-  border: 1px solid currentColor;
-  background: transparent;
-  color: inherit;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
   font: inherit;
   cursor: pointer;
   white-space: nowrap;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 @media (max-width: 640px) {
@@ -216,14 +325,7 @@ a:focus-visible {
 
 .foot-sub-btn:hover,
 .foot-sub-btn:focus-visible {
-  border-color: var(--ink);
-  color: var(--ink);
-}
-
-.foot-sub-btn--xmtp:hover,
-.foot-sub-btn--xmtp:focus-visible {
-  color: var(--ink);
-  border-color: var(--ink);
+  text-decoration: underline;
 }
 
 .foot-sub-btn--xmtp:disabled {
@@ -231,23 +333,17 @@ a:focus-visible {
   cursor: default;
 }
 
+/* Accent slots — monochrome. Hierarchy by value and weight, never hue. */
 .accent-purple {
-  color: var(--accent-purple);
+  color: var(--ink);
 }
 
 .accent-rose {
-  color: var(--accent-rose);
+  color: var(--dim);
 }
 
 .accent-green {
-  color: var(--accent-green);
-}
-
-.sheet {
-  background: var(--paper);
-  border: var(--border-hard);
-  box-shadow: var(--shadow-hard);
-  padding: var(--space-4);
+  color: var(--dim);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -263,14 +359,13 @@ a:focus-visible {
 
 /* Heading permalinks — visible "#" appended to blog headings by
    rehype-autolink-headings (see astro.config.mjs). Hidden until the heading is
-   hovered/focused; turns the brand accent on its own hover. No runtime JS. */
+   hovered/focused. No runtime JS. */
 .hanchor {
   margin-left: 0.35em;
   text-decoration: none;
   font-weight: 400;
   opacity: 0;
-  transition: opacity 0.12s;
-  color: var(--muted);
+  color: var(--dim);
 }
 
 h1:hover > .hanchor,
@@ -293,19 +388,22 @@ h3 {
   scroll-margin-top: 1rem;
 }
 
-/* sticky top unit: ticker band + header persist on scroll (all pages) */
-.site-sticky{position:sticky;top:0;z-index:100}
+/* sticky top unit: notice band + header persist on scroll (all pages) */
+.site-sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
 /* Syndication note — the "originally published at Ishtar" line at the top of a
    post. Plain paragraph, NOT a blockquote: no left border, no indent. Small and
-   muted so it reads as metadata, not body copy. Monochrome. */
+   dim so it reads as metadata, not body copy. */
 .syndication-note {
   margin: 0 0 var(--space-4);
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--muted);
+  color: var(--dim);
 }
 .syndication-note a {
-  color: var(--muted);
+  color: var(--dim);
 }
-

@@ -4,7 +4,6 @@ import { site } from '../data/site';
 
 <header class="site-header">
   <a class="wordmark tile" href="/" aria-label={`${site.name} — home`}>
-    <span class="wordmark-dot" aria-hidden="true"></span>
     <span class="wordmark-text">{site.name}</span>
   </a>
   <nav class="main-nav" aria-label="Main navigation">
@@ -30,24 +29,14 @@ import { site } from '../data/site';
     align-items: center;
     justify-content: flex-start;
     padding: var(--space-4);
-    background: var(--bg);
-    border-bottom: 1px solid var(--hard);
+    background: var(--paper);
+    border-bottom: 1px solid var(--ink);
   }
   .wordmark {
-    color: var(--accent-purple);
-    font-size: 16px;
+    color: var(--ink);
+    font-size: 15px;
     letter-spacing: 0.02em;
     line-height: 1;
-  }
-  .wordmark-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: var(--radius-pill);
-    background: var(--accent-purple);
-    box-shadow:
-      0 0 0 2px var(--paper),
-      0 0 0 3px var(--ink);
-    flex: none;
   }
   .wordmark-text {
     white-space: nowrap;
@@ -57,7 +46,7 @@ import { site } from '../data/site';
       padding: var(--space-3);
     }
     .wordmark {
-      font-size: 14px;
+      font-size: 13px;
     }
   }
 
@@ -72,27 +61,26 @@ import { site } from '../data/site';
     font-weight: 600;
   }
   .main-nav a {
-    color: var(--muted-foreground);
+    color: var(--ink);
     text-decoration: none;
-    transition: color 0.1s ease;
   }
   .main-nav a:hover,
   .main-nav a:focus-visible {
-    color: var(--foreground);
+    text-decoration: underline;
   }
   .nav-ext {
     font-size: 0.8em;
-    opacity: 0.6;
+    color: var(--dim);
     margin-left: 2px;
   }
   .nav-live {
     font-size: 0.65em;
-    background: var(--accent-purple);
-    color: var(--background);
+    border: 1px solid var(--ink);
+    color: var(--ink);
     padding: 0 3px;
-    border-radius: 2px;
-    margin-left: 2px;
+    margin-left: 3px;
     vertical-align: middle;
+    letter-spacing: 0.14em;
   }
 
   @media (max-width: 768px) {

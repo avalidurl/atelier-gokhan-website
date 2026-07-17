@@ -1,24 +1,27 @@
+/* House tokens — filed-document monochrome. Exactly four colors per theme.
+   Hierarchy is carried by border weight, casing, spacing, and size — never hue. */
 :root {
-  --bg: #e7e7e7;
-  --paper: #ffffff;
-  --ink: #141414;
-  --muted: #7c7c7c;
-  --line: #cdcdcd;
-  --hard: #8c8c8c;
+  --ink: #0a0a0a;
+  --paper: #f4f4f2;
+  --dim: #5c5c5c;
+  --faint: #d8d8d4;
 
-  /* Monochrome accents — the house style is strictly black & white; hierarchy is
-     carried by weight and value, never hue. Var names kept so no component changes. */
-  --accent-purple: #141414;
-  --accent-rose: #5a5a5a;
-  --accent-green: #7c7c7c;
+  /* Legacy aliases — older components reference these names; every value
+     resolves to one of the four tokens above so both themes stay coherent. */
+  --bg: var(--paper);
+  --muted: var(--dim);
+  --line: var(--faint);
+  --hard: var(--ink);
+  --accent-purple: var(--ink);
+  --accent-rose: var(--dim);
+  --accent-green: var(--dim);
 
-  --font-sans: 'Archivo Variable', Archivo, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+  /* One family for everything. No webfont loading. */
+  --font-mono: 'SF Mono', 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --font-sans: var(--font-mono);
 
-  --shadow-hard: 2px 2px 0 var(--ink);
-  --shadow-hard-strong: 4px 4px 0 var(--ink);
   --border-hard: 2px solid var(--ink);
-  --border-hairline: 1px solid var(--line);
+  --border-hairline: 1px solid var(--ink);
 
   --space-1: 4px;
   --space-2: 8px;
@@ -28,8 +31,14 @@
   --space-6: 48px;
   --space-7: 64px;
 
-  --radius-tile: 0;
-  --radius-pill: 999px;
+  color-scheme: light dark;
+}
 
-  color-scheme: light;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8e8e6;
+    --paper: #0e0e0e;
+    --dim: #9a9a9a;
+    --faint: #2a2a2a;
+  }
 }

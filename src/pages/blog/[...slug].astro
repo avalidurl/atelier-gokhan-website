@@ -3,7 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubscribeBlock from '../../components/SubscribeBlock.astro';
 import { site } from '../../data/site';
-import { isPublished, formatPostDate, isoDate } from '../../utils/blog';
+import { isPublished, formatPostDate, isoDate, publishedPosts } from '../../utils/blog';
 
 // Static paths for published posts only — drafts get no route (→ 404).
 export async function getStaticPaths() {
@@ -14,6 +14,13 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 const title = `${post.data.title} — ${site.name}`;
+
+// Filing reference — posts are numbered oldest-first from ATL-101. Document
+// furniture only; routes, titles, and copy are untouched by it.
+const allPublished = publishedPosts(await getCollection('blog'));
+const postIndex = allPublished.findIndex((p) => p.id === post.id);
+const docNo = postIndex === -1 ? 100 : 100 + (allPublished.length - postIndex);
+const docRef = `Doc ATL-${docNo} · Rev 2026-07-17`;
 
 // Table of contents — section headings (h2/h3) only. The heading ids are set at
 // build time by rehype-slug (see astro.config.mjs), so h.slug is the anchor.
@@ -50,15 +57,29 @@ const toc = headings
     {
       (post.id === 'not-raising-a-preseed' || post.id === 'universal-sex-layer') && (
         <p class="deck-links">
-          <a class="deck-pdf" href="https://assets.numetal.xyz/deck/ishtar-deck-not-a-preseed.pdf" download>Download PDF</a>
-          <span class="deck-sep" aria-hidden="true">·</span>
-          <a class="deck-view" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/">View deck →</a>
-          <span class="deck-sep" aria-hidden="true">·</span>
-          <a class="deck-md" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/deck.md">deck.md</a>
+          <a
+            class="deck-pdf"
+            href="https://assets.numetal.xyz/deck/ishtar-deck-not-a-preseed.pdf"
+            download
+          >
+            Download PDF
+          </a>
+          <span class="deck-sep" aria-hidden="true">
+            ·
+          </span>
+          <a class="deck-view" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/">
+            View deck →
+          </a>
+          <span class="deck-sep" aria-hidden="true">
+            ·
+          </span>
+          <a class="deck-md" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/deck.md">
+            deck.md
+          </a>
         </p>
       )
     }
-    <div class="dither-divider" aria-hidden="true"></div>
+    <p class="doc-line post-doc">{docRef}</p>
     {
       toc.length > 0 && (
         <details class="post-toc" open>
@@ -94,7 +115,7 @@ const toc = headings
   .post-back-foot a {
     font-family: var(--font-mono);
     font-size: 13px;
-    color: var(--accent-purple);
+    color: var(--ink);
     text-decoration: none;
   }
 
@@ -108,16 +129,22 @@ const toc = headings
 
   .post-title {
     margin: var(--space-4) 0 var(--space-2);
-    font-size: clamp(28px, 5vw, 44px);
-    line-height: 1.12;
-    letter-spacing: -0.015em;
-    text-wrap: balance;
+    font-size: clamp(26px, 5.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
   }
 
   .post-meta {
     font-family: var(--font-mono);
     font-size: 12px;
-    color: var(--muted);
+    color: var(--dim);
+    margin: 0 0 var(--space-2);
+  }
+
+  .post-doc {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: var(--space-3);
     margin: 0 0 var(--space-4);
   }
 
@@ -144,7 +171,7 @@ const toc = headings
 
   .deck-view {
     color: var(--ink);
-    border-bottom: 1px solid var(--hard);
+    border-bottom: 1px solid var(--ink);
     font-family: var(--font-mono);
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -153,14 +180,14 @@ const toc = headings
   }
 
   .deck-md {
-    color: var(--muted);
-    border-bottom: 1px solid var(--hard);
+    color: var(--dim);
+    border-bottom: 1px solid var(--ink);
     font-size: 13px;
     text-decoration: none;
   }
 
   .deck-sep {
-    color: var(--muted);
+    color: var(--dim);
     user-select: none;
   }
 
@@ -168,29 +195,38 @@ const toc = headings
     margin-top: var(--space-6);
   }
 
-  /* Table of contents — hanging list behind a thin hairline. Monochrome:
-     hierarchy by weight/value, never hue. Depth-3 items indent under their h2. */
+  /* Table of contents — hanging list behind a hairline rule. Hierarchy by
+     weight and value, never hue. Depth-3 items indent under their h2. */
   .post-toc {
     margin: var(--space-5) 0 var(--space-6);
     padding: var(--space-3) 0 var(--space-1) var(--space-3);
-    border-left: 1px solid var(--hard);
+    border-left: 1px solid var(--ink);
   }
 
   .post-toc-label {
     margin: 0 0 var(--space-2);
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--dim);
     cursor: pointer;
     list-style: none;
     user-select: none;
   }
-  .post-toc-label::-webkit-details-marker { display: none; }
-  .post-toc-label::before { content: "▸  "; color: var(--ink); }
-  .post-toc[open] > .post-toc-label::before { content: "▾  "; }
-  .post-toc:not([open]) > .post-toc-label { margin-bottom: 0; }
+  .post-toc-label::-webkit-details-marker {
+    display: none;
+  }
+  .post-toc-label::before {
+    content: '−  ';
+    color: var(--ink);
+  }
+  .post-toc:not([open]) > .post-toc-label::before {
+    content: '+  ';
+  }
+  .post-toc:not([open]) > .post-toc-label {
+    margin-bottom: 0;
+  }
 
   .post-toc ul {
     list-style: none;
@@ -211,10 +247,10 @@ const toc = headings
     gap: 0.55rem;
   }
   .post-toc-d2::before {
-    content: counter(toc, decimal-leading-zero);
+    content: '§' counter(toc);
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--muted);
+    color: var(--dim);
     flex: 0 0 auto;
     padding-top: 0.12em;
   }
@@ -226,13 +262,13 @@ const toc = headings
     gap: 0.5rem;
   }
   .post-toc-d3::before {
-    content: "–";
-    color: var(--muted);
+    content: '–';
+    color: var(--dim);
     flex: 0 0 auto;
   }
 
   .post-toc a {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--ink);
     text-decoration: none;
   }
@@ -244,18 +280,42 @@ const toc = headings
   }
 
   .post-body {
-    font-size: 17px;
+    font-size: 14px;
     line-height: 1.7;
+    max-width: 72ch;
+    counter-reset: docsec;
   }
 
+  /* Section headings — tiny uppercase over a 2px rule, flush-right section
+     number in dim. Hierarchy by border weight, casing, and spacing only. */
   .post-body :global(h2) {
-    font-size: 24px;
+    position: relative;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    border-bottom: 2px solid var(--ink);
+    counter-increment: docsec;
     margin: var(--space-6) 0 var(--space-3);
-    letter-spacing: -0.01em;
+    padding: 0 3.5rem 0.35rem 0;
+  }
+
+  .post-body :global(h2)::after {
+    content: '§' counter(docsec);
+    position: absolute;
+    right: 0;
+    bottom: 0.35rem;
+    color: var(--dim);
+    font-weight: 400;
+    letter-spacing: 0.12em;
   }
 
   .post-body :global(h3) {
-    font-size: 20px;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     margin: var(--space-5) 0 var(--space-2);
   }
 
@@ -270,28 +330,45 @@ const toc = headings
     padding-left: var(--space-4);
   }
 
+  .post-body :global(li) {
+    max-width: 70ch;
+  }
+
   .post-body :global(a) {
-    color: var(--accent-purple);
+    color: var(--ink);
   }
 
   .post-body :global(blockquote) {
     margin: 0 0 var(--space-4);
     padding: var(--space-2) var(--space-4);
-    border-left: var(--border-hard);
-    color: var(--muted);
+    border-left: 2px solid var(--ink);
+    color: var(--dim);
   }
 
   .post-body :global(pre),
   .post-body :global(code) {
     font-family: var(--font-mono);
-    font-size: 14px;
+  }
+
+  .post-body :global(code) {
+    font-size: 12.5px;
+    background: var(--faint);
+    padding: 1px 5px;
   }
 
   .post-body :global(pre) {
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--faint);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    font-size: 12.5px;
+    line-height: 1.6;
     padding: var(--space-3);
     overflow-x: auto;
+  }
+
+  .post-body :global(pre code) {
+    background: transparent;
+    padding: 0;
   }
 
   .post-body :global(img) {
@@ -299,43 +376,33 @@ const toc = headings
     height: auto;
   }
 
-  /* Tables — engineering-sheet treatment: mono, heavy top/bottom rules,
-     hairline rows, uppercase column heads. Same idiom as the figure sheets. */
+  /* Tables — filed-sheet treatment: every cell fully ruled 1px ink, headers
+     on the faint fill, uppercase letterspaced. */
   .post-body :global(table) {
     width: 100%;
     border-collapse: collapse;
     font-family: var(--font-mono);
-    font-size: 13px;
+    font-size: 12.5px;
     line-height: 1.5;
-    border-top: 2px solid var(--ink);
-    border-bottom: 2px solid var(--ink);
     margin: 0 0 var(--space-4);
   }
 
   .post-body :global(thead th) {
     text-align: left;
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    font-weight: 600;
-    color: var(--muted);
-    padding: 0.55rem 1rem 0.55rem 0;
-    border-bottom: 1px solid var(--ink);
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--faint);
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--ink);
   }
 
   .post-body :global(td) {
-    padding: 0.5rem 1rem 0.5rem 0;
-    border-bottom: 1px solid var(--hard);
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--ink);
     vertical-align: top;
-  }
-
-  .post-body :global(thead th:last-child),
-  .post-body :global(td:last-child) {
-    padding-right: 0;
-  }
-
-  .post-body :global(tbody tr:last-child td) {
-    border-bottom: none;
   }
 
   .post-body :global(table code) {
@@ -351,7 +418,7 @@ const toc = headings
     }
   }
 
-  /* Footnotes — superscript refs, hairline-ruled endnote list, hover popups.
+  /* Footnotes — superscript refs, ruled endnote list, hover popups.
      GFM markup: sup > a[data-footnote-ref] … section[data-footnotes] with
      backref arrows that scroll to the inline position. */
   .post-body :global(sup:has(a[data-footnote-ref])) {
@@ -369,16 +436,23 @@ const toc = headings
     margin-top: var(--space-6);
     border-top: 2px solid var(--ink);
     padding-top: var(--space-3);
-    font-size: 14px;
+    font-size: 11.5px;
+    color: var(--dim);
   }
 
   .post-body :global(section[data-footnotes] h2) {
     font-family: var(--font-mono);
     font-size: 12px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--dim);
+    border-bottom: 0;
+    padding: 0;
     margin: 0 0 var(--space-2);
+  }
+
+  .post-body :global(section[data-footnotes] h2)::after {
+    content: none;
   }
 
   .post-body :global(section[data-footnotes] ol) {
@@ -392,7 +466,7 @@ const toc = headings
 
   .post-body :global(section[data-footnotes] li:target) {
     background: var(--paper);
-    outline: 1px solid var(--hard);
+    outline: 1px solid var(--ink);
     outline-offset: 4px;
   }
 
@@ -405,10 +479,10 @@ const toc = headings
     position: absolute;
     z-index: 60;
     max-width: 380px;
-    background: var(--paper, #fff);
+    background: var(--paper, #f4f4f2);
     border: 1px solid var(--ink);
     padding: 10px 12px;
-    font-size: 13px;
+    font-size: 12.5px;
     line-height: 1.5;
     box-shadow: none;
   }

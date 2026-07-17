@@ -22,7 +22,11 @@ function leafCount(property: LinkProperty): number {
 ---
 
 <section class="tree-section" aria-labelledby="pedigree-title">
-  <p class="tree-stamp" id="pedigree-title">Portfolio · six tiles, one studio</p>
+  <p class="tree-stamp doc-heading" id="pedigree-title">
+    <span>Portfolio · six tiles, one studio</span><span class="section-no" aria-hidden="true"
+      >§1</span
+    >
+  </p>
 
   <div class="kanban-board" role="list">
     {
@@ -42,7 +46,6 @@ function leafCount(property: LinkProperty): number {
               <span class="board-toggle" aria-hidden="true">
                 <span class="board-toggle-open">Open</span>
                 <span class="board-toggle-close">Close</span>
-                <span class="board-chevron" />
               </span>
             </summary>
             <div class="board-body" aria-labelledby={`board-${property.id}`}>
@@ -122,13 +125,7 @@ function leafCount(property: LinkProperty): number {
   }
 
   .tree-stamp {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
     margin: 0 0 var(--space-5);
-    text-align: center;
   }
 
   .kanban-board {
@@ -232,22 +229,6 @@ function leafCount(property: LinkProperty): number {
     display: inline;
   }
 
-  .board-chevron {
-    flex: 0 0 auto;
-    width: 8px;
-    height: 8px;
-    margin-bottom: 3px;
-    border-right: 2px solid var(--ink);
-    border-bottom: 2px solid var(--ink);
-    transform: rotate(45deg);
-    transition: transform 120ms ease-out;
-  }
-
-  .board-details[open] > .board-header .board-chevron {
-    transform: rotate(-135deg);
-    margin-bottom: -2px;
-  }
-
   .board-summary {
     display: flex;
     flex-direction: column;
@@ -258,11 +239,11 @@ function leafCount(property: LinkProperty): number {
   }
 
   .board-header:hover {
-    background: var(--bg);
+    background: var(--faint);
   }
 
   .board-header:focus-visible {
-    outline: 2px solid var(--accent-purple);
+    outline: 2px solid var(--ink);
     outline-offset: 2px;
   }
 
@@ -361,24 +342,20 @@ function leafCount(property: LinkProperty): number {
     gap: 1px;
     max-width: 100%;
     padding: 3px var(--space-2);
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     text-decoration: none;
-    transition:
-      box-shadow 80ms ease-out,
-      border-color 80ms ease-out,
-      background 80ms ease-out;
   }
 
   .leaf-platform {
     font-weight: 700;
     font-size: 13px;
-    color: var(--accent-purple);
+    color: var(--ink);
   }
 
   .leaf-note {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--muted);
+    color: var(--dim);
     overflow-wrap: anywhere;
     line-height: 1.35;
   }
@@ -387,18 +364,17 @@ function leafCount(property: LinkProperty): number {
   .leaf-link:focus-visible {
     background: var(--paper);
     border-color: var(--ink);
-    box-shadow: var(--shadow-hard);
   }
 
   .leaf-link:hover .leaf-platform,
   .leaf-link:focus-visible .leaf-platform {
     text-decoration: underline;
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 1px;
     text-underline-offset: 3px;
   }
 
   .leaf-link:focus-visible {
-    outline: 2px solid var(--accent-purple);
+    outline: 2px solid var(--ink);
     outline-offset: 2px;
   }
 

@@ -9,21 +9,34 @@ const title = `${site.name} — venture studio`;
 
 <BaseLayout title={title} description={site.blurb}>
   <section class="hero" aria-labelledby="hero-blurb">
-    <div class="hero-sheet sheet">
-      <h1 id="hero-blurb" class="hero-blurb">
-        {
-          heroSegments.map((segment) =>
-            segment.accent ? (
-              <span class={`hero-accent accent-${segment.accent}`}>{segment.text}</span>
-            ) : (
-              segment.text
-            ),
-          )
-        }
-      </h1>
+    <div class="hero-sheet masthead">
+      <div class="mast-row" aria-hidden="true">
+        <span>Atelier Gökhan Turhan</span>
+        <span>Doc ATL-001 · Rev 2026-07-17</span>
+        <span>Status: Operating</span>
+      </div>
+      <div class="mast-title">
+        <h1 id="hero-blurb" class="hero-blurb">
+          {
+            heroSegments.map((segment) =>
+              segment.accent ? (
+                <span class={`hero-accent accent-${segment.accent}`}>{segment.text}</span>
+              ) : (
+                segment.text
+              ),
+            )
+          }
+        </h1>
+        <p class="hero-stamp-row">
+          <span class="stamp">Venture studio — public record</span>
+        </p>
+      </div>
+      <div class="mast-row mast-row--foot" aria-hidden="true">
+        <span>Canonical: gokhan.vc</span>
+        <span>Contact: contact@gokhan.vc</span>
+      </div>
     </div>
   </section>
-  <div class="dither-divider" aria-hidden="true"></div>
   <LinkTree />
 </BaseLayout>
 
@@ -36,32 +49,30 @@ const title = `${site.name} — venture studio`;
 
   .hero-sheet {
     width: 100%;
-    max-width: 720px;
-    padding: clamp(16px, 3vw, 32px);
+    max-width: 880px;
   }
 
   .hero-blurb {
     margin: 0;
     font-size: clamp(17px, 2.4vw, 24px);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.4;
-    letter-spacing: 0;
+    letter-spacing: 0.02em;
     overflow-wrap: break-word;
     hyphens: manual;
-    text-wrap: balance;
   }
 
   .hero-accent {
     font-weight: inherit;
   }
 
+  .hero-stamp-row {
+    margin: var(--space-4) 0 0;
+  }
+
   @media (max-width: 480px) {
     .hero {
       padding: var(--space-4) var(--space-3);
-    }
-
-    .hero-sheet {
-      padding: var(--space-4);
     }
   }
 </style>

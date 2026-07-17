@@ -12,7 +12,7 @@ const title = `Page not found — ${site.name}`;
 >
   <section class="notfound">
     <div class="notfound-sheet sheet">
-      <p class="notfound-code">404</p>
+      <p class="notfound-code">404 <span class="stamp notfound-stamp">Not on file</span></p>
       <h1 class="notfound-title">Page not found</h1>
       <p class="notfound-body">
         That page doesn’t exist. It may have moved, or the link was mistyped.
@@ -41,21 +41,31 @@ const title = `Page not found — ${site.name}`;
   .notfound-code {
     font-family: var(--font-mono);
     font-size: 14px;
+    font-weight: 700;
     letter-spacing: 0.18em;
-    color: var(--accent-purple);
-    margin: 0 0 var(--space-2);
+    color: var(--ink);
+    margin: 0 0 var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .notfound-stamp {
+    font-weight: 700;
   }
 
   .notfound-title {
     margin: 0 0 var(--space-3);
-    font-size: clamp(28px, 5vw, 44px);
-    letter-spacing: -0.015em;
+    font-size: clamp(26px, 5.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: 0.02em;
   }
 
   .notfound-body {
     margin: 0 0 var(--space-5);
     color: var(--ink);
-    font-size: 17px;
+    font-size: 14px;
   }
 
   .notfound-actions {

@@ -17,5 +17,5 @@ export const site: SiteData = {
   contactEmail: 'contact@gokhan.vc',
   description:
     'Atelier Gökhan Turhan is a venture studio for a mechanomical research into the techniques of AGI + human conviviality in the long now.',
-  themeColor: '#141414',
+  themeColor: '#0a0a0a',
 };
