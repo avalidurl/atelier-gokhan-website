@@ -13,7 +13,9 @@
   Cross-Origin-Resource-Policy: cross-origin
   Cache-Control: public, max-age=86400
 /x402-report/*
+  ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
   Cache-Control: public, max-age=3600
 /og-x402-economy-2026-07.png
+  ! Cross-Origin-Resource-Policy
   Cross-Origin-Resource-Policy: cross-origin
