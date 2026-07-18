@@ -46,6 +46,16 @@ const title = `${site.name} — venture studio`;
     </div>
   </section>
   <LinkTree />
+  <aside class="raise-echo" aria-label="Fundraise notice">
+    <p class="mast-raise mast-raise--echo">
+      <span class="raise-flag">We are raising</span>
+      <span class="raise-note">— check our decks:</span>
+      <a class="raise-link" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/"
+        >Ishtar deck</a
+      >
+      <a class="raise-link" href="https://curb.numetal.xyz/deck">Curb deck</a>
+    </p>
+  </aside>
 </BaseLayout>
 
 <style>
@@ -91,9 +101,17 @@ const title = `${site.name} — venture studio`;
     color: var(--paper);
     border-bottom: 1px solid var(--ink);
     font-family: var(--font-mono);
-    font-size: 12.5px;
+    font-size: 14px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+  }
+
+  /* Closing echo of the raise bar — full-bleed band above the footer
+     perforation; the document signs off the way it opened. */
+  .mast-raise--echo {
+    border-bottom: 0;
+    border-top: 2px solid var(--ink);
+    padding: 0.7rem 0.8rem;
   }
 
   .raise-flag {
