@@ -1,8 +1,8 @@
 ---
 title: 'The x402 economy — July 2026'
-description: 'Rev.3, fully sourced: a measurement-first mapping of the x402 machine-payments economy across five lenses — from $135.7M raw to $15M wash-adjusted to $0.19–20.3M independently verified. Every claim carries a superscript citation. Joint research by Gökhan Turhan and several Claude models.'
+description: 'Rev.4, two-clock aligned and fully sourced: a measurement-first mapping of the x402 machine-payments economy across five lenses — from $135.7M raw to $15M wash-adjusted to $0.19–20.3M independently verified. Every claim carries a superscript citation. Joint research by Gökhan Turhan and several Claude models.'
 pubDate: 2026-07-17
-updatedDate: 2026-07-17
+updatedDate: 2026-07-18
 draft: false
 ogImage: '/og-x402-economy-2026-07.png'
 ---
@@ -26,7 +26,7 @@ This report is written to be consumed by LLMs and autonomous agents as much as b
 
 ## 1. Executive summary
 
-1. **The denominator of this economy spans three orders of magnitude depending on who counts.** Cumulative x402 settlement reads **$135.7M raw** across 178.3M transactions,[^3] **$15.0M wash-adjusted** across 109.6M transactions per the Visa × Artemis methodology (a ~89% exclusion),[^3] and between **$0.19M and $20.3M of genuinely independent flow** per the first population-scale academic forensic study.[^5] The 30-day windows disagree the same way: ~75M tx / ~$24M self-reported by x402.org,[^2] 17.67M tx / $847.80K on the ecosystem's own indexer.[^1] Finding #1 is unchanged and now carries a card network's signature: nobody, including the ecosystem's participants, agrees on how big this economy is — and most of the raw number is manufactured.
+1. **The denominator of this economy spans three orders of magnitude depending on who counts.** Cumulative x402 settlement reads **$135.7M raw** across 178.3M transactions,[^3] **$15.0M wash-adjusted** across 109.6M transactions per the Visa × Artemis methodology (a ~89% exclusion),[^3] and between **$0.19M and $20.3M of genuinely independent flow** per the first population-scale academic forensic study.[^5] On the cumulative clock, the indexer's own All-Time view reads **195M tx / $52.31M**.[^1] The 30-day flows disagree the same way: 75.41M tx / $24.24M on x402.org's self-published panel — which turns out to be a hand-edited static snapshot, not a live counter[^2] — vs 17.28M tx / $825.26K live on the indexer.[^1] Finding #1 is unchanged and now carries a card network's signature: nobody, including the ecosystem's participants, agrees on how big this economy is — and most of the raw number is manufactured.
 2. **One vendor is one-fifth of the economy.** BlockRun (AI model routing with built-in payment) earned **$177.26K in 30 days = 20.9% of all measured volume — and 14.48M of the 17.67M transactions, i.e. 82% of ALL measured x402 transactions, from ~1.13K buyers** — 9.5× vendor #2.[^1] The buyer side is just as concentrated ecosystem-wide: the top 1% of adjusted buyers (~4K wallets) account for ~90% of adjusted volume.[^3] The first proven killer app of machine-native payments is *machines paying for intelligence itself*.
 3. **Counts fall, value holds — a quality-improving contraction, now triple-confirmed.** Our forecast layer read realized 14-day transfers at **0.61× forecast (Base) and 0.62× (Solana)** while USD volume ran **1.12× and 1.06×**.[^10] Artemis's live terminal independently shows 30-day transactions **down 96.5%** and volume down 89% from peak while the average ticket sits at $0.30.[^4] Chainalysis's value-band series agrees from a third direction: $1+ payments went from 49% to 95% of volume in a year.[^6] Sub-cent ping/wash traffic is dying; paid usage is not.
 4. **Facilitator churn breaks static measurement within weeks.** Community facilitator catalogs (basis of every public Dune dashboard, ours included) now capture **10.5%** of LENS.SCAN volume;[^7] FluxA, Meridian, Primer, Mogami and rotated Coinbase addresses carry the unindexed rest.[^1] The freshest public facilitator-address registry is community-maintained on Dune, 96 rows across 8+ chains.[^15]
@@ -42,21 +42,36 @@ Marginal cost of the entire apparatus: **€6.49/month** (one small VPS) + ~22 D
 
 Declared limits: `LENS.ONCHAIN` catalogs are stale (§5, fix queued); `LENS.SCAN` indexes only registered sellers and displays mixed windows (30d on the home page; a site-labeled "Past 24 Hours" window on /facilitators and /networks — confirmed live, and highly volatile day to day);[^1] `LENS.EXT` relays x402.org's self-reported stats via CoinDesk;[^2] `LENS.ADJ` methodologies are proprietary (Artemis heuristics)[^3] or one-shot (arXiv snapshot through ~March 2026).[^5]
 
-## 3. Macro state — the denominator problem
+## 3. Macro state — the denominator problem, on two clocks
 
-Five answers to "how big is the x402 economy," each true within its method:
+Every series in this report now sits on one of exactly two windows: **Clock A, stock** (cumulative since each counter's genesis) and **Clock B, flow** (trailing 30 days). Anything finer — the indexer's "Past 24 Hours" facilitator and network pages — is treated as a volatility exhibit, never a comparison basis.
 
-| Series | Window | Transactions | USD volume | Method |
+**Clock A — cumulative, since day one:**
+
+| Series | Genesis → as-of | Transactions | USD volume | Method |
 |---|---|---|---|---|
-| Artemis raw[^3] | cumulative since May 2025 | 178.3M | $135.7M | all facilitator-adjacent on-chain activity |
-| Visa × Artemis adjusted[^3] | cumulative, as of 2026-04-21 | 109.6M | **$15.0M** | proprietary wash/test exclusion (~89% of raw volume removed) |
-| arXiv independent bound[^5] | 280 days through ~Mar 2026 | 136.7M raw | **$0.19M–$20.3M** | payment-graph clustering: 21.2% fictitious, 63.8% internal to linked clusters |
-| x402.org self-reported[^2] | past 30d | ~75M | ~$24M | protocol homepage stats, relayed by CoinDesk |
-| x402scan indexer[^1] | past 30d | 17.67M | $847.80K | registered/discovered sellers only |
+| x402scan indexer, All Time[^1] | ~May 2025 → live 2026-07-18 | **195M** | $52.31M | indexed facilitators only; 843.33K buyers / 226K sellers |
+| Artemis raw[^3] | May 2025 → 2026-04-21 | 178.3M | **$135.7M** | all facilitator-adjacent on-chain activity |
+| Dune community cumulative[^17] | genesis → ~2026-06-21 | 153.3M | $40.87M | facilitator-attributed transfers, ecosystem-wide |
+| Dune 96-address registry, by chain[^15] | genesis → ~2026-07-14 | ≈144.0M | — | Base 72.43M · Solana 47.87M · Polygon 22.69M |
+| arXiv forensic[^5] | 280 days → ~Mar 2026 | 136.7M | $44.1M raw | independent flow bounded **$0.19M–$20.3M** |
+| Our on-chain slice[^7] | Aug 2025 → 2026-07-16 | 119.7M | $39.66M | stale catalog — recent months undercounted |
+| Visa × Artemis adjusted[^3] | May 2025 → 2026-04-21 | 109.6M | **$15.0M** | wash/test excluded (~89% of raw volume) |
+| DefiLlama adapter[^14] | genesis → live 2026-07-18 | — | $31.46M | volume-only; Base $22.21M / Solana $9.03M |
 
-The DefiLlama adapter series ($31.46M cumulative across 10 chains)[^14] and the Dune community boards ($40.9M cumulative, 153M tx)[^17] sit between the raw and adjusted poles. **The spread itself is the finding**: raw settlement counts measure *manufacturability*, not adoption — the arXiv authors' phrase,[^5] Visa's 89% exclusion,[^3] and x402gle's ~93% wash share in its 24h window[^11] all say the same thing from independent methods.
+Cumulative transaction counts span **110M to 195M** and cumulative volume **$15M to $135.7M** depending on who counts and how — with the academically defensible independent-flow floor at $0.19M.[^5] **The spread itself is the finding**: raw settlement counts measure *manufacturability*, not adoption — the arXiv authors' phrase,[^5] Visa's 89% exclusion,[^3] and x402gle's ~93% wash share[^11] all say the same thing from independent methods.
 
-Whichever lens, the shape agrees: tens of millions of machine-initiated payments, tens of thousands of counterparties per side (422K adjusted buyers vs ~5,300 adjusted sellers cumulatively[^3]), sub-dollar tickets ($0.048 indexer mean;[^1] $0.30 Artemis live average;[^4] ~$0.32 self-reported[^2]).
+**Clock B — trailing 30-day flow:**
+
+| Series | As-of | Transactions | USD volume | Buyers / sellers |
+|---|---|---|---|---|
+| x402scan indexer[^1] | live 2026-07-18 | 17.28M | $825.26K | 47.17K / 62K |
+| x402.org self-published[^2] | static page, authored ~2026-06-24 | 75.41M | $24.24M | 94.06K / 22K |
+| Our on-chain slice[^7] | 30d ending 2026-07-16 | 496.8K | $89.2K | catalog-limited (~10.5% coverage) |
+
+**A provenance discovery, from reading x402.org directly instead of via press relay**: the protocol's own "Last 30 Days" panel — the most-quoted numbers in the ecosystem — is **hard-coded static text in the page markup, manually edited** (the markup's authoring timestamp decodes to ~2026-06-24). It is a hand-updated snapshot of an unstated edit date, not a live counter, and the site publishes no cumulative figure at all.[^2]
+
+Whichever lens, the shape agrees: tens of millions of machine-initiated payments, hundreds of thousands of buyers against tens of thousands of sellers (843.33K vs 226K on the indexer's all-time clock;[^1] 422K vs ~5,300 wash-adjusted[^3]), sub-dollar tickets ($0.048 indexer 30d mean;[^1] $0.30 Artemis live;[^4] ~$0.32 self-reported[^2]).
 
 Historical arc: peak day **2025-11-15 at 3,785,401 transfers** in our catalog slice alone[^7] — the $PING farming era, which Chainalysis logs as a 10,000%+ single-week transaction surge.[^6] The Visa-adjusted series puts the same peak month at 38M transactions / $5.15M adjusted.[^3] Our slice has since collapsed −80.6% MoM in transfers (324,981 → 62,905)[^7] — a compound of wash decay (real) and catalog decay (measurement artifact, §5).
 
@@ -85,7 +100,7 @@ The lenses invert each other; both inversions are informative.
 | On-chain, 30d ending 2026-07-16[^7] tx | 62,905 | **433,872** (+381% MoM) |
 | On-chain, 30d ending 2026-07-16[^7] volume | $10.89K | **$78.28K** (+55% MoM) |
 
-(The site labels the facilitators/networks window "Past 24 Hours", and it swings violently: a ~2026-07-15 sample of the same page showed Base 224,221 tx / $33.14K vs Solana 35,840 / $2.99K — Solana's daily scan-lens share collapsed from 13.8% to 2.4% of transactions in two days.[^1] Single-day tables from this page are weather, not climate.)
+(The site labels the facilitators/networks window "Past 24 Hours", and it swings violently: a ~2026-07-15 sample of the same page showed Base 224,221 tx / $33.14K vs Solana 35,840 / $2.99K — Solana's daily scan-lens share collapsed from 13.8% to 2.4% of transactions in two days.[^1] Single-day tables from this page are weather, not climate — one day after our live capture, the same page read Base 76.7% / Solana 23.3%.[^1])
 
 The adjusted lens breaks the tie: Base carries **~90% of adjusted transactions and 93% of adjusted volume** cumulatively.[^3] Artemis's flagging methodology found **86% of Solana payment activity inorganic** as of January 2026.[^22] Joint reading: **Base carries the economy; Solana's growth claim rests on our 30-day on-chain lens** (+381% MoM in a PayAI-signer slice[^7]) and on wash-heavy raw counts — hold both facts, weight the adjusted one.
 
@@ -240,6 +255,7 @@ After first publication, every external number was re-verified against primary s
 - **Attribution**: the 75M / $24M / 94K / 22K figures are CoinDesk relaying **x402.org's self-reported homepage stats** (verified verbatim) — not Chainalysis.[^2] A "$0.00025 Solana fee" figure appeared in neither source and was withdrawn.
 - **Registry**: 61 → 42–44 rendered live, with overlapping categories.[^1]
 - **Rev.3 additions**: the five-lens denominator table (§3) with the Visa × Artemis adjusted series[^3] and arXiv forensic bounds;[^5] the card-network measurement split (§1.6, §11); Artemis live-terminal corroboration of the contraction;[^4] the full superscript citation apparatus.
+- **Rev.4 additions (2026-07-18)**: §3 re-cut onto **two clocks** — cumulative-since-genesis for every series (including the indexer's All-Time view, 195M tx / $52.31M, captured by driving its window selector in a real browser[^1]) and trailing-30-day flow; the x402.org provenance discovery (its “Last 30 Days” panel is hand-edited static page text, authored ~2026-06-24, no cumulative published[^2]); fresh cumulative rows from the Dune boards[^15][^17] and DefiLlama;[^14] our own slice's since-day-one totals (119.7M tx / $39.66M[^7]); the 24-hour tables demoted to volatility exhibits.
 
 The newsletter dispatched before v2 carried v1 headline numbers; the deltas are rolling-window drift and change no conclusion.
 
@@ -251,7 +267,7 @@ Authoritative over prose. Units: USD unless noted; windows as stated.
 
 ```json
 {
-  "asof": "2026-07-17 (rev.3)",
+  "asof": "2026-07-18 (rev.4)",
   "verification": {
     "scan_method": "Firecrawl maxAge=0 + Browserbase real-browser CDP session (30dc699d), 2026-07-17 14:42 UTC; lens agreement: exact",
     "primary_articles": {"coindesk_2026_07_15": "4/4 figures verified verbatim; numbers are x402.org self-reported homepage stats", "chainalysis_2026_06_03": "$1+ share 49%→95%, 10c-$1 46%→4%, 100M milestone verified verbatim", "visa_artemis_2026_07": "article + 28pp PDF fetched; raw $135.7M/178.3M vs adjusted $15.0M/109.6M confirmed", "arxiv_2607_12575": "submitted 2026-07-14; 136.7M settlements, 21.2% fictitious, 63.8% internal, independent bound $0.19M-$20.3M"},
@@ -295,15 +311,31 @@ Authoritative over prose. Units: USD unless noted; windows as stated.
   "ecosystem_registry": {"rendered_live": "42-44", "cached_0715_extraction": 61, "note": "page lazy-loads; categories overlap"},
   "run_rate_usd_yr": 10170000,
   "infra_cost_eur_month": 6.49,
+  "clock_a_cumulative": {
+    "x402scan_alltime_live": {"tx": 195000000, "volume_usd": 52310000, "buyers": 843330, "sellers": 226000, "asof": "2026-07-18, real-browser"},
+    "artemis_raw": {"tx": 178300000, "volume_usd": 135700000, "asof": "2026-04-21"},
+    "dune_thechriscen": {"tx": 153312059, "volume_usd": 40872291, "board_refresh": "~2026-06-21"},
+    "dune_hashed_by_chain": {"tx_total": 144003493, "base": 72430301, "solana": 47873448, "polygon": 22694090, "board_refresh": "~2026-07-14"},
+    "arxiv_raw": {"tx": 136700000, "volume_usd": 44100000, "independent_usd": [187861, 20260000]},
+    "our_slice": {"tx": 119667480, "volume_usd": 39662922, "span": "2025-08-01..2026-07-16"},
+    "visa_artemis_adjusted": {"tx": 109600000, "volume_usd": 15000000, "asof": "2026-04-21"},
+    "defillama": {"volume_usd": 31460000, "base": 22210000, "solana": 9030000, "asof": "2026-07-18"}
+  },
+  "clock_b_flow_30d": {
+    "x402scan_live": {"tx": 17280000, "volume_usd": 825260, "buyers": 47170, "sellers": 62000, "asof": "2026-07-18"},
+    "x402org_static": {"tx": 75410000, "volume_usd": 24240000, "buyers": 94060, "sellers": 22000, "page_authored": "~2026-06-24"},
+    "our_slice": {"tx": 496777, "volume_usd": 89171, "window_end": "2026-07-16"}
+  },
+  "x402org_static_panel": {"finding": "Last-30-Days stats are hard-coded, manually edited page text (authored ~2026-06-24); no cumulative published on the site"},
   "dune_queries": {"base_daily": 8001312, "solana_daily_windowed": 8009658, "size_buckets": 8001313}
 }
 ```
 
 **Provenance (rev.3):** every superscript note below states the source, its operator, and how/when it was verified. All LENS.SCAN values were read live by two independent methods in exact agreement; all press-relayed figures were verified against the primary articles; the Visa × Artemis PDF was downloaded and read; the pipeline's own series are reproducible from the listed Dune queries and object-storage artifacts.
 
-[^1]: **x402scan.com** (ecosystem indexer, operator x402scan) — dual-lens verified live 2026-07-17 14:42 UTC: Firecrawl scrape with `maxAge: 0` (cache disabled) AND an independent Browserbase real-browser session (CDP, session 30dc699d); the two methods agreed exactly on every figure. Home page = "Past 30 Days" window; /facilitators and /networks = site-labeled "Past 24 Hours". The ~2026-07-15 comparison sample is our v1 capture, retro-dated after the cache was discovered.
+[^1]: **x402scan.com** (ecosystem indexer, operator x402scan) — dual-lens verified live 2026-07-17 14:42 UTC: Firecrawl scrape with `maxAge: 0` (cache disabled) AND an independent Browserbase real-browser session (CDP, session 30dc699d); the two methods agreed exactly on every figure. Home page = "Past 30 Days" window; /facilitators and /networks = site-labeled "Past 24 Hours". The ~2026-07-15 comparison sample is our v1 capture, retro-dated after the cache was discovered. On 2026-07-18 a second real-browser session (9f5bee9d) drove the stats-panel window selector (options: Past 24 Hours / 7 / 15 / 30 Days / All Time): **All Time = 195M tx / $52.31M / 843.33K buyers / 226K sellers**; the same session read the 30d window at 17.28M / $825.26K / 47.17K / 62K, and the 24h networks split at Base 76.7% / Solana 23.3%.
 
-[^2]: **CoinDesk**, "Visa, Mastercard and Ripple join the standard letting AI agents pay in stablecoins" (2026-07-15) — primary article crawled and quoted 2026-07-17. The 75M tx / $24M / 94K buyers / 22K sellers figures are x402.org's self-reported homepage stats, which CoinDesk states explicitly; avg ticket "about 32 cents."
+[^2]: **CoinDesk**, "Visa, Mastercard and Ripple join the standard letting AI agents pay in stablecoins" (2026-07-15) — primary article crawled and quoted 2026-07-17. The 75M tx / $24M / 94K buyers / 22K sellers figures are x402.org's self-reported homepage stats, which CoinDesk states explicitly; avg ticket "about 32 cents." Read directly on 2026-07-18: x402.org (an LF Projects site) publishes ONLY a "Last 30 Days" panel — 75.41M tx / $24.24M / 94.06K buyers / 22K sellers — as hard-coded static text in the page markup (authoring timestamp ~2026-06-24); a manually updated snapshot, not a live counter, with no cumulative figure anywhere on the site.
 
 [^3]: **Visa × Artemis, "Agentic Payments from the Ground Up"** (visa.com thought-leadership article, updated 2026-07-14, + 28-page PDF, July 2026; all data as of 2026-04-21) — both fetched and read 2026-07-17. Raw cumulative x402: $135.7M / 178.3M tx; adjusted (proprietary Artemis wash/test-exclusion heuristics): $15.0M / 109.6M tx; 422K+ adjusted buyers, ~5,300 adjusted sellers; top 1% of buyers ≈ 90% of adjusted volume, top 0.02% ≈ 48%; Base ≈ 90% of adjusted tx / 93% of volume; Nov-2025 peak 38M tx / $5.15M adjusted.
 
@@ -327,13 +359,13 @@ Authoritative over prose. Units: USD unless noted; windows as stated.
 
 [^13]: **PayAI facilitator discovery feed** (facilitator.payai.network/discovery/resources + /supported) — free JSON; 24,094 resources, 11 supported networks at verification 2026-07-17 (first item lastUpdated same-day).
 
-[^14]: **DefiLlama x402 protocol page** (defillama.com/protocol/x402) — adapter-based daily settlement volume across 10 chains, $31.46M cumulative at verification 2026-07-17 (rolling 24h counter live); free API/CSV.
+[^14]: **DefiLlama x402 protocol page** (defillama.com/protocol/x402) — adapter-based daily settlement volume across 10 chains; free API/CSV. Re-read 2026-07-18: **$31.46M cumulative** — Base $22.21M, Solana $9.03M, BSC $213K; volume-only (no transaction counts).
 
-[^15]: **Hashed, "x402 Analytics"** (dune.com/hashed_official/x402-analytics) — cross-chain facilitator board with a maintained 96-row facilitator-address registry across 8+ chains; widgets auto-refreshed within 9h at verification 2026-07-17.
+[^15]: **Hashed, "x402 Analytics"** (dune.com/hashed_official/x402-analytics) — cross-chain facilitator board with a maintained 96-row facilitator-address registry across 8+ chains; widgets auto-refreshed within 9h at verification 2026-07-17. Cumulative transactions by chain (board refresh ~2026-07-14): Base 72.43M, Solana 47.87M, Polygon 22.69M, BNB 1.00M — ≈144.0M across 12 chains.
 
 [^16]: **21Shares Research, "Agentic Economy On-Chain Tracker"** (dune.com/21sharesresearch) — forensic decomposition dashboard (June 2026): one-signer campaign-stripping, gas-payer tests, 46.7% dead-services estimate, x402-vs-MPP comparison. Verified live 2026-07-17.
 
-[^17]: **Dune community cumulative boards** — official Dune-team "x402 Facilitators" (dune.com/dune/x402-facilitators: per-facilitator cumulative attribution) and thechriscen's "x402 Payment Analytics" (153.3M tx / $40.87M cumulative at verification) — the series most press cumulative citations trace to. Verified live 2026-07-17.
+[^17]: **Dune community cumulative boards** — official Dune-team "x402 Facilitators" (dune.com/dune/x402-facilitators: per-facilitator cumulative attribution) and thechriscen's "x402 Payment Analytics" (153.3M tx / $40.87M cumulative at verification) — the series most press cumulative citations trace to. Verified live 2026-07-17; re-read 2026-07-18: 153,312,059 tx / $40,872,291 (board refresh ~2026-06-21). The Dune-team facilitator table (refresh ~2026-06-30) sums ≈94.1M tx / ≈$30.4M, Base+Polygon only.
 
 [^18]: **Cloudflare surfaces** — AI Crawl Control changelog (developers.cloudflare.com/ai-crawl-control/changelog: Pay Per Crawl private beta, reframed "Pay Per Use" 2026-07-01), Radar AI Insights (crawler behavior only), Agents SDK x402 v2 support, netdollar.cloudflare.com (announced 2025-09-25, unlaunched at verification 2026-07-17). No payment-volume telemetry anywhere.
 
