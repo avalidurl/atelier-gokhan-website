@@ -132,16 +132,6 @@ const isBlog = pagePath === '/blog' || pagePath.startsWith('/blog/');
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <a
-      class="nrbar"
-      href="https://ishtar.numetal.xyz/blog/not-raising-a-preseed/"
-      aria-label="We are not raising — read the raise dispatch"
-    >
-      <span>WE ARE NOT RAISING</span><sup class="nrbar-live">LIVE</sup><span
-        class="nrbar-arw"
-        aria-hidden="true">→</span
-      >
-    </a>
     <div class="site-sticky">
       <LiveTicker />
       <Header />
@@ -153,36 +143,3 @@ const isBlog = pagePath === '/blog' || pagePath.startsWith('/blog/');
     <script src="/blog-collapse.js" defer></script>
   </body>
 </html>
-
-<style>
-  /* Notice strip — ruled row on the paper plane. Static, ink on paper. */
-  .nrbar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--paper);
-    color: var(--ink);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    padding: 6px 12px;
-    border-bottom: 2px solid var(--ink);
-  }
-  .nrbar:hover span:first-child {
-    text-decoration: underline;
-  }
-  .nrbar-live {
-    font-size: 8px;
-    letter-spacing: 0.16em;
-    vertical-align: super;
-    border: 1px solid var(--ink);
-    padding: 1px 4px;
-    margin-left: 1px;
-  }
-  .nrbar-arw {
-    color: var(--dim);
-    margin-left: auto;
-  }
-</style>

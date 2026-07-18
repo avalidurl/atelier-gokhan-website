@@ -12,9 +12,18 @@ const title = `${site.name} — venture studio`;
     <div class="hero-sheet masthead">
       <div class="mast-row" aria-hidden="true">
         <span>Atelier Gökhan Turhan</span>
-        <span>Doc ATL-001 · Rev 2026-07-17</span>
+        <span>Doc ATL-001 · Rev 2026-07-18</span>
         <span>Status: Operating</span>
       </div>
+      <p class="mast-raise">
+        <span class="raise-flag">We are raising</span>
+        <span class="raise-note">— check our decks:</span>
+        <a class="raise-link" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/"
+          >Ishtar deck</a
+        >
+        <span class="raise-note" aria-hidden="true">·</span>
+        <a class="raise-link" href="https://curb.numetal.xyz/deck">Curb deck</a>
+      </p>
       <div class="mast-title">
         <h1 id="hero-blurb" class="hero-blurb">
           {
@@ -68,6 +77,33 @@ const title = `${site.name} — venture studio`;
 
   .hero-stamp-row {
     margin: var(--space-4) 0 0;
+  }
+
+  /* Raise notice — ruled masthead row above the blurb. Static, ink on paper. */
+  .mast-raise {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.6ch;
+    margin: 0;
+    padding: 0.45rem 0.8rem;
+    border-bottom: 1px solid var(--ink);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .raise-flag {
+    font-weight: 700;
+  }
+
+  .raise-note {
+    color: var(--dim);
+  }
+
+  .raise-link {
+    color: var(--ink);
   }
 
   @media (max-width: 480px) {
