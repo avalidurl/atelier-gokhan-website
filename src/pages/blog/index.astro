@@ -18,6 +18,8 @@ const description = `Writing and notes from ${site.name}.`;
       <p class="doc-line">Doc ATL-002 · Rev 2026-07-17 · Posts filed newest first</p>
     </header>
 
+    <p class="blog-ways">Read them here or → <a href="/newsletter">subscribe</a> · <a href="/feed.xml">RSS</a></p>
+
     {
       posts.length === 0 ? (
         <p class="blog-empty">No posts yet — check back soon.</p>
@@ -73,6 +75,18 @@ const description = `Writing and notes from ${site.name}.`;
 
   .doc-line {
     margin: 0;
+  }
+
+  .blog-ways {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    color: var(--dim);
+    margin: var(--space-4) 0 0;
+  }
+
+  .blog-ways a {
+    color: var(--ink);
   }
 
   .blog-empty {
