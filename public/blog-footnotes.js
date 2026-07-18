@@ -16,9 +16,7 @@
     refs.forEach(function (ref) {
       var id = decodeURIComponent((ref.getAttribute('href') || '').slice(1));
       var note = document.getElementById(id);
-      if (note) {
-        ref.title = (note.textContent || '').replace(/\s+/g, ' ').replace(/↩.*$/, '').trim().slice(0, 280);
-      }
+      // No title attribute: the native tooltip would double the custom popup.
       function show() {
         kill();
         if (!note) return;
