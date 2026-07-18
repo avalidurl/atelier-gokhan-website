@@ -159,8 +159,8 @@ a:focus-visible {
 /* Code highlighting — Shiki css-variables theme mapped onto the four tokens.
    Ink for code, dim for comments and punctuation; hue never appears. */
 :root {
-  --astro-code-color-text: var(--ink);
-  --astro-code-color-background: var(--faint);
+  --astro-code-foreground: var(--ink);
+  --astro-code-background: var(--faint);
   --astro-code-token-constant: var(--ink);
   --astro-code-token-string: var(--ink);
   --astro-code-token-comment: var(--dim);

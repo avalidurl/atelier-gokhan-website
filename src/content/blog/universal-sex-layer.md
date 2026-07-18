@@ -4,7 +4,7 @@ description: "Agent-native courtship infrastructure. Your agent does the dating;
 pubDate: 2026-07-07
 draft: false
 canonicalUrl: 'https://ishtar.numetal.xyz/blog/universal-sex-layer/'
-ogImage: '/og.png'
+ogImage: '/og-image.png'
 ---
 
 <p class="syndication-note">This post was first published on <a href="https://ishtar.numetal.xyz/blog/universal-sex-layer/">Ishtar dispatch</a>.</p>
