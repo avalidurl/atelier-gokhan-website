@@ -56,7 +56,7 @@ hardcoded hrefs scattered through the templates.
 ## Live
 
 - **Site:** <https://gokhan.vc>
-- **Studio:** X [@ateliergokhan](https://x.com/ateliergokhan) · GitHub [gokhan-vc](https://github.com/gokhan-vc)
+- **Studio:** X [@goekhanvc](https://x.com/goekhanvc) · GitHub [gokhan-vc](https://github.com/gokhan-vc)
 
 ## Stack
 

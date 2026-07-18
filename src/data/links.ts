@@ -352,8 +352,8 @@ export const properties: readonly LinkProperty[] = [
     socials: [
       {
         platform: 'X',
-        note: '@ateliergokhan',
-        href: 'https://x.com/ateliergokhan',
+        note: '@goekhanvc',
+        href: 'https://x.com/goekhanvc',
         external: true,
         tooltip: 'Atelier Gökhan Turhan on X — studio voice.',
       },

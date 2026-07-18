@@ -48,7 +48,7 @@ const EXPECTED_HREFS: Record<string, string[]> = {
     'https://github.com/gokhan-vc',
     '/',
     '/blog',
-    'https://x.com/ateliergokhan',
+    'https://x.com/goekhanvc',
     'mailto:contact@gokhan.vc',
   ],
   memex: [
