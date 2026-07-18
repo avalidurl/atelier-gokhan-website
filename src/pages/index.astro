@@ -21,7 +21,6 @@ const title = `${site.name} — venture studio`;
         <a class="raise-link" href="https://ishtar.numetal.xyz/deck/not-raising-a-preseed/"
           >Ishtar deck</a
         >
-        <span class="raise-note" aria-hidden="true">·</span>
         <a class="raise-link" href="https://curb.numetal.xyz/deck">Curb deck</a>
       </p>
       <div class="mast-title">
@@ -79,31 +78,46 @@ const title = `${site.name} — venture studio`;
     margin: var(--space-4) 0 0;
   }
 
-  /* Raise notice — ruled masthead row above the blurb. Static, ink on paper. */
+  /* Raise notice — the one inverted bar on the page: ink ground, paper text.
+     Inversion is the loudest signal the four tokens allow. */
   .mast-raise {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0 0.6ch;
+    align-items: center;
+    gap: 0.35rem 0.8ch;
     margin: 0;
-    padding: 0.45rem 0.8rem;
+    padding: 0.55rem 0.8rem;
+    background: var(--ink);
+    color: var(--paper);
     border-bottom: 1px solid var(--ink);
     font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.16em;
+    font-size: 12.5px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
   }
 
   .raise-flag {
     font-weight: 700;
+    letter-spacing: 0.22em;
   }
 
   .raise-note {
-    color: var(--dim);
+    color: var(--faint);
   }
 
   .raise-link {
-    color: var(--ink);
+    color: var(--paper);
+    border: 1px solid var(--paper);
+    padding: 0.15rem 0.6rem;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .raise-link:hover,
+  .raise-link:focus-visible {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
   }
 
   @media (max-width: 480px) {
