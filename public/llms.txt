@@ -1,4 +1,4 @@
-# Atelier Gökhan Turhan — gokhan.vc
+# Gökhan Ventures — gokhan.vc
 
 > Venture studio for mechanomical research into AGI + human conviviality in the long now.
 
@@ -51,8 +51,8 @@ Discovery: [openapi.json](https://api.gokhan.vc/openapi.json) · [/.well-known/x
 - [Fees](https://curb.numetal.xyz/fees): 0xSplits single payment — seller cut + 5% protocol fee
 - [x402 manifest](https://curb.numetal.xyz/.well-known/x402): Payment discovery
 
-### Gökhan VC (this site)
-- [Website](https://gokhan.vc): Atelier Gökhan Turhan venture studio
+### Gökhan Ventures (this site)
+- [Website](https://gokhan.vc): Gökhan Ventures venture studio
 
 ### Personal Memex
 - [Website](https://gokhanturhan.com): Personal essays and journal

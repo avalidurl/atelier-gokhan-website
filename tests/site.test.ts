@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { site } from '../src/data/site';
 
 describe('site data', () => {
-  it('exposes the brand name as Atelier Gökhan Turhan', () => {
-    expect(site.name).toBe('Atelier Gökhan Turhan');
+  it('exposes the brand name as Gökhan Ventures', () => {
+    expect(site.name).toBe('Gökhan Ventures');
   });
 
   it('uses gokhan.vc as canonical domain and origin', () => {
@@ -17,7 +17,7 @@ describe('site data', () => {
 
   it('renders the canonical venture-studio blurb verbatim with the accented ö', () => {
     const canonical =
-      'Atelier Gökhan Turhan is a venture studio for a mechanomical research into the techniques of AGI + human conviviality in the long now.';
+      'Gökhan Ventures is a venture studio for a mechanomical research into the techniques of AGI + human conviviality in the long now.';
     expect(site.blurb).toBe(canonical);
     expect(site.blurb).toContain('Gökhan');
     expect(site.blurb).not.toContain('Ã¶');

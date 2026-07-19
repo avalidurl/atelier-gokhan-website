@@ -7,10 +7,13 @@ export type HeroAccent = (typeof HERO_ACCENTS)[number];
 export interface HeroSegment {
   readonly text: string;
   readonly accent?: HeroAccent;
+  /** Renders with the name annotation (meaning + pronunciation) on hover/focus. */
+  readonly gloss?: boolean;
 }
 
 export const heroSegments: ReadonlyArray<HeroSegment> = [
-  { text: 'Atelier Gökhan Turhan', accent: 'purple' },
+  { text: 'Gökhan', accent: 'purple', gloss: true },
+  { text: ' Ventures', accent: 'purple' },
   { text: ' is a venture studio for a ' },
   { text: 'mechanomical', accent: 'rose' },
   { text: ' research into the techniques of ' },

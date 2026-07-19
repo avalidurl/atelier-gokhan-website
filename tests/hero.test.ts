@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { HERO_ACCENTS, heroSegments, joinHeroText } from '../src/data/hero';
+import { nameGloss } from '../src/data/name';
 import { site } from '../src/data/site';
 
 const REPO_ROOT = resolve(__dirname, '..');
@@ -33,9 +34,18 @@ describe('home hero segments', () => {
     expect(accents).toEqual(new Set(HERO_ACCENTS));
   });
 
-  it('emphasizes "Atelier Gökhan Turhan" in the lead purple accent', () => {
-    const purple = heroSegments.find((segment) => segment.accent === 'purple');
-    expect(purple?.text).toContain('Atelier Gökhan Turhan');
+  it('emphasizes the full "Gökhan Ventures" brand in the lead purple accent', () => {
+    // The brand is split across two purple segments so "Gökhan" alone can carry the
+    // name gloss; together they must still read as the whole brand, in order.
+    const purple = heroSegments.filter((segment) => segment.accent === 'purple');
+    expect(purple.map((segment) => segment.text).join('')).toContain('Gökhan Ventures');
+    expect(purple[0]?.text).toBe('Gökhan');
+  });
+
+  it('marks exactly the "Gökhan" segment for the name gloss', () => {
+    const glossed = heroSegments.filter((segment) => segment.gloss);
+    expect(glossed).toHaveLength(1);
+    expect(glossed[0]?.text).toBe('Gökhan');
   });
 
   it('emphasizes the unusual word "mechanomical" in the rose accent', () => {
@@ -51,6 +61,38 @@ describe('home hero segments', () => {
   it('exposes plain (non-accented) connective tissue between accent phrases', () => {
     const plainCount = heroSegments.filter((segment) => !segment.accent).length;
     expect(plainCount).toBeGreaterThanOrEqual(2);
+  });
+});
+
+describe('name gloss (meaning + pronunciation annotation)', () => {
+  it('names the person, not the brand', () => {
+    expect(nameGloss.title).toBe('Gökhan Turhan');
+  });
+
+  it('states a meaning for both names', () => {
+    expect(nameGloss.tip).toContain('sky');
+    expect(nameGloss.tip).toContain('khan');
+    expect(nameGloss.tip.toLowerCase()).toContain('noble title');
+  });
+
+  it('carries both IPA and a plain-English respelling', () => {
+    expect(nameGloss.tip).toContain('/ɟøcˈhan/');
+    expect(nameGloss.tip).toContain('/tuɾˈhan/');
+    expect(nameGloss.tip).toContain('gurk-HAHN');
+    expect(nameGloss.tip).toContain('toor-HAHN');
+  });
+
+  it('stays short enough for a hover card and free of mojibake', () => {
+    expect(nameGloss.tip.length).toBeLessThanOrEqual(260);
+    expect(nameGloss.tip).not.toContain('Ã');
+    expect(nameGloss.tip).not.toContain('�');
+  });
+
+  it('does not assert the contested Turhan etymology as settled', () => {
+    // Nişanyan (tûr+han) and TDV İslâm Ansiklopedisi (variant of tarhan) disagree;
+    // the copy must not pick a winner.
+    expect(nameGloss.tip).not.toMatch(/tarhan/i);
+    expect(nameGloss.tip).not.toMatch(/eldest son/i);
   });
 });
 

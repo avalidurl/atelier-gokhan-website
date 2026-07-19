@@ -59,7 +59,7 @@ So, plainly: I'm not raising a pre-seed. I don't want a term sheet or a deck or 
 
 It's live. Come build the strange corner with me.
 
-Gökhan Turhan, [Numetal Labs](https://numetal.xyz) + [Atelier Gökhan Turhan](https://gokhan.vc)
+Gökhan Turhan, [Numetal Labs](https://numetal.xyz) + [Gökhan Ventures](https://gokhan.vc)
 
 ---
 

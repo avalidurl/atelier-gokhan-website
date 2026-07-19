@@ -42,9 +42,9 @@
   function fill(a) {
     var tip = a.getAttribute('data-tip');
     if (!tip) return false;
-    var platform = '';
+    var platform = a.getAttribute('data-title') || '';
     var platEl = a.querySelector('.leaf-platform');
-    if (platEl) platform = platEl.textContent || '';
+    if (!platform && platEl) platform = platEl.textContent || '';
     var p = ensure();
     var title = platform ? '<div class="lp-t">' + esc(platform.trim()) + '</div>' : '';
     p.innerHTML = title + '<div class="lp-d">' + esc(tip) + '</div>';
@@ -88,7 +88,7 @@
   }
 
   function bind() {
-    document.querySelectorAll('.kanban-board .leaf-link[data-tip]').forEach(function (a) {
+    document.querySelectorAll('.kanban-board .leaf-link[data-tip], .name-gloss[data-tip]').forEach(function (a) {
       if (a.getAttribute('data-lp') === '1') return;
       a.setAttribute('data-lp', '1');
       a.addEventListener('mouseenter', function () {

@@ -315,10 +315,10 @@ export const properties: readonly LinkProperty[] = [
   },
   {
     id: 'gokhanvc',
-    label: 'Gökhan VC',
+    label: 'Gökhan Ventures',
     domain: 'gokhan.vc',
     url: 'https://gokhan.vc',
-    owner: 'Atelier Gökhan Turhan',
+    owner: 'Gökhan Ventures',
     apiTools: [
       {
         platform: 'API',
@@ -340,7 +340,7 @@ export const properties: readonly LinkProperty[] = [
       note: 'gokhan.vc',
       href: '/',
       external: false,
-      tooltip: 'You are here — Atelier Gökhan Turhan venture studio.',
+      tooltip: 'You are here — Gökhan Ventures venture studio.',
     },
     blog: {
       platform: 'Blog',
@@ -355,7 +355,7 @@ export const properties: readonly LinkProperty[] = [
         note: '@goekhanvc',
         href: 'https://x.com/goekhanvc',
         external: true,
-        tooltip: 'Atelier Gökhan Turhan on X — studio voice.',
+        tooltip: 'Gökhan Ventures on X — studio voice.',
       },
     ],
     contacts: [

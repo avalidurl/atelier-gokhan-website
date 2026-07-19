@@ -9,13 +9,13 @@ export interface SiteData {
 }
 
 export const site: SiteData = {
-  name: 'Atelier Gökhan Turhan',
+  name: 'Gökhan Ventures',
   domain: 'gokhan.vc',
   url: 'https://gokhan.vc',
   blurb:
-    'Atelier Gökhan Turhan is a venture studio for a mechanomical research into the techniques of AGI + human conviviality in the long now.',
+    'Gökhan Ventures is a venture studio for a mechanomical research into the techniques of AGI + human conviviality in the long now.',
   contactEmail: 'contact@gokhan.vc',
   description:
-    'Atelier Gökhan Turhan is a venture studio for a mechanomical research into the techniques of AGI + human conviviality in the long now.',
+    'Gökhan Ventures is a venture studio for a mechanomical research into the techniques of AGI + human conviviality in the long now.',
   themeColor: '#0a0a0a',
 };

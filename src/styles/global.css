@@ -195,6 +195,18 @@ a:focus-visible {
 }
 
 /* Stamp — the only rotated element on any page. */
+/* Name gloss — the annotated name; meaning + pronunciation on hover/focus.
+   Marked with a dotted rule (a filing annotation), never a colour change. */
+.name-gloss {
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
+
+.name-gloss:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
 .stamp {
   display: inline-block;
   border: 2px solid var(--ink);

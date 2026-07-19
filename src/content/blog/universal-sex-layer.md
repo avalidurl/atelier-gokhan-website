@@ -88,7 +88,7 @@ I opened a small round because the corner is genuinely strange and already takin
 
 It's live. The sex layer is agent-native now.
 
-Gökhan Turhan, [Numetal Labs](https://numetal.xyz) + [Atelier Gökhan Turhan](https://gokhan.vc)
+Gökhan Turhan, [Numetal Labs](https://numetal.xyz) + [Gökhan Ventures](https://gokhan.vc)
 
 ---
 

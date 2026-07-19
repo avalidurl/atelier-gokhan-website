@@ -107,7 +107,7 @@ describe('link tree data — structure', () => {
       'Ishtar',
       'Numetal Labs',
       'CURB',
-      'Gökhan VC',
+      'Gökhan Ventures',
       'Personal Memex',
       'Hobby Projects',
     ]);

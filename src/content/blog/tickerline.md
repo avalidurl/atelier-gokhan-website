@@ -26,4 +26,4 @@ tickerline now trades as TICKERLINE ($TICKER) on Robinhood Chain — `0x02c67c0F
 - [github.com/avalidurl/tickerline](https://github.com/avalidurl/tickerline) — source, MIT
 - [bankr.bot/terminal/discover/0x02c67c…](https://bankr.bot/terminal/discover/0x02c67c0F6Fef5065aF1C78F337a8bEE386b6BbA3) — $TICKER on Robinhood Chain
 
-— Gökhan Turhan · [Numetal Labs](https://numetal.xyz) · [Atelier Gökhan Turhan](https://gokhan.vc)
+— Gökhan Turhan · [Numetal Labs](https://numetal.xyz) · [Gökhan Ventures](https://gokhan.vc)
