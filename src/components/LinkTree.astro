@@ -1,6 +1,17 @@
 ---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { properties } from '../data/links';
 import type { LinkProperty } from '../data/links';
+
+/** Content hash of the popup script, so an edit busts the 4h asset cache for every
+ *  visitor. The HTML is served max-age=0, so a changed ?v= always lands immediately.
+ *  Resolved from the project root — import.meta.url points into the build output. */
+const popupsVersion = createHash('sha256')
+  .update(readFileSync(resolve(process.cwd(), 'public/link-popups.js')))
+  .digest('hex')
+  .slice(0, 8);
 
 function leafAttrs(leaf: { href: string; external: boolean; tooltip: string }) {
   return {
@@ -114,7 +125,7 @@ function leafCount(property: LinkProperty): number {
   </div>
 </section>
 
-<script src="/link-popups.js" defer></script>
+<script src={`/link-popups.js?v=${popupsVersion}`} defer></script>
 
 <style>
   .tree-section {
