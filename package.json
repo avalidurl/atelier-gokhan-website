@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "version": "0.1.0",
-  "description": "gokhan.vc — Atelier Gökhan Turhan one-pager (Astro static, Cloudflare Pages).",
+  "description": "gokhan.vc — Gökhan Ventures one-pager (Astro static, Cloudflare Pages).",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

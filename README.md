@@ -2,7 +2,7 @@
 
 # atelier-gokhan-website
 
-### The one-page venture-studio site for **Atelier Gökhan Turhan** — [gokhan.vc](https://gokhan.vc)
+### The one-page venture-studio site for **Gökhan Ventures** — [gokhan.vc](https://gokhan.vc)
 
 A static, zero-JavaScript Astro landing with a neo-brutalist "machine report" look and a canonical, tested link tree.
 
@@ -26,7 +26,7 @@ A static, zero-JavaScript Astro landing with a neo-brutalist "machine report" lo
 ## What this is
 
 `atelier-gokhan-website` is the source for **[gokhan.vc](https://gokhan.vc)**, the landing page for
-Atelier Gökhan Turhan — a small venture studio. It is a deliberately minimal one-pager: a hero
+Gökhan Ventures — a small venture studio. It is a deliberately minimal one-pager: a hero
 statement plus a **pedigree link tree** grouping the studio's and adjacent domains' social and contact
 links, with the usual legal pages (terms, privacy, cookies), a 404, and an empty-by-design blog
 collection ready for future posts.
