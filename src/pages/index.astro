@@ -2,10 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LinkTree from '../components/LinkTree.astro';
 import { site } from '../data/site';
-import { heroSegments } from '../data/hero';
-import { nameGloss } from '../data/name';
 
 const title = `${site.name} — venture studio`;
+
+// Project index — the stacked table, mirrored from gokhanturhan.com's landing.
+// INDEX drops to the studio portfolio below; the rest jump out to live products.
+// URLs verified live 2026-07-21.
+const projectIndex = [
+  { no: '01', name: 'INDEX', note: 'the studio portfolio, below', href: '#portfolio', external: false },
+  { no: '02', name: 'CURB', note: 'agent↔agent inference clearing rail', href: 'https://curb.numetal.xyz', external: true },
+  { no: '03', name: 'ISHTAR', note: 'agents court, humans meet', href: 'https://ishtar.numetal.xyz', external: true },
+  { no: '04', name: 'CLINAMEN', note: 'pataphysical fiction, filed on-chain', href: 'https://ubu.numetal.xyz', external: true },
+  { no: '05', name: 'PLAINTEXT', note: 'onchain plaintext board', href: 'https://plaintext.numetal.xyz', external: true },
+  { no: '06', name: 'RECLAIM', note: 'get your art out of dead marketplaces', href: 'https://reclaim.numetal.xyz', external: true },
+];
 ---
 
 <BaseLayout title={title} description={site.blurb}>
@@ -13,7 +23,7 @@ const title = `${site.name} — venture studio`;
     <div class="hero-sheet masthead">
       <div class="mast-row" aria-hidden="true">
         <span>Gökhan Ventures</span>
-        <span>Doc ATL-001 · Rev 2026-07-18</span>
+        <span>Doc ATL-001 · Rev 2026-07-21</span>
         <span>Status: Operating</span>
       </div>
       <p class="mast-raise">
@@ -25,26 +35,8 @@ const title = `${site.name} — venture studio`;
         <a class="raise-link" href="https://curb.numetal.xyz/deck">Curb deck</a>
       </p>
       <div class="mast-title">
-        <h1 id="hero-blurb" class="hero-blurb">
-          {
-            heroSegments.map((segment) =>
-              segment.gloss ? (
-                <span
-                  class={`hero-accent accent-${segment.accent} name-gloss`}
-                  data-title={nameGloss.title}
-                  data-tip={nameGloss.tip}
-                  tabindex="0"
-                >
-                  {segment.text}
-                </span>
-              ) : segment.accent ? (
-                <span class={`hero-accent accent-${segment.accent}`}>{segment.text}</span>
-              ) : (
-                segment.text
-              ),
-            )
-          }
-        </h1>
+        <h1 id="hero-blurb" class="hero-title">Gökhan Ventures</h1>
+        <p class="hero-sub">Venture studio · agent accelerator · one person, a fleet of agents</p>
         <p class="hero-stamp-row">
           <span class="stamp">Venture studio — public record</span>
         </p>
@@ -55,6 +47,28 @@ const title = `${site.name} — venture studio`;
       </div>
     </div>
   </section>
+
+  <section class="pindex-band" aria-label="Project index">
+    <div class="pindex-wrap">
+      <p class="doc-heading"><span>Project index</span><span class="section-no" aria-hidden="true">§0</span></p>
+      <nav class="pindex">
+        {projectIndex.map((it) => (
+          <a
+            class="pirow"
+            href={it.href}
+            target={it.external ? '_blank' : undefined}
+            rel={it.external ? 'noopener noreferrer' : undefined}
+          >
+            <span class="pi-no">{it.no}</span>
+            <span class="pi-name">{it.name}</span>
+            <span class="pi-note">{it.note}</span>
+            <span class="pi-arrow" aria-hidden="true">{it.external ? '↗' : '→'}</span>
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
   <LinkTree />
   <aside class="raise-echo" aria-label="Fundraise notice">
     <p class="mast-raise mast-raise--echo">
@@ -72,7 +86,7 @@ const title = `${site.name} — venture studio`;
   .hero {
     display: flex;
     justify-content: center;
-    padding: var(--space-5) var(--space-3);
+    padding: var(--space-5) var(--space-3) var(--space-4);
   }
 
   .hero-sheet {
@@ -80,22 +94,90 @@ const title = `${site.name} — venture studio`;
     max-width: 880px;
   }
 
-  .hero-blurb {
+  .hero-title {
     margin: 0;
-    font-size: clamp(17px, 2.4vw, 24px);
+    font-size: clamp(26px, 5.5vw, 44px);
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.05;
     letter-spacing: 0.02em;
-    overflow-wrap: break-word;
-    hyphens: manual;
   }
 
-  .hero-accent {
-    font-weight: inherit;
+  .hero-sub {
+    margin: 0.6rem 0 0;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--dim);
   }
 
   .hero-stamp-row {
     margin: var(--space-4) 0 0;
+  }
+
+  /* Project index — stacked ledger table, same read as the register box. */
+  .pindex-band {
+    display: flex;
+    justify-content: center;
+    padding: 0 var(--space-3) var(--space-6);
+  }
+
+  .pindex-wrap {
+    width: 100%;
+    max-width: 880px;
+  }
+
+  .pindex {
+    border: 2px solid var(--ink);
+    margin-top: 2px;
+  }
+
+  .pirow {
+    display: grid;
+    grid-template-columns: 3rem minmax(8rem, max-content) 1fr 1.4rem;
+    gap: var(--space-3);
+    align-items: baseline;
+    padding: 0.72rem 0.9rem;
+    border-bottom: 1px solid var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .pirow:last-child {
+    border-bottom: 0;
+  }
+
+  .pirow:hover {
+    background: var(--faint);
+  }
+
+  .pirow:hover .pi-name {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .pi-no {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--dim);
+    letter-spacing: 0.06em;
+  }
+
+  .pi-name {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .pi-note {
+    font-size: 13px;
+    color: var(--dim);
+  }
+
+  .pi-arrow {
+    text-align: right;
+    color: var(--dim);
+    font-size: 13px;
   }
 
   /* Raise notice — the one inverted bar on the page: ink ground, paper text.
@@ -146,6 +228,17 @@ const title = `${site.name} — venture studio`;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .pirow {
+      grid-template-columns: 2.4rem 1fr auto;
+      gap: var(--space-2);
+    }
+
+    .pi-note {
+      display: none;
+    }
   }
 
   @media (max-width: 480px) {

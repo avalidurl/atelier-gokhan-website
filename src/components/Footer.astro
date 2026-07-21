@@ -102,6 +102,9 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
   }
   .footer-subscribe-copy a {
     color: var(--ink);
+    text-decoration: none;
+  }
+  .footer-subscribe-copy a:hover {
     text-decoration: underline;
   }
   .footer-nav {
@@ -117,9 +120,12 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
   }
   .footer-links a {
     color: var(--ink);
-    text-decoration: underline;
+    text-decoration: none;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
+  }
+  .footer-links a:hover {
+    text-decoration: underline;
   }
   .copyright {
     margin: 0 0 var(--space-3);
