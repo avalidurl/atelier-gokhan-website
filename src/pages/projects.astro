@@ -14,7 +14,7 @@ const description =
       <h1 class="proj-title">Projects</h1>
       <p class="proj-lead">
         Every venture and build in the studio, with what each one actually does. Filter by
-        category or status; each row links out to the live project.
+        category or status; each card links out to the live project.
       </p>
     </header>
 
@@ -43,30 +43,29 @@ const description =
       Showing <span id="proj-count">{studioProjects.length}</span> of {studioProjects.length} projects
     </p>
 
-    <div class="table-wrap">
-      <table class="proj-table">
-        <thead>
-          <tr>
-            <th scope="col">Project</th>
-            <th scope="col">Category</th>
-            <th scope="col">Status</th>
-            <th scope="col">What it is</th>
-          </tr>
-        </thead>
-        <tbody id="proj-body">
-          {studioProjects.map((p) => (
-            <tr class="proj-row" data-category={p.category} data-status={p.status}>
-              <td class="proj-name">
-                <a href={p.href} target="_blank" rel="noopener noreferrer">{p.name} ↗</a>
-                <span class="proj-domain">{p.domain}</span>
-              </td>
-              <td><span class="tag">{p.category}</span></td>
-              <td><span class="tag">{p.status}</span></td>
-              <td class="proj-blurb">{p.blurb}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div class="preg">
+      {studioProjects.map((p, i) => (
+        <a
+          class="pcell proj-row"
+          href={p.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-category={p.category}
+          data-status={p.status}
+        >
+          <div class="pcell-meta">
+            <span class="pcell-no">{String(i + 1).padStart(2, '0')}</span>
+            <span class="pcell-domain">{p.domain}</span>
+            <span class="pcell-arrow" aria-hidden="true">↗</span>
+          </div>
+          <div class="pcell-name">{p.name}</div>
+          <div class="pcell-tags">
+            <span class="tag">{p.category}</span>
+            <span class="tag">{p.status}</span>
+          </div>
+          <p class="pcell-blurb">{p.blurb}</p>
+        </a>
+      ))}
     </div>
 
     <p class="proj-empty" id="proj-empty" hidden>No projects match those filters.</p>
@@ -178,83 +177,95 @@ const description =
       color: var(--dim);
     }
 
-    /* Ledger table — fully ruled, scrolls inside its wrap on narrow screens. */
-    .table-wrap {
-      max-width: 100%;
-      overflow-x: auto;
+    /* Project register — fully-boxed ledger grid of cards (2px outer frame,
+       1px cells), each card a link out. Same read as gokhanturhan.com. */
+    .preg {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      border: 2px solid var(--ink);
+      margin-top: 2px;
     }
 
-    .proj-table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 760px;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .proj-table th,
-    .proj-table td {
+    .pcell {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      min-height: 8.5rem;
+      padding: var(--space-3);
       border: 1px solid var(--ink);
-      padding: 0.6rem 0.7rem;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    .proj-table th {
-      font-size: 10.5px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      background: var(--faint);
-      font-weight: 700;
-    }
-
-    .proj-table th:nth-child(1),
-    .proj-table td:nth-child(1) {
-      width: 16rem;
-    }
-
-    .proj-table th:nth-child(2),
-    .proj-table td:nth-child(2),
-    .proj-table th:nth-child(3),
-    .proj-table td:nth-child(3) {
-      white-space: nowrap;
-    }
-
-    .proj-name a {
-      font-weight: 700;
-      font-size: 14px;
+      background: var(--paper);
       color: var(--ink);
       text-decoration: none;
     }
 
-    .proj-name a:hover {
+    .pcell:hover,
+    .pcell:focus-visible {
+      background: var(--faint);
+    }
+
+    .pcell:hover .pcell-name,
+    .pcell:focus-visible .pcell-name {
       text-decoration: underline;
       text-underline-offset: 2px;
     }
 
-    .proj-domain {
-      display: block;
-      margin-top: 3px;
+    .pcell[hidden] {
+      display: none;
+    }
+
+    .pcell-meta {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-2);
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--dim);
+    }
+
+    .pcell-no {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .pcell-domain {
       overflow-wrap: anywhere;
+    }
+
+    .pcell-arrow {
+      margin-left: auto;
+      color: var(--dim);
+    }
+
+    .pcell-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
+    }
+
+    .pcell-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
     }
 
     .tag {
       font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.03em;
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink);
+      padding: 0.15rem 0.45rem;
+      white-space: nowrap;
     }
 
-    .proj-blurb {
+    .pcell-blurb {
+      margin: 0;
       font-size: 13px;
       line-height: 1.5;
-      color: var(--ink);
-      min-width: 24rem;
-    }
-
-    .proj-table tr[hidden] {
-      display: none;
+      color: var(--dim);
     }
 
     .proj-empty {
