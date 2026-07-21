@@ -1,0 +1,266 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { studioProjects, projectCategories, projectStatuses } from '../data/projects';
+
+const title = 'Projects — Gökhan Ventures';
+const description =
+  'Every venture and build in the studio, explained — Ishtar, CURB, HeartBench, HeartPrefs, Numetal, CLINAMEN/$UBU, Plaintext, Reclaim, and more. Filter by category or status.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="projects">
+    <header class="proj-head">
+      <p class="doc-line">Gökhan Ventures · project register</p>
+      <h1 class="proj-title">Projects</h1>
+      <p class="proj-lead">
+        Every venture and build in the studio, with what each one actually does. Filter by
+        category or status; each row links out to the live project.
+      </p>
+    </header>
+
+    <div class="proj-filters" role="group" aria-label="Filter projects">
+      <div class="filter-group">
+        <span class="filter-label">Category</span>
+        <div class="chips" data-filter="category">
+          <button type="button" class="chip is-active" data-value="all" aria-pressed="true">All</button>
+          {projectCategories.map((c) => (
+            <button type="button" class="chip" data-value={c} aria-pressed="false">{c}</button>
+          ))}
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Status</span>
+        <div class="chips" data-filter="status">
+          <button type="button" class="chip is-active" data-value="all" aria-pressed="true">All</button>
+          {projectStatuses.map((s) => (
+            <button type="button" class="chip" data-value={s} aria-pressed="false">{s}</button>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <p class="proj-count">
+      Showing <span id="proj-count">{studioProjects.length}</span> of {studioProjects.length} projects
+    </p>
+
+    <div class="table-wrap">
+      <table class="proj-table">
+        <thead>
+          <tr>
+            <th scope="col">Project</th>
+            <th scope="col">Category</th>
+            <th scope="col">Status</th>
+            <th scope="col">What it is</th>
+          </tr>
+        </thead>
+        <tbody id="proj-body">
+          {studioProjects.map((p) => (
+            <tr class="proj-row" data-category={p.category} data-status={p.status}>
+              <td class="proj-name">
+                <a href={p.href} target="_blank" rel="noopener noreferrer">{p.name} ↗</a>
+                <span class="proj-domain">{p.domain}</span>
+              </td>
+              <td><span class="tag">{p.category}</span></td>
+              <td><span class="tag">{p.status}</span></td>
+              <td class="proj-blurb">{p.blurb}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p class="proj-empty" id="proj-empty" hidden>No projects match those filters.</p>
+  </section>
+
+  <script is:inline src="/projects-filter.js" defer></script>
+
+  <style>
+    .projects {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: var(--space-6) var(--space-3) var(--space-7);
+    }
+
+    .proj-head {
+      max-width: 70ch;
+    }
+
+    .doc-line {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin: 0;
+    }
+
+    .proj-title {
+      margin: var(--space-2) 0 0;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+    }
+
+    .proj-lead {
+      margin: var(--space-3) 0 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--dim);
+      max-width: 62ch;
+    }
+
+    /* Filter bar — ruled band of single-select chip groups. */
+    .proj-filters {
+      margin-top: var(--space-5);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3) var(--space-5);
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding: var(--space-3) 0;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .filter-label {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dim);
+      margin-right: var(--space-1);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .chip {
+      font: inherit;
+      font-size: 12px;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+    }
+
+    .chip:hover {
+      background: var(--faint);
+    }
+
+    .chip.is-active {
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 700;
+    }
+
+    .chip:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+
+    .proj-count {
+      margin: var(--space-3) 0 var(--space-2);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    /* Ledger table — fully ruled, scrolls inside its wrap on narrow screens. */
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    .proj-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .proj-table th,
+    .proj-table td {
+      border: 1px solid var(--ink);
+      padding: 0.6rem 0.7rem;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .proj-table th {
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--faint);
+      font-weight: 700;
+    }
+
+    .proj-table th:nth-child(1),
+    .proj-table td:nth-child(1) {
+      width: 16rem;
+    }
+
+    .proj-table th:nth-child(2),
+    .proj-table td:nth-child(2),
+    .proj-table th:nth-child(3),
+    .proj-table td:nth-child(3) {
+      white-space: nowrap;
+    }
+
+    .proj-name a {
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .proj-name a:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .proj-domain {
+      display: block;
+      margin-top: 3px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--dim);
+      overflow-wrap: anywhere;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.03em;
+    }
+
+    .proj-blurb {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--ink);
+      min-width: 24rem;
+    }
+
+    .proj-table tr[hidden] {
+      display: none;
+    }
+
+    .proj-empty {
+      margin-top: var(--space-4);
+      font-size: 14px;
+      color: var(--dim);
+    }
+  </style>
+</BaseLayout>
