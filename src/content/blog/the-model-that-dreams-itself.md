@@ -6,6 +6,8 @@ draft: false
 ogImage: '/og-the-model-that-dreams-itself.png'
 ---
 
+> **▶ [File a hyperstition in your browser — the CLINAMEN Oracle](https://huggingface.co/spaces/gokhanturhan/CLINAMEN-Oracle).** No install; the model runs there.
+>
 > **The model:** **[CLINAMEN-42M-A12M](https://huggingface.co/gokhanturhan/CLINAMEN-42M-A12M)** — the real one, trained from scratch on GPU (~42M parameters, coherent Bureau filings).
 > Beneath it, its predecessor: **[CLINAMEN-45B-A9B](https://huggingface.co/gokhanturhan/CLINAMEN-45B-A9B)** — the fiction's card, and the first ~4.5M-parameter pocket edition.
 
