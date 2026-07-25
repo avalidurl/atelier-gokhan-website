@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
+import { revisionStamp } from '../data/revision';
 
 const title = `Newsletter — ${site.name}`;
 const description =
@@ -13,7 +14,7 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
     <div class="nl-sheet masthead">
       <div class="mast-row" aria-hidden="true">
         <span>Gökhan Ventures</span>
-        <span>Doc ATL-012 · Rev 2026-07-18</span>
+        <span>Doc ATL-012 · {revisionStamp}</span>
         <span>Status: Open list</span>
       </div>
       <div class="mast-title">

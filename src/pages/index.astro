@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LinkTree from '../components/LinkTree.astro';
 import { site } from '../data/site';
+import { revisionStamp } from '../data/revision';
 
 const title = `${site.name} — venture studio`;
 
@@ -53,7 +54,7 @@ const projectIndex = [
     <div class="hero-sheet masthead">
       <div class="mast-row" aria-hidden="true">
         <span>Gökhan Ventures</span>
-        <span>Doc ATL-001 · Rev 2026-07-21</span>
+        <span>Doc ATL-001 · {revisionStamp}</span>
         <span>Status: Operating</span>
       </div>
       <p class="mast-raise">

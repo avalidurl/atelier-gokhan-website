@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubscribeBlock from '../../components/SubscribeBlock.astro';
 import { site } from '../../data/site';
+import { revisionStamp } from '../../data/revision';
 import { publishedPosts, postPath, formatPostDate, isoDate } from '../../utils/blog';
 
 const posts = publishedPosts(await getCollection('blog'));
@@ -15,7 +16,7 @@ const description = `Writing and notes from ${site.name}.`;
     <header class="blog-head">
       <p class="blog-stamp">Blog</p>
       <h1 class="blog-title">Blog</h1>
-      <p class="doc-line">Doc ATL-002 · Rev 2026-07-17 · Posts filed newest first</p>
+      <p class="doc-line">Doc ATL-002 · {revisionStamp} · Posts filed newest first</p>
     </header>
 
     <p class="blog-ways">

@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site';
+import { revisionStamp } from '../data/revision';
 
 interface Props {
   /** Subtle footer subscribe — homepage and non-blog pages only. */
@@ -72,7 +73,7 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
     </nav>
     <p class="copyright">© {year} {site.name}</p>
     <p class="colophon">
-      <span>Gökhan Ventures · gokhan.vc · Rev 2026-07-18</span>
+      <span>Gökhan Ventures · gokhan.vc · {revisionStamp}</span>
       <span>Filed as public record — monochrome, monospace</span>
     </p>
   </div>

@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SubscribeBlock from '../../components/SubscribeBlock.astro';
 import { site } from '../../data/site';
+import { revisionStamp } from '../../data/revision';
 import { isPublished, formatPostDate, isoDate, publishedPosts } from '../../utils/blog';
 
 // Static paths for published posts only — drafts get no route (→ 404).
@@ -20,7 +21,7 @@ const title = `${post.data.title} — ${site.name}`;
 const allPublished = publishedPosts(await getCollection('blog'));
 const postIndex = allPublished.findIndex((p) => p.id === post.id);
 const docNo = postIndex === -1 ? 100 : 100 + (allPublished.length - postIndex);
-const docRef = `Doc ATL-${docNo} · Rev 2026-07-17`;
+const docRef = `Doc ATL-${docNo} · ${revisionStamp}`;
 
 // Table of contents — section headings (h2/h3) only. The heading ids are set at
 // build time by rehype-slug (see astro.config.mjs), so h.slug is the anchor.
