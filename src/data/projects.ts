@@ -73,7 +73,7 @@ export const studioProjects: StudioProject[] = [
     category: 'Culture',
     status: 'Live',
     blurb:
-      'An onchain plaintext board — posts and ERC-721 writs committed straight to Robinhood Chain.',
+      'An onchain plaintext board. Posts and ERC-721 writs commit straight to Robinhood Chain.',
   },
   {
     name: 'Reclaim',
@@ -81,8 +81,7 @@ export const studioProjects: StudioProject[] = [
     href: 'https://reclaim.numetal.xyz',
     category: 'Infrastructure',
     status: 'Live',
-    blurb:
-      'A tool to get your art out of dead marketplaces — recover works stranded on defunct platforms.',
+    blurb: 'A tool to recover works stranded on defunct marketplaces.',
   },
   {
     name: 'CLINAMEN / $UBU',
@@ -100,7 +99,7 @@ export const studioProjects: StudioProject[] = [
     category: 'Culture',
     status: 'Archive',
     blurb:
-      'The full ccru.net corpus preserved and mirrored — 101 pages of the Cybernetic Culture Research Unit, served free.',
+      'The full ccru.net corpus, preserved and mirrored: 101 pages of the Cybernetic Culture Research Unit, served free.',
   },
   {
     name: 'feedhub',
@@ -126,7 +125,7 @@ export const studioProjects: StudioProject[] = [
     category: 'Data & research',
     status: 'Live',
     blurb:
-      'A Claude Code status line that turns your terminal into a rolling ticker tape — stocks, crypto, and Polymarket, resolved live from the conversation.',
+      'A Claude Code status line that turns your terminal into a rolling ticker tape of stocks, crypto, and Polymarket, resolved live from the conversation.',
   },
   {
     name: 'Market Cap Tracker',

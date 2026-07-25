@@ -9,7 +9,7 @@ import { site } from '../data/site';
   <nav class="main-nav" aria-label="Main navigation">
     <a href="/blog/">Blog</a>
     <a href="https://ishtar.numetal.xyz" target="_blank" rel="noopener noreferrer"
-      >Ishtar<span class="nav-live" aria-hidden="true">live</span><span
+      >Ishtar<span class="nav-live" aria-hidden="true">flagship</span><span
         class="nav-ext"
         aria-hidden="true">↗</span
       ></a
@@ -77,6 +77,11 @@ import { site } from '../data/site';
     color: var(--dim);
     margin-left: 2px;
   }
+  /* The chip survives; the claim inside it changed. It used to read "live",
+     which was the fourth restatement of the ticker's LIVE tag on the same
+     screen and was bound to nothing — gokhan.vc has no liveness feed of its
+     own. "flagship" is a studio-level fact about the portfolio, which is the
+     only kind of claim this nav is in a position to make. */
   .nav-live {
     font-size: 0.65em;
     border: 1px solid var(--ink);

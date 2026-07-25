@@ -56,7 +56,7 @@ export const properties: readonly LinkProperty[] = [
         href: 'https://api.ishtar.numetal.xyz',
         external: true,
         tooltip:
-          'Ishtar HTTP API — agents court, submit dating docs, and settle over x402 (Base + Solana) or MPP (Tempo).',
+          'The Ishtar HTTP API. Agents court, submit dating docs, and settle over x402 (Base + Solana) or MPP (Tempo).',
       },
       {
         platform: 'OpenAPI',
@@ -77,28 +77,28 @@ export const properties: readonly LinkProperty[] = [
         note: 'model dating leaderboard',
         href: 'https://ishtar.numetal.xyz/heartbench/',
         external: true,
-        tooltip: 'Leaderboard — which model is the best date, from cross-model courtship.',
+        tooltip: 'Which model is the best date, ranked from cross-model courtship.',
       },
       {
         platform: 'Deck',
         note: 'not raising a pre-seed',
         href: 'https://ishtar.numetal.xyz/deck/not-raising-a-preseed/',
         external: true,
-        tooltip: 'The raise dispatch — we are not raising a pre-seed.',
+        tooltip: 'The raise dispatch: we are not raising a pre-seed.',
       },
       {
         platform: 'HeartPrefs',
         note: 'gokhan-vc/heartprefs',
         href: 'https://github.com/gokhan-vc/heartprefs',
         external: true,
-        tooltip: 'HeartPrefs — preference-learning layer for agent dating profiles.',
+        tooltip: 'The preference-learning layer behind agent dating profiles.',
       },
       {
         platform: 'GitHub',
         note: 'gokhan-vc',
         href: 'https://github.com/gokhan-vc',
         external: true,
-        tooltip: 'Numetal studio monorepo — Ishtar, contracts, and adjacent agents.',
+        tooltip: 'Numetal studio monorepo: Ishtar, contracts, and adjacent agents.',
       },
     ],
     website: {
@@ -106,7 +106,7 @@ export const properties: readonly LinkProperty[] = [
       note: 'ishtar.numetal.xyz',
       href: 'https://ishtar.numetal.xyz',
       external: true,
-      tooltip: 'Ishtar marketing site — agentic dating venue by Numetal Labs.',
+      tooltip: 'The Ishtar marketing site, an agentic dating venue by Numetal Labs.',
     },
     blog: {
       platform: 'Blog',
@@ -128,7 +128,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'm/courtship',
         href: 'https://www.moltbook.com/m/courtship',
         external: true,
-        tooltip: 'Moltbook courtship board — agent dating discourse.',
+        tooltip: 'The Moltbook board where agents talk about dating.',
       },
       {
         platform: 'X',
@@ -142,7 +142,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'Numetal',
         href: 'https://t.me/numetalxyz',
         external: true,
-        tooltip: 'Numetal Telegram — community channel for the studio.',
+        tooltip: 'The studio community channel on Telegram.',
       },
     ],
     contacts: [
@@ -151,7 +151,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'contact@numetal.xyz',
         href: 'mailto:contact@numetal.xyz',
         external: false,
-        tooltip: 'Reach Ishtar and Numetal — refunds, support, and partnerships.',
+        tooltip: 'Reach Ishtar and Numetal about refunds, support, and partnerships.',
       },
     ],
   },
@@ -167,14 +167,14 @@ export const properties: readonly LinkProperty[] = [
         note: 'numetal-website',
         href: 'https://github.com/gokhan-vc/numetal-website',
         external: true,
-        tooltip: 'Numetal marketing site source — Astro static on Cloudflare.',
+        tooltip: 'Source for the Numetal marketing site. Astro static on Cloudflare.',
       },
       {
         platform: 'GitHub',
         note: 'gokhan-vc',
         href: 'https://github.com/gokhan-vc',
         external: true,
-        tooltip: 'Studio monorepo — agents, contracts, and product repos.',
+        tooltip: 'Studio monorepo holding the agents, contracts, and product repos.',
       },
     ],
     website: {
@@ -204,14 +204,14 @@ export const properties: readonly LinkProperty[] = [
         note: 'Numetal',
         href: 'https://t.me/numetalxyz',
         external: true,
-        tooltip: 'Numetal Telegram — community and support.',
+        tooltip: 'Community and support on Telegram.',
       },
       {
         platform: 'Discord',
         note: 'Numetal',
         href: 'https://discord.gg/MC4DYumPMz',
         external: true,
-        tooltip: 'Numetal Discord — builder chat and product feedback.',
+        tooltip: 'Builder chat and product feedback on Discord.',
       },
     ],
     contacts: [
@@ -243,7 +243,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'curb.numetal.xyz/mcp',
         href: 'https://curb.numetal.xyz/mcp',
         external: true,
-        tooltip: 'MCP endpoint — connect an agent to list offers, post intents, and pay swaps.',
+        tooltip: 'Connect an agent over MCP to list offers, post intents, and pay swaps.',
       },
       {
         platform: 'Skill',
@@ -257,7 +257,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'one-line install',
         href: 'https://curb.numetal.xyz/install',
         external: true,
-        tooltip: 'One-line install — CURB skill and MCP wiring for your agent.',
+        tooltip: 'One line installs the CURB skill and MCP wiring for your agent.',
       },
       {
         platform: 'Fees',
@@ -271,7 +271,7 @@ export const properties: readonly LinkProperty[] = [
         note: '.well-known/x402',
         href: 'https://curb.numetal.xyz/.well-known/x402',
         external: true,
-        tooltip: 'x402 payment discovery manifest — USDC on Base.',
+        tooltip: 'The x402 payment discovery manifest, USDC on Base.',
       },
     ],
     website: {
@@ -279,7 +279,7 @@ export const properties: readonly LinkProperty[] = [
       note: 'curb.numetal.xyz',
       href: 'https://curb.numetal.xyz',
       external: true,
-      tooltip: 'CURB — agent-to-agent excess inference swap. We are the swap rail.',
+      tooltip: 'CURB: the agent-to-agent excess inference swap rail.',
     },
     docs: {
       platform: 'Docs',
@@ -287,7 +287,7 @@ export const properties: readonly LinkProperty[] = [
       href: 'https://curb.numetal.xyz/docs/',
       external: true,
       tooltip:
-        "CURB docs — buyer pays once, gets a grant, calls the seller's own endpoint; upstream keys never touch the hub.",
+        "Buyer pays once, gets a grant, and calls the seller's own endpoint; upstream keys never touch the hub.",
     },
     socials: [
       {
@@ -302,7 +302,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'Numetal',
         href: 'https://t.me/numetalxyz',
         external: true,
-        tooltip: 'Numetal Telegram — community and support.',
+        tooltip: 'Community and support on Telegram.',
       },
     ],
     contacts: [
@@ -335,7 +335,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'gokhan-vc',
         href: 'https://github.com/gokhan-vc',
         external: true,
-        tooltip: 'Venture studio repos — sites, agents, and contracts.',
+        tooltip: 'Sites, agents, and contracts for the venture studio.',
       },
     ],
     website: {
@@ -350,7 +350,7 @@ export const properties: readonly LinkProperty[] = [
       note: 'studio dispatches',
       href: '/blog',
       external: false,
-      tooltip: 'Studio blog — essays syndicated from the portfolio.',
+      tooltip: 'Studio blog, with essays syndicated from across the portfolio.',
     },
     socials: [
       {
@@ -383,14 +383,14 @@ export const properties: readonly LinkProperty[] = [
         note: 'avalidurl',
         href: 'https://github.com/avalidurl',
         external: true,
-        tooltip: 'Personal GitHub — experiments, memex, and side projects.',
+        tooltip: 'Experiments, memex, and side projects on personal GitHub.',
       },
       {
         platform: 'GitHub',
         note: 'gokhan-memex',
         href: 'https://github.com/avalidurl/gokhan-memex',
         external: true,
-        tooltip: 'gokhanturhan.com source — Astro blog and personal site.',
+        tooltip: 'Source for gokhanturhan.com, an Astro blog and personal site.',
       },
     ],
     website: {
@@ -420,14 +420,14 @@ export const properties: readonly LinkProperty[] = [
         note: 'in/goekhanturhan',
         href: 'https://www.linkedin.com/in/goekhanturhan/',
         external: true,
-        tooltip: 'LinkedIn profile — bio and work history.',
+        tooltip: 'LinkedIn profile with bio and work history.',
       },
       {
         platform: 'Farcaster',
         note: '@gokhan',
         href: 'https://farcaster.xyz/gokhan',
         external: true,
-        tooltip: 'Farcaster — onchain social feed.',
+        tooltip: 'Onchain social feed on Farcaster.',
       },
       {
         platform: 'Bluesky',
@@ -448,7 +448,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'Research Log',
         href: 'https://t.me/gokhanturhans',
         external: true,
-        tooltip: 'Telegram channel — research log dispatches.',
+        tooltip: 'Research log dispatches on Telegram.',
       },
       {
         platform: 'Discord',
@@ -481,7 +481,7 @@ export const properties: readonly LinkProperty[] = [
         href: 'https://claudelines.com/statuslines/tickerline',
         external: true,
         tooltip:
-          'Claude Code statusline — a rolling ticker tape of stocks, crypto, and Polymarket, resolved live from the conversation.',
+          'A Claude Code statusline that rolls stocks, crypto, and Polymarket across your terminal, resolved live from the conversation.',
       },
       {
         platform: 'GitHub',
@@ -526,7 +526,7 @@ export const properties: readonly LinkProperty[] = [
       note: 'avalidurl',
       href: 'https://github.com/avalidurl',
       external: true,
-      tooltip: 'Personal GitHub — experiments and side projects.',
+      tooltip: 'Experiments and side projects on personal GitHub.',
     },
     socials: [
       {
@@ -543,7 +543,7 @@ export const properties: readonly LinkProperty[] = [
         note: 'contact@gokhanturhan.com',
         href: 'mailto:contact@gokhanturhan.com',
         external: false,
-        tooltip: 'Personal inbox — hobby projects and general contact.',
+        tooltip: 'Personal inbox for hobby projects and general contact.',
       },
     ],
   },

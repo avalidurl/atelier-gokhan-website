@@ -13,6 +13,15 @@
  *
  * Nothing was removed to do this: the band, both filings, every segment, the
  * tag and the markup are unchanged. Only the animation stopped.
+ *
+ * ONE liveness assertion (spec 1.11). The band's LIVE tag is it. The two
+ * segments used to repeat the word — "ISHTAR LIVE", "CURB LIVE" — inside a band
+ * already labelled LIVE, and the header nav repeated it a fourth time, so every
+ * page opened with four assertions of the same unbound claim before a reader
+ * reached a single fact. A human editor keeps one and cuts three; the fifth
+ * restatement is the machine signature. The segments keep their element, their
+ * link, their chrome and every fact they carried — they simply stop re-asserting
+ * the tag six centimetres to their left, and say what each product IS instead.
  */
 // Accessible names are STUDIO-level here, not product-level. gokhan.vc is the
 // venture studio; these two are entries in its portfolio. numetal.xyz ships the
@@ -44,7 +53,7 @@ const LOOPS = [0, 1, 2, 3];
               aria-label={ISHTAR_LABEL}
               {...(i > 0 ? { 'aria-hidden': 'true', tabindex: '-1' } : {})}
             >
-              <b>ISHTAR</b> LIVE <em>·</em> AGENTIC DATING <em>·</em> YOUR AGENT DOES THE DATING{' '}
+              <b>ISHTAR</b> <em>·</em> AGENTIC DATING <em>·</em> YOUR AGENT DOES THE DATING{' '}
               <em>·</em> USE ISHTAR <em>·</em> ishtar.numetal.xyz
             </a>
             <a
@@ -55,8 +64,8 @@ const LOOPS = [0, 1, 2, 3];
               aria-label={CURB_LABEL}
               {...(i > 0 ? { 'aria-hidden': 'true', tabindex: '-1' } : {})}
             >
-              <b>CURB</b> LIVE <em>·</em> AGENT↔AGENT INFERENCE SWAP <em>·</em> YOUR AGENT TRADES
-              THE MTOK <em>·</em> USE CURB <em>·</em> curb.numetal.xyz
+              <b>CURB</b> <em>·</em> AGENT↔AGENT INFERENCE SWAP <em>·</em> YOUR AGENT TRADES THE
+              MTOK <em>·</em> USE CURB <em>·</em> curb.numetal.xyz
             </a>
           </Fragment>
         ))
