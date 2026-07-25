@@ -1,7 +1,8 @@
 @import './tokens.css';
 
-/* House stylesheet — filed technical document. Print-like and static:
-   monospace only, four color tokens, ruled boxes on one paper plane,
+/* House stylesheet — filed technical document. Print-like and static: two type
+   roles (see tokens.css — prose face for language, data face for identifiers and
+   machine strings), four color tokens, ruled boxes on one paper plane,
    no shadows, no radius, no animation. */
 
 *,
@@ -17,10 +18,10 @@ body {
 }
 
 body {
-  font-family: var(--font-mono);
+  /* R2 — running prose. */
+  font-family: var(--font-text);
   font-size: 14px;
   line-height: 1.55;
-  font-variant-numeric: tabular-nums;
   background: var(--paper);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
@@ -60,6 +61,8 @@ a:focus-visible {
 }
 
 .skip-link {
+  /* R4 — control. */
+  font-family: var(--font-data);
   position: absolute;
   left: -9999px;
   top: 0;
@@ -78,6 +81,8 @@ a:focus-visible {
 
 /* Ruled box primitive — 2px ink frame on the paper plane. No shadow, no radius. */
 .tile {
+  /* R4 — button label. */
+  font-family: var(--font-data);
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -125,6 +130,8 @@ a:focus-visible {
 }
 
 .mast-row {
+  /* R4 — doc strip. */
+  font-family: var(--font-data);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -156,7 +163,8 @@ a:focus-visible {
 
 /* Doc line — per-page filing reference, tiny uppercase dim. */
 .doc-line {
-  font-family: var(--font-mono);
+  /* R4 — filing reference. */
+  font-family: var(--font-data);
   font-size: 10.5px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -182,6 +190,8 @@ a:focus-visible {
 /* Section heading — tiny uppercase over a 2px rule, flush-right section
    number in dim (set per-page via the .section-no span). */
 .doc-heading {
+  /* R4 — section head; carries the flush-right §NN identifier. */
+  font-family: var(--font-data);
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -215,6 +225,8 @@ a:focus-visible {
 }
 
 .stamp {
+  /* R4 — stamp. */
+  font-family: var(--font-data);
   display: inline-block;
   border: 2px solid var(--ink);
   padding: 0.3rem 0.7rem;
@@ -227,6 +239,8 @@ a:focus-visible {
 
 /* Colophon — 2px top rule, two tiny uppercase dim strings pushed apart. */
 .colophon {
+  /* R4 — colophon. */
+  font-family: var(--font-data);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -263,7 +277,8 @@ a:focus-visible {
 }
 
 .foot-sub-btn--xmtp {
-  font-family: var(--font-mono);
+  /* R4 — button label. */
+  font-family: var(--font-data);
   font-size: 0.92em;
 }
 
@@ -278,7 +293,8 @@ a:focus-visible {
 }
 
 .foot-sub-status--footer {
-  font-family: var(--font-mono);
+  /* R4 — status readout. */
+  font-family: var(--font-data);
   font-size: 11px;
   color: var(--dim);
   margin: 0.35rem 0 0;
@@ -302,6 +318,9 @@ a:focus-visible {
   background: var(--paper);
   color: var(--ink);
   font: inherit;
+  /* R5 — the value typed here is an address, not prose. Must follow
+     `font: inherit`, which is a shorthand and resets font-family. */
+  font-family: var(--font-data);
   box-sizing: border-box;
 }
 
@@ -316,6 +335,8 @@ a:focus-visible {
   background: var(--paper);
   color: var(--ink);
   font: inherit;
+  /* R4 — button label. Must follow `font: inherit` (shorthand resets family). */
+  font-family: var(--font-data);
   cursor: pointer;
   white-space: nowrap;
   letter-spacing: 0.08em;
@@ -423,7 +444,8 @@ h3 {
    dim so it reads as metadata, not body copy. */
 .syndication-note {
   margin: 0 0 var(--space-4);
-  font-family: var(--font-mono);
+  /* R2 — a full prose sentence, not a filing identifier. */
+  font-family: var(--font-text);
   font-size: 13px;
   color: var(--dim);
 }

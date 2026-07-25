@@ -1,14 +1,47 @@
 import { describe, expect, it } from 'vitest';
-import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { join, relative, resolve } from 'node:path';
 
 const REPO_ROOT = resolve(__dirname, '..');
+
+/** Every source file that can carry a font-family, in src/ and public/. */
+function styleBearingFiles(): string[] {
+  const exts = ['.css', '.astro', '.ts', '.js', '.md', '.html'];
+  const out: string[] = [];
+  const walk = (dir: string) => {
+    for (const entry of readdirSync(dir)) {
+      const full = join(dir, entry);
+      if (statSync(full).isDirectory()) walk(full);
+      else if (exts.some((e) => entry.endsWith(e))) out.push(full);
+    }
+  };
+  walk(resolve(REPO_ROOT, 'src'));
+  walk(resolve(REPO_ROOT, 'public'));
+  return out;
+}
+
+/** CSS with /* … *\/ comments removed, so prose about a face is not read as a
+ *  declaration of it. */
+function declarationsOnly(css: string): string {
+  return css.replace(/\/\*[\s\S]*?\*\//g, '');
+}
+
+/** Every declaration that lands on <body>, including the `html, body` reset —
+ *  the computed style is the union of all rules whose selector list has a bare
+ *  `body` in it, not just the one block that happens to be first. */
+function bodyDeclarations(css: string): string {
+  return [...declarationsOnly(css).matchAll(/([^{}]+)\{([^{}]*)\}/g)]
+    .filter((m) => m[1].split(',').some((sel) => sel.trim() === 'body'))
+    .map((m) => m[2])
+    .join('\n');
+}
 const tokensCss = readFileSync(resolve(REPO_ROOT, 'src/styles/tokens.css'), 'utf8');
 const globalCss = readFileSync(resolve(REPO_ROOT, 'src/styles/global.css'), 'utf8');
 
 // The house style is a filed technical document: exactly four color tokens per
-// theme, monospace only, ruled boxes on one paper plane. Hierarchy is carried
-// by border weight, casing, spacing, and size — never hue.
+// theme, two type roles (prose face for language, data face for identifiers and
+// machine strings), ruled boxes on one paper plane. Hierarchy is carried by
+// face, border weight, casing, spacing, and size — never hue.
 const LIGHT = { ink: '#0a0a0a', paper: '#f4f4f2', dim: '#5c5c5c', faint: '#d8d8d4' };
 const DARK = { ink: '#e8e8e6', paper: '#0e0e0e', dim: '#9a9a9a', faint: '#2a2a2a' };
 
@@ -52,13 +85,54 @@ describe('design tokens', () => {
     expect(tokensCss).toMatch(/color-scheme:\s*light dark/);
   });
 
-  it('uses one monospace family for everything — no webfont loading', () => {
-    expect(tokensCss).toMatch(/--font-mono:[^;]*ui-monospace/);
-    expect(tokensCss).toMatch(/--font-sans:\s*var\(--font-mono\)/);
-    expect(globalCss).not.toMatch(/@fontsource/);
-    expect(globalCss).not.toMatch(/fonts\.googleapis\.com/);
-    expect(globalCss).not.toMatch(/fonts\.gstatic\.com/);
-    expect(globalCss).not.toMatch(/use\.typekit\.net/);
+  it('splits type into two role faces — text and data — that are not each other', () => {
+    // R1/R2/R3 take the text face; R4/R5 take the data face.
+    expect(tokensCss).toMatch(/--font-text:[\s\S]*?sans-serif/);
+    expect(tokensCss).toMatch(/--font-data:[^;]*ui-monospace/);
+    // The defect this replaced: the prose face aliased to the mono face, which
+    // set an 11,000-word report in SF Mono and made it read as terminal output
+    // before a word was parsed. It must not come back under either spelling.
+    expect(tokensCss).not.toMatch(/--font-sans:\s*var\(--font-mono\)/);
+    expect(tokensCss).not.toMatch(/--font-text:\s*var\(--font-data\)/);
+    expect(tokensCss).not.toMatch(/--font-data:\s*var\(--font-text\)/);
+  });
+
+  it('keeps the legacy aliases resolving forward, for one release only', () => {
+    expect(tokensCss).toMatch(/--font-mono:\s*var\(--font-data\)/);
+    expect(tokensCss).toMatch(/--font-sans:\s*var\(--font-text\)/);
+  });
+
+  it('has no call site left on a legacy alias, so the aliases can just be deleted', () => {
+    // The point of renaming rather than re-valuing: --font-sans/--font-mono are
+    // the two names that got aliased to each other, so every call site had to be
+    // revisited and given an explicit role. This keeps that true. When the
+    // one-release grace period ends, deleting the two alias lines is safe iff
+    // this passes.
+    const offenders = styleBearingFiles()
+      .filter((f) => f !== resolve(REPO_ROOT, 'src/styles/tokens.css'))
+      .filter((f) => /var\(\s*--font-(mono|sans)\b/.test(readFileSync(f, 'utf8')))
+      .map((f) => relative(REPO_ROOT, f));
+    expect(offenders, `still resolving through a legacy alias: ${offenders.join(', ')}`).toEqual(
+      [],
+    );
+  });
+
+  it('names no font family it does not ship, and loads no webfont', () => {
+    // Self-hosting is Phase 3. Until the woff2 files and @font-face rules land,
+    // naming a family here would resolve to a locally-installed copy on some
+    // machines and to the fallback on others — a per-visitor render with
+    // nothing in the repo to explain it.
+    const declared = declarationsOnly(tokensCss);
+    for (const family of ['Public Sans', 'Commit Mono', 'Newsreader']) {
+      expect(declared, `${family} is named but not self-hosted`).not.toContain(family);
+    }
+    expect(tokensCss).not.toMatch(/@font-face/);
+    for (const css of [tokensCss, globalCss]) {
+      expect(css).not.toMatch(/@fontsource/);
+      expect(css).not.toMatch(/fonts\.googleapis\.com/);
+      expect(css).not.toMatch(/fonts\.gstatic\.com/);
+      expect(css).not.toMatch(/use\.typekit\.net/);
+    }
   });
 });
 
@@ -67,11 +141,19 @@ describe('global stylesheet', () => {
     expect(globalCss).toMatch(/@import\s+['"]\.\/tokens\.css['"]/);
   });
 
-  it('sets the document base: 14px monospace on the paper plane', () => {
-    expect(globalCss).toMatch(/font-family:\s*var\(--font-mono\)/);
-    expect(globalCss).toMatch(/font-size:\s*14px/);
-    expect(globalCss).toMatch(/font-variant-numeric:\s*tabular-nums/);
-    expect(globalCss).toMatch(/background:\s*var\(--paper\)/);
+  it('sets the document base: 14px prose face on the paper plane', () => {
+    const body = bodyDeclarations(globalCss);
+    expect(body).not.toBe('');
+    expect(body).toMatch(/font-family:\s*var\(--font-text\)/);
+    expect(body).toMatch(/font-size:\s*14px/);
+    expect(body).toMatch(/background:\s*var\(--paper\)/);
+  });
+
+  it('does not put tabular-nums on body', () => {
+    // Inert while everything was monospaced; actively wrong once prose is
+    // proportional. Figures are aligned per-role at the R3 sites that hold
+    // quantities (essay tables, the legal retention table), not globally.
+    expect(bodyDeclarations(globalCss)).not.toMatch(/font-variant-numeric/);
   });
 
   it('bans shadows, radii, and transitions from the stylesheet layer', () => {

@@ -101,7 +101,8 @@ const description =
     }
 
     .doc-line {
-      font-family: var(--font-mono);
+      /* R4 — filing reference. */
+      font-family: var(--font-data);
       font-size: 10.5px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -144,7 +145,8 @@ const description =
     }
 
     .filter-label {
-      font-family: var(--font-mono);
+      /* R4 — control-group label. */
+      font-family: var(--font-data);
       font-size: 10.5px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -160,6 +162,8 @@ const description =
 
     .chip {
       font: inherit;
+      /* R4 — control label. Follows `font: inherit`; the shorthand resets family. */
+      font-family: var(--font-data);
       font-size: 12px;
       letter-spacing: 0.03em;
       border: 1px solid var(--ink);
@@ -186,7 +190,9 @@ const description =
 
     .proj-count {
       margin: var(--space-3) 0 var(--space-2);
-      font-family: var(--font-mono);
+      /* R4 — microlabel. The count inside it needs no tabular-nums: the data
+         face is already tabular, so the declaration would be noise. */
+      font-family: var(--font-data);
       font-size: 11px;
       letter-spacing: 0.06em;
       text-transform: uppercase;
@@ -233,7 +239,8 @@ const description =
       display: flex;
       align-items: baseline;
       gap: var(--space-2);
-      font-family: var(--font-mono);
+      /* R4/R5 — cell number and hostname. */
+      font-family: var(--font-data);
       font-size: 10px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -268,7 +275,8 @@ const description =
     }
 
     .tag {
-      font-family: var(--font-mono);
+      /* R4 — pill. */
+      font-family: var(--font-data);
       font-size: 10px;
       letter-spacing: 0.06em;
       text-transform: uppercase;

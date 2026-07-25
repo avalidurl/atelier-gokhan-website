@@ -37,7 +37,8 @@ const title = `${heading} — ${site.name}`;
   }
 
   .legal-title {
-    font-family: var(--font-mono);
+    /* R1 — page title. */
+    font-family: var(--font-text);
     font-size: clamp(26px, 5.5vw, 34px);
     font-weight: 700;
     line-height: 1.05;
@@ -46,7 +47,8 @@ const title = `${heading} — ${site.name}`;
   }
 
   .legal-updated {
-    font-family: var(--font-mono);
+    /* R4 — revision stamp. */
+    font-family: var(--font-data);
     font-size: 12px;
     color: var(--dim);
     border-bottom: 2px solid var(--ink);
@@ -58,7 +60,8 @@ const title = `${heading} — ${site.name}`;
     display: flex;
     gap: var(--space-2);
     align-items: baseline;
-    font-family: var(--font-mono);
+    /* R4 — numbered section head. */
+    font-family: var(--font-data);
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -110,6 +113,9 @@ const title = `${heading} — ${site.name}`;
   .legal :global(table) {
     width: 100%;
     border-collapse: collapse;
+    /* R3 — retention periods and counts are quantities: prose face, aligned by
+       OpenType rather than by monospacing. */
+    font-variant-numeric: tabular-nums lining-nums;
     font-size: 13px;
   }
 
@@ -122,7 +128,8 @@ const title = `${heading} — ${site.name}`;
   }
 
   .legal :global(th) {
-    font-family: var(--font-mono);
+    /* R4 — column head. */
+    font-family: var(--font-data);
     font-size: 10.5px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -131,7 +138,8 @@ const title = `${heading} — ${site.name}`;
   }
 
   .legal :global(code) {
-    font-family: var(--font-mono);
+    /* R5 — machine string. */
+    font-family: var(--font-data);
     font-size: 12.5px;
     background: var(--faint);
     padding: 1px 5px;

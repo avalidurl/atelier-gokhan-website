@@ -113,7 +113,8 @@ const toc = headings
 
   .post-back,
   .post-back-foot a {
-    font-family: var(--font-mono);
+    /* R4 — navigation control. */
+    font-family: var(--font-data);
     font-size: 13px;
     color: var(--ink);
     text-decoration: none;
@@ -136,7 +137,8 @@ const toc = headings
   }
 
   .post-meta {
-    font-family: var(--font-mono);
+    /* R4 — date stamp. */
+    font-family: var(--font-data);
     font-size: 12px;
     color: var(--dim);
     margin: 0 0 var(--space-2);
@@ -157,7 +159,8 @@ const toc = headings
   }
 
   .deck-pdf {
-    font-family: var(--font-mono);
+    /* R4 — button label. */
+    font-family: var(--font-data);
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -172,7 +175,8 @@ const toc = headings
   .deck-view {
     color: var(--ink);
     border-bottom: 1px solid var(--ink);
-    font-family: var(--font-mono);
+    /* R4 — button label. */
+    font-family: var(--font-data);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     font-size: 11px;
@@ -180,6 +184,8 @@ const toc = headings
   }
 
   .deck-md {
+    /* R5 — a filename. */
+    font-family: var(--font-data);
     color: var(--dim);
     border-bottom: 1px solid var(--ink);
     font-size: 13px;
@@ -205,7 +211,8 @@ const toc = headings
 
   .post-toc-label {
     margin: 0 0 var(--space-2);
-    font-family: var(--font-mono);
+    /* R4 — control label. */
+    font-family: var(--font-data);
     font-size: 11px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -248,7 +255,8 @@ const toc = headings
   }
   .post-toc-d2::before {
     content: '§' counter(toc);
-    font-family: var(--font-mono);
+    /* R4 — § identifier. */
+    font-family: var(--font-data);
     font-size: 11px;
     color: var(--dim);
     flex: 0 0 auto;
@@ -289,6 +297,8 @@ const toc = headings
   /* Section headings — tiny uppercase over a 2px rule, flush-right section
      number in dim. Hierarchy by border weight, casing, and spacing only. */
   .post-body :global(h2) {
+    /* R4 — uppercase letterspaced section head carrying the §N counter. */
+    font-family: var(--font-data);
     position: relative;
     font-size: 12.5px;
     font-weight: 700;
@@ -312,6 +322,8 @@ const toc = headings
   }
 
   .post-body :global(h3) {
+    /* R4 — subsection head. */
+    font-family: var(--font-data);
     font-size: 12.5px;
     font-weight: 700;
     letter-spacing: 0.14em;
@@ -347,7 +359,8 @@ const toc = headings
 
   .post-body :global(pre),
   .post-body :global(code) {
-    font-family: var(--font-mono);
+    /* R5 — machine strings. */
+    font-family: var(--font-data);
   }
 
   .post-body :global(code) {
@@ -381,13 +394,19 @@ const toc = headings
   .post-body :global(table) {
     width: 100%;
     border-collapse: collapse;
-    font-family: var(--font-mono);
+    /* R2/R3 — cells carry prose and quantities. The figures are aligned by
+       tabular-nums, not by monospacing the whole table; `code` inside a cell
+       still resolves to the data face via the R5 rule above. */
+    font-family: var(--font-text);
+    font-variant-numeric: tabular-nums lining-nums;
     font-size: 12.5px;
     line-height: 1.5;
     margin: 0 0 var(--space-4);
   }
 
   .post-body :global(thead th) {
+    /* R4 — column head. */
+    font-family: var(--font-data);
     text-align: left;
     font-size: 10.5px;
     letter-spacing: 0.14em;
@@ -422,7 +441,8 @@ const toc = headings
      GFM markup: sup > a[data-footnote-ref] … section[data-footnotes] with
      backref arrows that scroll to the inline position. */
   .post-body :global(sup:has(a[data-footnote-ref])) {
-    font-family: var(--font-mono);
+    /* R4 — reference marker. */
+    font-family: var(--font-data);
     font-size: 11px;
     line-height: 0;
   }
@@ -441,7 +461,8 @@ const toc = headings
   }
 
   .post-body :global(section[data-footnotes] h2) {
-    font-family: var(--font-mono);
+    /* R4 — section head. */
+    font-family: var(--font-data);
     font-size: 12px;
     letter-spacing: 0.22em;
     text-transform: uppercase;
@@ -471,7 +492,8 @@ const toc = headings
   }
 
   .post-body :global(a[data-footnote-backref]) {
-    font-family: var(--font-mono);
+    /* R4 — reference marker. */
+    font-family: var(--font-data);
     text-decoration: none;
   }
 

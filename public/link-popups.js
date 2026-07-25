@@ -7,11 +7,11 @@
   var CSS =
     '.lp{position:absolute;z-index:9999;max-width:300px;width:max-content;border:2px solid var(--ink,#0a0a0a);' +
     'background:var(--paper,#f4f4f2);color:var(--ink,#0a0a0a);' +
-    'padding:.65rem .8rem;font-family:var(--font-mono,ui-monospace,monospace);opacity:0;' +
+    'padding:.65rem .8rem;font-family:var(--font-text,sans-serif);opacity:0;' +
     'pointer-events:none}' +
     '.lp.show{opacity:1;pointer-events:auto}' +
     '.lp .lp-t{font-weight:700;font-size:13px;line-height:1.3;margin:0 0 .25rem}' +
-    '.lp .lp-d{font-family:var(--font-mono,ui-monospace,monospace);font-size:11px;line-height:1.45;color:var(--dim,#5c5c5c)}';
+    '.lp .lp-d{font-family:var(--font-text,sans-serif);font-size:11px;line-height:1.45;color:var(--dim,#5c5c5c)}';
   var st = document.createElement('style');
   st.textContent = CSS;
   document.head.appendChild(st);

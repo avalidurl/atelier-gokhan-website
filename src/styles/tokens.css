@@ -1,5 +1,6 @@
-/* House tokens — filed-document monochrome. Exactly four colors per theme.
-   Hierarchy is carried by border weight, casing, spacing, and size — never hue. */
+/* House tokens — filed-document monochrome. Exactly four colors per theme, two
+   type faces across five roles. Hierarchy is carried by face, border weight,
+   casing, spacing, and size — never hue. */
 :root {
   --ink: #0a0a0a;
   --paper: #f4f4f2;
@@ -16,9 +17,36 @@
   --accent-rose: var(--dim);
   --accent-green: var(--dim);
 
-  /* One family for everything. No webfont loading. */
-  --font-mono: 'SF Mono', 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
-  --font-sans: var(--font-mono);
+  /* Two faces, five roles. A face is chosen by what a string IS, never by where
+     it sits:
+       R1 display    — wordmark, page title, .mark, hero          → TEXT 700
+       R2 prose      — body, essays, notes, popovers, captions    → TEXT 400
+       R3 quantities — counts, prices, balances, stat cells       → TEXT + tnum
+       R4 identifiers & controls — §01, doc strip, REV, stamps,
+          colophon, ticker, pills, nav and button labels          → DATA 500-700
+       R5 machine strings — code, addresses, hashes, domains, CLI → DATA 400
+     A number that is a QUANTITY is the text face + tabular-nums. A number that
+     is an IDENTIFIER (§, doc no, rev, address) is the data face and takes no
+     tabular-nums — a monospaced face is already tabular, so the declaration is
+     noise. Monospacing a quantity is the amateur solution to a problem
+     OpenType already solved, and it is the tell.
+
+     System stacks only, deliberately. Self-hosted Public Sans / Commit Mono is
+     Phase 3; naming a family we do not ship would resolve to a locally
+     installed copy on some machines and to the fallback on others, so the page
+     would render differently per visitor with nothing in the repo to say why. */
+  --font-text:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-data: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Legacy aliases — ONE release, then delete. Every call site in src/ and
+     public/ has been reassigned to --font-text/--font-data explicitly; these
+     survive only so an unnoticed reference (or a draft in src/content) resolves
+     to a sane face instead of the browser default. The old names are exactly
+     what got aliased to each other, which is why the new ones are not reusing
+     them. */
+  --font-mono: var(--font-data);
+  --font-sans: var(--font-text);
 
   --border-hard: 2px solid var(--ink);
   --border-hairline: 1px solid var(--ink);

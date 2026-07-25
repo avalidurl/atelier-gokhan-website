@@ -33,6 +33,8 @@ import { site } from '../data/site';
     border-bottom: 1px solid var(--ink);
   }
   .wordmark {
+    /* R1 — wordmark. Overrides the R4 face .tile sets for button labels. */
+    font-family: var(--font-text);
     color: var(--ink);
     font-size: 15px;
     letter-spacing: 0.02em;
@@ -51,6 +53,8 @@ import { site } from '../data/site';
   }
 
   .main-nav {
+    /* R4 — nav labels. */
+    font-family: var(--font-data);
     margin-left: auto;
     display: flex;
     align-items: center;
