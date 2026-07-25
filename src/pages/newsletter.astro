@@ -3,7 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 
 const title = `Newsletter — ${site.name}`;
-const description = 'Subscribe to the Numetal / Ishtar / CURB / studio estate newsletter. One list, signal only.';
+const description =
+  'Subscribe to the Numetal / Ishtar / CURB / studio estate newsletter. One list, signal only.';
 const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
 ---
 
@@ -17,7 +18,9 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
       </div>
       <div class="mast-title">
         <h1 class="nl-title">Newsletter</h1>
-        <p class="nl-sub">One estate list across Numetal / Ishtar / CURB / the studio. Signal only. Double opt-in.</p>
+        <p class="nl-sub">
+          One estate list across Numetal / Ishtar / CURB / the studio. Signal only. Double opt-in.
+        </p>
         <p class="nl-stamp-row"><span class="stamp">Estate list — open</span></p>
       </div>
       <div class="mast-row mast-row--foot" aria-hidden="true">
@@ -38,12 +41,15 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
         autocomplete="email"
         class="nl-input"
       />
-      <button type="submit" class="nl-btn" title="Subscribe via api.gokhan.vc (site=atelier)">Subscribe</button>
+      <button type="submit" class="nl-btn" title="Subscribe via api.gokhan.vc (site=atelier)"
+        >Subscribe</button
+      >
     </form>
 
     <p class="nl-more">
-      Latest: <a href="/blog/x402-economy-july-2026">The x402 economy — July 2026</a> · <a href="/blog">All posts</a>.
-      Public contact: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
+      Latest: <a href="/blog/x402-economy-july-2026">The x402 economy — July 2026</a> · <a
+        href="/blog">All posts</a
+      >. Public contact: <a href={`mailto:${site.contactEmail}`}>{site.contactEmail}</a>.
     </p>
   </section>
 </BaseLayout>

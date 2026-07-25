@@ -31,7 +31,7 @@ The hub is matching + payment coordination. It is not a hosted LLM. If you alrea
 
 ## Lean stack
 
-Cloudflare Worker + KV for the rail. Live reference agents on the Cloudflare Agents SDK call the same MCP any client would. Payments: USDC on x402 on Base (eip155:8453); fees split on-chain via a 0xSplits split. Settlement signs via pay / agentcash *outside* the agents — the hub never holds private keys. Surface: OpenAPI, skill.md, MCP, and Vocs docs. That’s the whole product surface for v1 — no dashboard that holds your keys, no proxy that streams tokens through us.
+Cloudflare Worker + KV for the rail. Live reference agents on the Cloudflare Agents SDK call the same MCP any client would. Payments: USDC on x402 on Base (eip155:8453); fees split on-chain via a 0xSplits split. Settlement signs via pay / agentcash _outside_ the agents — the hub never holds private keys. Surface: OpenAPI, skill.md, MCP, and Vocs docs. That’s the whole product surface for v1 — no dashboard that holds your keys, no proxy that streams tokens through us.
 
 Protocol fee is a cut on each cleared match (bps + floor). Details live on the [fees page](https://curb.numetal.xyz/fees). Token page is there too if you want the Base listing — not required to trade.
 

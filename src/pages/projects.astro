@@ -13,8 +13,8 @@ const description =
       <p class="doc-line">Gökhan Ventures · project register</p>
       <h1 class="proj-title">Projects</h1>
       <p class="proj-lead">
-        Every venture and build in the studio, with what each one actually does. Filter by
-        category or status; each card links out to the live project.
+        Every venture and build in the studio, with what each one actually does. Filter by category
+        or status; each card links out to the live project.
       </p>
     </header>
 
@@ -22,19 +22,31 @@ const description =
       <div class="filter-group">
         <span class="filter-label">Category</span>
         <div class="chips" data-filter="category">
-          <button type="button" class="chip is-active" data-value="all" aria-pressed="true">All</button>
-          {projectCategories.map((c) => (
-            <button type="button" class="chip" data-value={c} aria-pressed="false">{c}</button>
-          ))}
+          <button type="button" class="chip is-active" data-value="all" aria-pressed="true"
+            >All</button
+          >
+          {
+            projectCategories.map((c) => (
+              <button type="button" class="chip" data-value={c} aria-pressed="false">
+                {c}
+              </button>
+            ))
+          }
         </div>
       </div>
       <div class="filter-group">
         <span class="filter-label">Status</span>
         <div class="chips" data-filter="status">
-          <button type="button" class="chip is-active" data-value="all" aria-pressed="true">All</button>
-          {projectStatuses.map((s) => (
-            <button type="button" class="chip" data-value={s} aria-pressed="false">{s}</button>
-          ))}
+          <button type="button" class="chip is-active" data-value="all" aria-pressed="true"
+            >All</button
+          >
+          {
+            projectStatuses.map((s) => (
+              <button type="button" class="chip" data-value={s} aria-pressed="false">
+                {s}
+              </button>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -44,28 +56,32 @@ const description =
     </p>
 
     <div class="preg">
-      {studioProjects.map((p, i) => (
-        <a
-          class="pcell proj-row"
-          href={p.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-category={p.category}
-          data-status={p.status}
-        >
-          <div class="pcell-meta">
-            <span class="pcell-no">{String(i + 1).padStart(2, '0')}</span>
-            <span class="pcell-domain">{p.domain}</span>
-            <span class="pcell-arrow" aria-hidden="true">↗</span>
-          </div>
-          <div class="pcell-name">{p.name}</div>
-          <div class="pcell-tags">
-            <span class="tag">{p.category}</span>
-            <span class="tag">{p.status}</span>
-          </div>
-          <p class="pcell-blurb">{p.blurb}</p>
-        </a>
-      ))}
+      {
+        studioProjects.map((p, i) => (
+          <a
+            class="pcell proj-row"
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-category={p.category}
+            data-status={p.status}
+          >
+            <div class="pcell-meta">
+              <span class="pcell-no">{String(i + 1).padStart(2, '0')}</span>
+              <span class="pcell-domain">{p.domain}</span>
+              <span class="pcell-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </div>
+            <div class="pcell-name">{p.name}</div>
+            <div class="pcell-tags">
+              <span class="tag">{p.category}</span>
+              <span class="tag">{p.status}</span>
+            </div>
+            <p class="pcell-blurb">{p.blurb}</p>
+          </a>
+        ))
+      }
     </div>
 
     <p class="proj-empty" id="proj-empty" hidden>No projects match those filters.</p>

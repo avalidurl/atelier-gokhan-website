@@ -55,7 +55,8 @@ export const properties: readonly LinkProperty[] = [
         note: 'api.ishtar.numetal.xyz',
         href: 'https://api.ishtar.numetal.xyz',
         external: true,
-        tooltip: 'Ishtar HTTP API — agents court, submit dating docs, and settle over x402 (Base + Solana) or MPP (Tempo).',
+        tooltip:
+          'Ishtar HTTP API — agents court, submit dating docs, and settle over x402 (Base + Solana) or MPP (Tempo).',
       },
       {
         platform: 'OpenAPI',
@@ -285,7 +286,8 @@ export const properties: readonly LinkProperty[] = [
       note: 'offer → match → pay → grant',
       href: 'https://curb.numetal.xyz/docs/',
       external: true,
-      tooltip: "CURB docs — buyer pays once, gets a grant, calls the seller's own endpoint; upstream keys never touch the hub.",
+      tooltip:
+        "CURB docs — buyer pays once, gets a grant, calls the seller's own endpoint; upstream keys never touch the hub.",
     },
     socials: [
       {
@@ -325,7 +327,8 @@ export const properties: readonly LinkProperty[] = [
         note: 'api.gokhan.vc',
         href: 'https://api.gokhan.vc',
         external: true,
-        tooltip: 'Estate API gateway — feeds, blog reader, llms aggregate, and paid agent email ($1 USDC via x402 Base or MPP Tempo).',
+        tooltip:
+          'Estate API gateway — feeds, blog reader, llms aggregate, and paid agent email ($1 USDC via x402 Base or MPP Tempo).',
       },
       {
         platform: 'GitHub',
@@ -477,7 +480,8 @@ export const properties: readonly LinkProperty[] = [
         note: 'claudelines.com',
         href: 'https://claudelines.com/statuslines/tickerline',
         external: true,
-        tooltip: 'Claude Code statusline — a rolling ticker tape of stocks, crypto, and Polymarket, resolved live from the conversation.',
+        tooltip:
+          'Claude Code statusline — a rolling ticker tape of stocks, crypto, and Polymarket, resolved live from the conversation.',
       },
       {
         platform: 'GitHub',
@@ -491,7 +495,8 @@ export const properties: readonly LinkProperty[] = [
         note: 'sp100-financial-tracker.pages.dev',
         href: 'https://sp100-financial-tracker.pages.dev',
         external: true,
-        tooltip: 'Real-time dashboard tracking CapEx and financials for S&P 100 companies via SEC EDGAR.',
+        tooltip:
+          'Real-time dashboard tracking CapEx and financials for S&P 100 companies via SEC EDGAR.',
       },
       {
         platform: 'GitHub',
@@ -505,7 +510,8 @@ export const properties: readonly LinkProperty[] = [
         note: 'market-cap-tracker.vercel.app',
         href: 'https://market-cap-tracker.vercel.app',
         external: true,
-        tooltip: "Real-time comparison of NVIDIA's market cap versus the total cryptocurrency market cap.",
+        tooltip:
+          "Real-time comparison of NVIDIA's market cap versus the total cryptocurrency market cap.",
       },
       {
         platform: 'GitHub',

@@ -13,7 +13,8 @@
     function apply() {
       var shown = 0;
       rows.forEach(function (row) {
-        var okCat = state.category === 'all' || row.getAttribute('data-category') === state.category;
+        var okCat =
+          state.category === 'all' || row.getAttribute('data-category') === state.category;
         var okStatus = state.status === 'all' || row.getAttribute('data-status') === state.status;
         var show = okCat && okStatus;
         if (show) {

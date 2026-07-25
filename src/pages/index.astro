@@ -10,11 +10,41 @@ const title = `${site.name} — venture studio`;
 // URLs verified live 2026-07-21.
 const projectIndex = [
   { no: '01', name: 'INDEX', note: 'every project, explained', href: '/projects', external: false },
-  { no: '02', name: 'CURB', note: 'agent↔agent inference clearing rail', href: 'https://curb.numetal.xyz', external: true },
-  { no: '03', name: 'ISHTAR', note: 'agents court, humans meet', href: 'https://ishtar.numetal.xyz', external: true },
-  { no: '04', name: 'CLINAMEN', note: 'pataphysical fiction, filed on-chain', href: 'https://ubu.numetal.xyz', external: true },
-  { no: '05', name: 'PLAINTEXT', note: 'onchain plaintext board', href: 'https://plaintext.numetal.xyz', external: true },
-  { no: '06', name: 'RECLAIM', note: 'get your art out of dead marketplaces', href: 'https://reclaim.numetal.xyz', external: true },
+  {
+    no: '02',
+    name: 'CURB',
+    note: 'agent↔agent inference clearing rail',
+    href: 'https://curb.numetal.xyz',
+    external: true,
+  },
+  {
+    no: '03',
+    name: 'ISHTAR',
+    note: 'agents court, humans meet',
+    href: 'https://ishtar.numetal.xyz',
+    external: true,
+  },
+  {
+    no: '04',
+    name: 'CLINAMEN',
+    note: 'pataphysical fiction, filed on-chain',
+    href: 'https://ubu.numetal.xyz',
+    external: true,
+  },
+  {
+    no: '05',
+    name: 'PLAINTEXT',
+    note: 'onchain plaintext board',
+    href: 'https://plaintext.numetal.xyz',
+    external: true,
+  },
+  {
+    no: '06',
+    name: 'RECLAIM',
+    note: 'get your art out of dead marketplaces',
+    href: 'https://reclaim.numetal.xyz',
+    external: true,
+  },
 ];
 ---
 
@@ -50,21 +80,27 @@ const projectIndex = [
 
   <section class="pindex-band" aria-label="Project index">
     <div class="pindex-wrap">
-      <p class="doc-heading"><span>Project index</span><span class="section-no" aria-hidden="true">§0</span></p>
+      <p class="doc-heading">
+        <span>Project index</span><span class="section-no" aria-hidden="true">§0</span>
+      </p>
       <nav class="pindex">
-        {projectIndex.map((it) => (
-          <a
-            class="pirow"
-            href={it.href}
-            target={it.external ? '_blank' : undefined}
-            rel={it.external ? 'noopener noreferrer' : undefined}
-          >
-            <span class="pi-no">{it.no}</span>
-            <span class="pi-name">{it.name}</span>
-            <span class="pi-note">{it.note}</span>
-            <span class="pi-arrow" aria-hidden="true">{it.external ? '↗' : '→'}</span>
-          </a>
-        ))}
+        {
+          projectIndex.map((it) => (
+            <a
+              class="pirow"
+              href={it.href}
+              target={it.external ? '_blank' : undefined}
+              rel={it.external ? 'noopener noreferrer' : undefined}
+            >
+              <span class="pi-no">{it.no}</span>
+              <span class="pi-name">{it.name}</span>
+              <span class="pi-note">{it.note}</span>
+              <span class="pi-arrow" aria-hidden="true">
+                {it.external ? '↗' : '→'}
+              </span>
+            </a>
+          ))
+        }
       </nav>
     </div>
   </section>

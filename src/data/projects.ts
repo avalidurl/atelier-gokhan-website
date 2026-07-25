@@ -81,7 +81,8 @@ export const studioProjects: StudioProject[] = [
     href: 'https://reclaim.numetal.xyz',
     category: 'Infrastructure',
     status: 'Live',
-    blurb: 'A tool to get your art out of dead marketplaces — recover works stranded on defunct platforms.',
+    blurb:
+      'A tool to get your art out of dead marketplaces — recover works stranded on defunct platforms.',
   },
   {
     name: 'CLINAMEN / $UBU',

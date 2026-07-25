@@ -143,5 +143,5 @@ from scratch in its own tokens and does not vendor their assets.
 ## License
 
 This project is licensed under the **MIT License** — remix freely with attribution. See [LICENSE](./LICENSE).
-owner** unless and until a license is added. If you want to reuse anything here, contact
+owner\*\* unless and until a license is added. If you want to reuse anything here, contact
 [contact@gokhan.vc](mailto:contact@gokhan.vc).

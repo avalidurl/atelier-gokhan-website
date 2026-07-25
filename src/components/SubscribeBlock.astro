@@ -12,11 +12,7 @@ interface Props {
   maxWidth?: string;
 }
 
-const {
-  site = 'atelier',
-  localFeed = '/feed.xml',
-  maxWidth = '760px',
-} = Astro.props;
+const { site = 'atelier', localFeed = '/feed.xml', maxWidth = '760px' } = Astro.props;
 
 const unifiedFeed = 'https://api.gokhan.vc/feed.xml';
 const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
@@ -27,8 +23,8 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
   <div class="foot-sub" aria-labelledby="foot-sub-heading" data-xmtp-root>
     <form class="foot-sub-form" method="POST" action={subscribeAction}>
       <p class="foot-sub-copy" id="foot-sub-heading">
-        Dispatches from the studio — occasional, low-frequency notes on what we ship. Optional wallet
-        delivery over XMTP. <strong>No spam.</strong>
+        Dispatches from the studio — occasional, low-frequency notes on what we ship. Optional
+        wallet delivery over XMTP. <strong>No spam.</strong>
       </p>
       <div class="foot-sub-row">
         <input
@@ -56,8 +52,8 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
     </form>
     <p class="foot-sub-status" data-xmtp-status role="status" aria-live="polite"></p>
     <p class="foot-sub-rss">
-      <strong>Two RSS feeds</strong> — <a href={localFeed}>this&nbsp;site</a> · <a href={unifiedFeed}
-        >everything</a
+      <strong>Two RSS feeds</strong> — <a href={localFeed}>this&nbsp;site</a> · <a
+        href={unifiedFeed}>everything</a
       > (all studio sites).
     </p>
   </div>

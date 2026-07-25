@@ -88,18 +88,20 @@
   }
 
   function bind() {
-    document.querySelectorAll('.kanban-board .leaf-link[data-tip], .name-gloss[data-tip]').forEach(function (a) {
-      if (a.getAttribute('data-lp') === '1') return;
-      a.setAttribute('data-lp', '1');
-      a.addEventListener('mouseenter', function () {
-        showSoon(a);
+    document
+      .querySelectorAll('.kanban-board .leaf-link[data-tip], .name-gloss[data-tip]')
+      .forEach(function (a) {
+        if (a.getAttribute('data-lp') === '1') return;
+        a.setAttribute('data-lp', '1');
+        a.addEventListener('mouseenter', function () {
+          showSoon(a);
+        });
+        a.addEventListener('mouseleave', hideSoon);
+        a.addEventListener('focus', function () {
+          showSoon(a);
+        });
+        a.addEventListener('blur', hideSoon);
       });
-      a.addEventListener('mouseleave', hideSoon);
-      a.addEventListener('focus', function () {
-        showSoon(a);
-      });
-      a.addEventListener('blur', hideSoon);
-    });
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bind);

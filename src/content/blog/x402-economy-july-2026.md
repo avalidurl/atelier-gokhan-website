@@ -27,7 +27,7 @@ This report is written to be consumed by LLMs and autonomous agents as much as b
 ## 1. Executive summary
 
 1. **The denominator of this economy spans three orders of magnitude depending on who counts.** Cumulative x402 settlement reads **$135.7M raw** across 178.3M transactions,[^3] **$15.0M wash-adjusted** across 109.6M transactions per the Visa × Artemis methodology (a ~89% exclusion),[^3] and between **$0.19M and $20.3M of genuinely independent flow** per the first population-scale academic forensic study.[^5] On the cumulative clock, the indexer's own All-Time view reads **195M tx / $52.31M**.[^1] The 30-day flows disagree the same way: 75.41M tx / $24.24M on x402.org's self-published panel — which turns out to be a hand-edited static snapshot, not a live counter[^2] — vs 17.28M tx / $825.26K live on the indexer.[^1] Finding #1 is unchanged and now carries a card network's signature: nobody, including the ecosystem's participants, agrees on how big this economy is — and most of the raw number is manufactured.
-2. **One vendor is one-fifth of the economy.** BlockRun (AI model routing with built-in payment) earned **$177.26K in 30 days = 20.9% of all measured volume — and 14.48M of the 17.67M transactions, i.e. 82% of ALL measured x402 transactions, from ~1.13K buyers** — 9.5× vendor #2.[^1] The buyer side is just as concentrated ecosystem-wide: the top 1% of adjusted buyers (~4K wallets) account for ~90% of adjusted volume.[^3] The first proven killer app of machine-native payments is *machines paying for intelligence itself*.
+2. **One vendor is one-fifth of the economy.** BlockRun (AI model routing with built-in payment) earned **$177.26K in 30 days = 20.9% of all measured volume — and 14.48M of the 17.67M transactions, i.e. 82% of ALL measured x402 transactions, from ~1.13K buyers** — 9.5× vendor #2.[^1] The buyer side is just as concentrated ecosystem-wide: the top 1% of adjusted buyers (~4K wallets) account for ~90% of adjusted volume.[^3] The first proven killer app of machine-native payments is _machines paying for intelligence itself_.
 3. **Counts fall, value holds — a quality-improving contraction, now triple-confirmed.** Our forecast layer read realized 14-day transfers at **0.61× forecast (Base) and 0.62× (Solana)** while USD volume ran **1.12× and 1.06×**.[^10] Artemis's live terminal independently shows 30-day transactions **down 96.5%** and volume down 89% from peak while the average ticket sits at $0.30.[^4] Chainalysis's value-band series agrees from a third direction: $1+ payments went from 49% to 95% of volume in a year.[^6] Sub-cent ping/wash traffic is dying; paid usage is not.
 4. **Facilitator churn breaks static measurement within weeks.** Community facilitator catalogs (basis of every public Dune dashboard, ours included) now capture **10.5%** of LENS.SCAN volume;[^7] FluxA, Meridian, Primer, Mogami and rotated Coinbase addresses carry the unindexed rest.[^1] The freshest public facilitator-address registry is community-maintained on Dune, 96 rows across 8+ chains.[^15]
 5. **Developer funnel: stable core, contracting edges.** `x402` npm holds ~1.21M downloads/month (+6% WoW); client helpers contract sharply (`x402-fetch` −42%, `@coinbase/x402` −39% WoW)[^9] — integration is consolidating into hosted gateways.
@@ -48,26 +48,26 @@ Every series in this report now sits on one of exactly two windows: **Clock A, s
 
 **Clock A — cumulative, since day one:**
 
-| Series | Genesis → as-of | Transactions | USD volume | Method |
-|---|---|---|---|---|
-| x402scan indexer, All Time[^1] | ~May 2025 → live 2026-07-18 | **195M** | $52.31M | indexed facilitators only; 843.33K buyers / 226K sellers |
-| Artemis raw[^3] | May 2025 → 2026-04-21 | 178.3M | **$135.7M** | all facilitator-adjacent on-chain activity |
-| Dune community cumulative[^17] | genesis → ~2026-06-21 | 153.3M | $40.87M | facilitator-attributed transfers, ecosystem-wide |
-| Dune 96-address registry, by chain[^15] | genesis → ~2026-07-14 | ≈144.0M | — | Base 72.43M · Solana 47.87M · Polygon 22.69M |
-| arXiv forensic[^5] | 280 days → ~Mar 2026 | 136.7M | $44.1M raw | independent flow bounded **$0.19M–$20.3M** |
-| Our on-chain slice[^7] | Aug 2025 → 2026-07-16 | 119.7M | $39.66M | stale catalog — recent months undercounted |
-| Visa × Artemis adjusted[^3] | May 2025 → 2026-04-21 | 109.6M | **$15.0M** | wash/test excluded (~89% of raw volume) |
-| DefiLlama adapter[^14] | genesis → live 2026-07-18 | — | $31.46M | volume-only; Base $22.21M / Solana $9.03M |
+| Series                                  | Genesis → as-of             | Transactions | USD volume  | Method                                                   |
+| --------------------------------------- | --------------------------- | ------------ | ----------- | -------------------------------------------------------- |
+| x402scan indexer, All Time[^1]          | ~May 2025 → live 2026-07-18 | **195M**     | $52.31M     | indexed facilitators only; 843.33K buyers / 226K sellers |
+| Artemis raw[^3]                         | May 2025 → 2026-04-21       | 178.3M       | **$135.7M** | all facilitator-adjacent on-chain activity               |
+| Dune community cumulative[^17]          | genesis → ~2026-06-21       | 153.3M       | $40.87M     | facilitator-attributed transfers, ecosystem-wide         |
+| Dune 96-address registry, by chain[^15] | genesis → ~2026-07-14       | ≈144.0M      | —           | Base 72.43M · Solana 47.87M · Polygon 22.69M             |
+| arXiv forensic[^5]                      | 280 days → ~Mar 2026        | 136.7M       | $44.1M raw  | independent flow bounded **$0.19M–$20.3M**               |
+| Our on-chain slice[^7]                  | Aug 2025 → 2026-07-16       | 119.7M       | $39.66M     | stale catalog — recent months undercounted               |
+| Visa × Artemis adjusted[^3]             | May 2025 → 2026-04-21       | 109.6M       | **$15.0M**  | wash/test excluded (~89% of raw volume)                  |
+| DefiLlama adapter[^14]                  | genesis → live 2026-07-18   | —            | $31.46M     | volume-only; Base $22.21M / Solana $9.03M                |
 
-Cumulative transaction counts span **110M to 195M** and cumulative volume **$15M to $135.7M** depending on who counts and how — with the academically defensible independent-flow floor at $0.19M.[^5] **The spread itself is the finding**: raw settlement counts measure *manufacturability*, not adoption — the arXiv authors' phrase,[^5] Visa's 89% exclusion,[^3] and x402gle's ~93% wash share[^11] all say the same thing from independent methods.
+Cumulative transaction counts span **110M to 195M** and cumulative volume **$15M to $135.7M** depending on who counts and how — with the academically defensible independent-flow floor at $0.19M.[^5] **The spread itself is the finding**: raw settlement counts measure _manufacturability_, not adoption — the arXiv authors' phrase,[^5] Visa's 89% exclusion,[^3] and x402gle's ~93% wash share[^11] all say the same thing from independent methods.
 
 **Clock B — trailing 30-day flow:**
 
-| Series | As-of | Transactions | USD volume | Buyers / sellers |
-|---|---|---|---|---|
-| x402scan indexer[^1] | live 2026-07-18 | 17.28M | $825.26K | 47.17K / 62K |
-| x402.org self-published[^2] | static page, authored ~2026-06-24 | 75.41M | $24.24M | 94.06K / 22K |
-| Our on-chain slice[^7] | 30d ending 2026-07-16 | 496.8K | $89.2K | catalog-limited (~10.5% coverage) |
+| Series                      | As-of                             | Transactions | USD volume | Buyers / sellers                  |
+| --------------------------- | --------------------------------- | ------------ | ---------- | --------------------------------- |
+| x402scan indexer[^1]        | live 2026-07-18                   | 17.28M       | $825.26K   | 47.17K / 62K                      |
+| x402.org self-published[^2] | static page, authored ~2026-06-24 | 75.41M       | $24.24M    | 94.06K / 22K                      |
+| Our on-chain slice[^7]      | 30d ending 2026-07-16             | 496.8K       | $89.2K     | catalog-limited (~10.5% coverage) |
 
 **And because a 30-day window printed in text is stale the day it ships, Clock B is also a live instrument.** The panel below is regenerated by our pipeline every morning at 06:10 UTC from a fresh, cache-disabled read of the indexer plus our own on-chain slice — this image updates itself daily, in this post and in every syndicated mirror, with no republishing:[^10]
 
@@ -83,13 +83,13 @@ Historical arc: peak day **2025-11-15 at 3,785,401 transfers** in our catalog sl
 
 **Payment-size structure** (TWZRD scrubbed Solana sample, cumulative, n=1,506,245 payments / $409,308):[^8]
 
-| Bucket | Count share | Value share |
-|---|---|---|
-| < $0.01 | 28.50% | 0.17% |
-| $0.01–0.10 | 50.02% | 6.86% |
-| $0.10–1 | 13.52% | 20.52% |
-| $1–10 | 7.85% | **53.61%** |
-| $10+ | 0.11% | 18.84% |
+| Bucket     | Count share | Value share |
+| ---------- | ----------- | ----------- |
+| < $0.01    | 28.50%      | 0.17%       |
+| $0.01–0.10 | 50.02%      | 6.86%       |
+| $0.10–1    | 13.52%      | 20.52%      |
+| $1–10      | 7.85%       | **53.61%**  |
+| $10+       | 0.11%       | 18.84%      |
 
 **78.5% of payments sit below $0.10 and carry 7.0% of value; the $1–10 bucket is the economic center of gravity.**[^8] Independently, Chainalysis reports the $1+ volume share rose 49% → 95% from early 2025 to early 2026, and the 10¢–$1 band collapsed 46% → 4%.[^6] All lenses converge here: micro-pings are noise; small-but-real payments are the economy.
 
@@ -99,12 +99,12 @@ Historical arc: peak day **2025-11-15 at 3,785,401 transfers** in our catalog sl
 
 The lenses invert each other; both inversions are informative.
 
-| | Base | Solana |
-|---|---|---|
-| Indexer, past 24h, live[^1] tx | 206,609 (97.6% of tx) | 5,043 (2.4%) |
-| Indexer, past 24h, live[^1] volume | $19.26K (97.1% of vol) | $572 (2.9%) |
-| On-chain, 30d ending 2026-07-16[^7] tx | 62,905 | **433,872** (+381% MoM) |
-| On-chain, 30d ending 2026-07-16[^7] volume | $10.89K | **$78.28K** (+55% MoM) |
+|                                            | Base                   | Solana                  |
+| ------------------------------------------ | ---------------------- | ----------------------- |
+| Indexer, past 24h, live[^1] tx             | 206,609 (97.6% of tx)  | 5,043 (2.4%)            |
+| Indexer, past 24h, live[^1] volume         | $19.26K (97.1% of vol) | $572 (2.9%)             |
+| On-chain, 30d ending 2026-07-16[^7] tx     | 62,905                 | **433,872** (+381% MoM) |
+| On-chain, 30d ending 2026-07-16[^7] volume | $10.89K                | **$78.28K** (+55% MoM)  |
 
 (The site labels the facilitators/networks window "Past 24 Hours", and it swings violently: a ~2026-07-15 sample of the same page showed Base 224,221 tx / $33.14K vs Solana 35,840 / $2.99K — Solana's daily scan-lens share collapsed from 13.8% to 2.4% of transactions in two days.[^1] Single-day tables from this page are weather, not climate — one day after our live capture, the same page read Base 76.7% / Solana 23.3%.[^1])
 
@@ -114,16 +114,16 @@ The adjusted lens breaks the tie: Base carries **~90% of adjusted transactions a
 
 Site-labeled "Past 24 Hours" window, live 2026-07-17 14:42 UTC, dual-lens verified; window totals 211,652 tx / $19.83K:[^1]
 
-| Facilitator | Tx (24h) | Volume | Sellers / buyers |
-|---|---|---|---|
-| Coinbase (CDP) | 196,720 | $12.67K | 3,823 / 1,919 |
-| FluxA | 13,020 | $3.02K | 485 / 844 |
-| PayAI | 3,616 | $515.85 | 65 / 115 |
-| Primer | 202 | $52.74 | 10 / 35 |
-| **Meridian** | **191** | **$3.56K** | 6 / 6 |
-| Polymer | 187 | $18.70 | 1 / 1 |
-| AnySpend | 139 | $233.00 | 1 / 75 |
-| Mogami | 105 | $0.52 | 2 / 3 |
+| Facilitator    | Tx (24h) | Volume     | Sellers / buyers |
+| -------------- | -------- | ---------- | ---------------- |
+| Coinbase (CDP) | 196,720  | $12.67K    | 3,823 / 1,919    |
+| FluxA          | 13,020   | $3.02K     | 485 / 844        |
+| PayAI          | 3,616    | $515.85    | 65 / 115         |
+| Primer         | 202      | $52.74     | 10 / 35          |
+| **Meridian**   | **191**  | **$3.56K** | 6 / 6            |
+| Polymer        | 187      | $18.70     | 1 / 1            |
+| AnySpend       | 139      | $233.00    | 1 / 75           |
+| Mogami         | 105      | $0.52      | 2 / 3            |
 
 (The ~2026-07-15 sample additionally showed Dexter at 25,131 tx / $1.04K on Solana, Heurist 917, Cascade 355 — all three absent from the live 2026-07-17 window.[^1] A facilitator roster that churns within days is itself the finding.)
 
@@ -140,18 +140,18 @@ Findings:
 
 30-day revenue, live 2026-07-17, dual-lens verified:[^1]
 
-| Vendor | 30d revenue | Sells |
-|---|---|---|
-| **BlockRun** | **$177.26K** | AI model routing, payment built in — **14.48M transactions in 30 days (82% of the entire measured economy's count) from ~1.13K buyers**; publishes its own public stats endpoint[^24] |
-| dTelecom | $18.75K | WebRTC / STT / TTS for agents (DePIN) — 8.91K tx / 24 buyers |
-| StableEnrich | $1.77K | Enrichment meta-API (FullEnrich, Exa, Firecrawl, Serper, …) — 47.08K tx / 554 buyers |
-| sol.blockrun.ai | $1.27K | BlockRun's Solana surface |
-| twit.sh | $621 | Real-time X/Twitter data for agents — 101.61K tx / 120 buyers |
-| agentutility | $589 | 762-endpoint pay-per-call catalog — 25.89K tx / 229 buyers |
-| JarvisClaw | $560 | OpenAI-compatible AI gateway |
-| Nansen AI | $131 | On-chain trading intelligence |
-| Otto AI | $105 | 74 market-intel / DeFi / creative services — 65.28K tx / 559 buyers |
-| OneSource | $73 | Ethereum RPC for agents |
+| Vendor          | 30d revenue  | Sells                                                                                                                                                                                 |
+| --------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **BlockRun**    | **$177.26K** | AI model routing, payment built in — **14.48M transactions in 30 days (82% of the entire measured economy's count) from ~1.13K buyers**; publishes its own public stats endpoint[^24] |
+| dTelecom        | $18.75K      | WebRTC / STT / TTS for agents (DePIN) — 8.91K tx / 24 buyers                                                                                                                          |
+| StableEnrich    | $1.77K       | Enrichment meta-API (FullEnrich, Exa, Firecrawl, Serper, …) — 47.08K tx / 554 buyers                                                                                                  |
+| sol.blockrun.ai | $1.27K       | BlockRun's Solana surface                                                                                                                                                             |
+| twit.sh         | $621         | Real-time X/Twitter data for agents — 101.61K tx / 120 buyers                                                                                                                         |
+| agentutility    | $589         | 762-endpoint pay-per-call catalog — 25.89K tx / 229 buyers                                                                                                                            |
+| JarvisClaw      | $560         | OpenAI-compatible AI gateway                                                                                                                                                          |
+| Nansen AI       | $131         | On-chain trading intelligence                                                                                                                                                         |
+| Otto AI         | $105         | 74 market-intel / DeFi / creative services — 65.28K tx / 559 buyers                                                                                                                   |
+| OneSource       | $73          | Ethereum RPC for agents                                                                                                                                                               |
 
 ![FIG. 03 — top sellers by 30-day revenue](/x402-report/fig-03-vendor-revenue.svg)
 
@@ -165,15 +165,15 @@ Structure:
 
 Classification of the top-20 marketplace servers + the ecosystem registry:[^1][^12]
 
-| Sector | Representative vendors | Revenue evidence |
-|---|---|---|
-| AI inference & routing | BlockRun, JarvisClaw, claw402, 2s, Daydreams Router | **Dominant: ~$179K/30d** |
-| Speech / media generation | dTelecom, StableStudio | #2: $18.75K+ |
-| Trading & on-chain intel | Otto, Nansen, SniperX, Deepnets, Questflow, SolEnrich | Most crowded by vendor count; small revenue each |
-| Data enrichment & search | StableEnrich, Exa, Firecrawl endpoints | Mid-tail: ~$1.8K |
-| Social data | twit.sh, StableSocial | Small, real: $600+ |
-| Chain data / RPC | OneSource, x402node, Net, BaseHub | Utility tickets |
-| Payments / agent infra | Syra, Polymer Prove, MCPay, Latinum, Loyal Spark | Monetizes indirectly |
+| Sector                    | Representative vendors                                | Revenue evidence                                 |
+| ------------------------- | ----------------------------------------------------- | ------------------------------------------------ |
+| AI inference & routing    | BlockRun, JarvisClaw, claw402, 2s, Daydreams Router   | **Dominant: ~$179K/30d**                         |
+| Speech / media generation | dTelecom, StableStudio                                | #2: $18.75K+                                     |
+| Trading & on-chain intel  | Otto, Nansen, SniperX, Deepnets, Questflow, SolEnrich | Most crowded by vendor count; small revenue each |
+| Data enrichment & search  | StableEnrich, Exa, Firecrawl endpoints                | Mid-tail: ~$1.8K                                 |
+| Social data               | twit.sh, StableSocial                                 | Small, real: $600+                               |
+| Chain data / RPC          | OneSource, x402node, Net, BaseHub                     | Utility tickets                                  |
+| Payments / agent infra    | Syra, Polymer Prove, MCPay, Latinum, Loyal Spark      | Monetizes indirectly                             |
 
 Registry composition (42–44 projects rendered live 2026-07-17; a ~07-15 cached extraction showed 61 — the page lazy-loads and categories overlap, so treat composition as approximate): Infrastructure & Tooling 14, Services/Endpoints 16, Client-Side 7, Facilitators 5, Learning 4[^1] — **roughly a third of the registered ecosystem is picks-and-shovels** serving an end-demand that is one routing vendor deep.
 
@@ -183,13 +183,13 @@ Sectoral law observed so far: **agents pay first for compute (inference), then f
 
 Verified against the npm registry API, twice, figures exact:[^9]
 
-| Package | Last week | WoW | Month |
-|---|---|---|---|
-| `x402` (core) | 301,786 | **+6%** | 1,205,461 |
-| `@coinbase/x402` | 42,020 | **−39%** | 201,438 |
-| `x402-fetch` | 18,769 | **−42%** | 88,351 |
-| `x402-axios` | 7,298 | +14% | 27,820 |
-| `x402-express` | 3,068 | −3% | 14,168 |
+| Package          | Last week | WoW      | Month     |
+| ---------------- | --------- | -------- | --------- |
+| `x402` (core)    | 301,786   | **+6%**  | 1,205,461 |
+| `@coinbase/x402` | 42,020    | **−39%** | 201,438   |
+| `x402-fetch`     | 18,769    | **−42%** | 88,351    |
+| `x402-axios`     | 7,298     | +14%     | 27,820    |
+| `x402-express`   | 3,068     | −3%      | 14,168    |
 
 ![FIG. 06 — npm week-over-week](/x402-report/fig-06-npm-funnel.svg)
 
@@ -199,14 +199,14 @@ Reading: a stable ~1.2M/month core with sharply contracting client helpers, simu
 
 **Backtest** (rolling-origin CV, h=14; rMAE vs SeasonalNaive, <1 beats baseline):[^10]
 
-| Series | Winner | rMAE |
-|---|---|---|
-| base_transfers | Theta | 0.46 |
-| base_transfers_scrubbed | Theta | 0.44 |
-| base_volume_usd | **SeasonalNaive** | 1.00 |
-| solana_transfers | Theta | 0.56 |
-| solana_transfers_scrubbed | Theta | 0.56 |
-| solana_volume_usd | Theta | 0.67 |
+| Series                    | Winner            | rMAE |
+| ------------------------- | ----------------- | ---- |
+| base_transfers            | Theta             | 0.46 |
+| base_transfers_scrubbed   | Theta             | 0.44 |
+| base_volume_usd           | **SeasonalNaive** | 1.00 |
+| solana_transfers          | Theta             | 0.56 |
+| solana_transfers_scrubbed | Theta             | 0.56 |
+| solana_volume_usd         | Theta             | 0.67 |
 
 Classical baselines halve naive error on counts; **Base dollar volume remains unforecastable beyond naive** (single-seller spike-driven). This table is the admission bar for any foundation model (Chronos-2, Moirai-2 — queued) in the same harness.
 
@@ -214,12 +214,12 @@ Classical baselines halve naive error on counts; **Base dollar volume remains un
 
 **Surprise index** (realized Jul 3–16 ÷ forecast frozen Jul 2):[^10]
 
-| Series | Realized/forecast | z |
-|---|---|---|
-| Base transfers | **0.61×** | −0.0¹ |
-| Base volume | **1.12×** | +0.0¹ |
-| Solana transfers | **0.62×** | −1.0 (last day −1.86) |
-| Solana volume | **1.06×** | +0.05 |
+| Series           | Realized/forecast | z                     |
+| ---------------- | ----------------- | --------------------- |
+| Base transfers   | **0.61×**         | −0.0¹                 |
+| Base volume      | **1.12×**         | +0.0¹                 |
+| Solana transfers | **0.62×**         | −1.0 (last day −1.86) |
+| Solana volume    | **1.06×**         | +0.05                 |
 
 ¹ z ≈ 0 despite large ratio miss because 80% intervals on the Base series are extremely wide (fig. 01); the ratio is the informative statistic there.
 
@@ -233,10 +233,10 @@ Interpretation: **quantity undershoots, value overshoots** — wash evaporating 
 
 **Confirmation pattern for the thesis** — the pipeline watches these automatically:[^10]
 
-1. Count *and* value surprise positive together for ≥2 consecutive weekly vintages.
+1. Count _and_ value surprise positive together for ≥2 consecutive weekly vintages.
 2. BlockRun share < ~15% while total volume rises (demand broadening beyond inference).
 3. Ecosystem median ticket climbing through $1 while counts recover (Meridian-style flows becoming a sector).
-4. npm client-lib contraction reversing, or gateway *buyer* counts (not request counts) compounding.
+4. npm client-lib contraction reversing, or gateway _buyer_ counts (not request counts) compounding.
 5. Continued facilitator entry (FluxA/Dexter-class) without Coinbase-share collapse — rail competition without rail fragility.
 6. The **adjusted** series turning: Artemis's live 30-day transaction change recovering from −96.5% while the adjusted ticket holds above $0.30.[^4]
 
@@ -276,64 +276,214 @@ Authoritative over prose. Units: USD unless noted; windows as stated.
   "asof": "2026-07-18 (rev.4)",
   "verification": {
     "scan_method": "Firecrawl maxAge=0 + Browserbase real-browser CDP session (30dc699d), 2026-07-17 14:42 UTC; lens agreement: exact",
-    "primary_articles": {"coindesk_2026_07_15": "4/4 figures verified verbatim; numbers are x402.org self-reported homepage stats", "chainalysis_2026_06_03": "$1+ share 49%→95%, 10c-$1 46%→4%, 100M milestone verified verbatim", "visa_artemis_2026_07": "article + 28pp PDF fetched; raw $135.7M/178.3M vs adjusted $15.0M/109.6M confirmed", "arxiv_2607_12575": "submitted 2026-07-14; 136.7M settlements, 21.2% fictitious, 63.8% internal, independent bound $0.19M-$20.3M"},
+    "primary_articles": {
+      "coindesk_2026_07_15": "4/4 figures verified verbatim; numbers are x402.org self-reported homepage stats",
+      "chainalysis_2026_06_03": "$1+ share 49%→95%, 10c-$1 46%→4%, 100M milestone verified verbatim",
+      "visa_artemis_2026_07": "article + 28pp PDF fetched; raw $135.7M/178.3M vs adjusted $15.0M/109.6M confirmed",
+      "arxiv_2607_12575": "submitted 2026-07-14; 136.7M settlements, 21.2% fictitious, 63.8% internal, independent bound $0.19M-$20.3M"
+    },
     "npm": "15/15 figures exact",
-    "card_networks": {"visa": "no own dashboard; funds Artemis report + live terminal", "mastercard": "no data products at all; press/marketing only"}
+    "card_networks": {
+      "visa": "no own dashboard; funds Artemis report + live terminal",
+      "mastercard": "no data products at all; press/marketing only"
+    }
   },
   "lenses": {
-    "scan_30d": {"volume_usd": 847800, "tx": 17670000, "buyers": 48240, "sellers": 61000, "mean_ticket_usd": 0.048},
-    "ext_30d": {"source": "CoinDesk 2026-07-15, relaying x402.org self-reported homepage stats", "tx": 75000000, "volume_usd": 24000000, "buyers": 94000, "sellers": 22000},
-    "adj_cumulative": {"source": "Visa x Artemis, data as of 2026-04-21", "raw_tx": 178300000, "raw_volume_usd": 135700000, "adjusted_tx": 109600000, "adjusted_volume_usd": 15000000, "adjusted_buyers": 422000, "adjusted_sellers": 5300, "top1pct_buyers_volume_share": 0.90, "base_share_adjusted_tx": 0.90},
-    "adj_live": {"source": "Artemis Terminal 2026-07-17", "tx_24h": 35094, "volume_24h_usd": 8860, "avg_ticket_usd": 0.30, "tx_30d_change": -0.9652, "volume_30d_change": -0.8899},
-    "forensic_bound": {"source": "arXiv:2607.12575", "raw_settlements": 136700000, "raw_volume_usd": 44100000, "fictitious_share": 0.212, "internal_share": 0.638, "independent_value_usd": [187861, 20260000]},
+    "scan_30d": {
+      "volume_usd": 847800,
+      "tx": 17670000,
+      "buyers": 48240,
+      "sellers": 61000,
+      "mean_ticket_usd": 0.048
+    },
+    "ext_30d": {
+      "source": "CoinDesk 2026-07-15, relaying x402.org self-reported homepage stats",
+      "tx": 75000000,
+      "volume_usd": 24000000,
+      "buyers": 94000,
+      "sellers": 22000
+    },
+    "adj_cumulative": {
+      "source": "Visa x Artemis, data as of 2026-04-21",
+      "raw_tx": 178300000,
+      "raw_volume_usd": 135700000,
+      "adjusted_tx": 109600000,
+      "adjusted_volume_usd": 15000000,
+      "adjusted_buyers": 422000,
+      "adjusted_sellers": 5300,
+      "top1pct_buyers_volume_share": 0.9,
+      "base_share_adjusted_tx": 0.9
+    },
+    "adj_live": {
+      "source": "Artemis Terminal 2026-07-17",
+      "tx_24h": 35094,
+      "volume_24h_usd": 8860,
+      "avg_ticket_usd": 0.3,
+      "tx_30d_change": -0.9652,
+      "volume_30d_change": -0.8899
+    },
+    "forensic_bound": {
+      "source": "arXiv:2607.12575",
+      "raw_settlements": 136700000,
+      "raw_volume_usd": 44100000,
+      "fictitious_share": 0.212,
+      "internal_share": 0.638,
+      "independent_value_usd": [187861, 20260000]
+    },
     "onchain_30d": {
       "window_end": "2026-07-16",
-      "base": {"tx": 62905, "volume_usd": 10892, "tx_prev30": 324981, "volume_prev30": 50940},
-      "solana": {"tx": 433872, "volume_usd": 78279, "tx_prev30": 90140, "volume_prev30": 50465},
-      "coverage_vs_scan": 0.105, "base_peak_day": {"date": "2025-11-15", "tx": 3785401}
+      "base": { "tx": 62905, "volume_usd": 10892, "tx_prev30": 324981, "volume_prev30": 50940 },
+      "solana": { "tx": 433872, "volume_usd": 78279, "tx_prev30": 90140, "volume_prev30": 50465 },
+      "coverage_vs_scan": 0.105,
+      "base_peak_day": { "date": "2025-11-15", "tx": 3785401 }
     }
   },
   "size_buckets_solana_twzrd": {
-    "n_payments": 1506245, "volume_usd": 409308,
+    "n_payments": 1506245,
+    "volume_usd": 409308,
     "buckets": [
-      {"range": "<0.01", "count_share": 0.285, "value_share": 0.0017},
-      {"range": "0.01-0.10", "count_share": 0.5002, "value_share": 0.0686},
-      {"range": "0.10-1", "count_share": 0.1352, "value_share": 0.2052},
-      {"range": "1-10", "count_share": 0.0785, "value_share": 0.5361},
-      {"range": "10+", "count_share": 0.0011, "value_share": 0.1884}
+      { "range": "<0.01", "count_share": 0.285, "value_share": 0.0017 },
+      { "range": "0.01-0.10", "count_share": 0.5002, "value_share": 0.0686 },
+      { "range": "0.10-1", "count_share": 0.1352, "value_share": 0.2052 },
+      { "range": "1-10", "count_share": 0.0785, "value_share": 0.5361 },
+      { "range": "10+", "count_share": 0.0011, "value_share": 0.1884 }
     ]
   },
-  "facilitators_past_24h_live": {"window_total": {"tx": 211652, "volume_usd": 19830},
-    "rows": [["Coinbase", 196720, 12670], ["FluxA", 13020, 3020], ["PayAI", 3616, 515.85], ["Primer", 202, 52.74], ["Meridian", 191, 3560], ["Polymer", 187, 18.70], ["AnySpend", 139, 233], ["Mogami", 105, 0.52]],
-    "meridian_mean_ticket": 18.64, "meridian_vs_eco_mean": 390, "coinbase_tx_share": 0.929,
-    "sample_2026_07_15": {"window_total": {"tx": 260097, "volume_usd": 36020}, "coinbase_tx_share": 0.802, "departed_since": ["Dexter", "Heurist", "Cascade"]}},
-  "networks_past_24h_live": {"base_tx": 206609, "base_vol_usd": 19260, "solana_tx": 5043, "solana_vol_usd": 572, "base_tx_share": 0.976},
-  "vendors_30d": [["BlockRun", 177260], ["dTelecom", 18750], ["StableEnrich", 1770], ["sol.blockrun.ai", 1270], ["twit.sh", 621], ["agentutility", 589], ["JarvisClaw", 560], ["Nansen AI", 131], ["Otto AI", 105], ["OneSource", 73]],
-  "vendor_concentration": {"top1_volume_share": 0.209, "top1_tx_share": 0.82, "top1_tx": 14480000, "top1_buyers": 1130, "top1_vs_top2": 9.5, "adjusted_top1pct_buyers_volume_share": 0.90},
-  "registries": {"cdp_bazaar_resources": 25560, "payai_resources": 24094, "dead_services_share_21shares": 0.467},
-  "npm_wow": {"x402": 1.06, "x402-axios": 1.14, "x402-express": 0.97, "@coinbase/x402": 0.61, "x402-fetch": 0.58, "x402_month_total": 1205461},
-  "backtest_rmae_vs_snaive": {"base_transfers": 0.4573, "base_transfers_scrubbed": 0.4376, "base_volume_usd": 1.0, "solana_transfers": 0.5618, "solana_transfers_scrubbed": 0.5635, "solana_volume_usd": 0.6674},
-  "surprise_14d": {"base_transfers": 0.607, "base_volume": 1.118, "solana_transfers": 0.618, "solana_volume": 1.063, "solana_transfers_mean_z": -1.0},
-  "ecosystem_registry": {"rendered_live": "42-44", "cached_0715_extraction": 61, "note": "page lazy-loads; categories overlap"},
+  "facilitators_past_24h_live": {
+    "window_total": { "tx": 211652, "volume_usd": 19830 },
+    "rows": [
+      ["Coinbase", 196720, 12670],
+      ["FluxA", 13020, 3020],
+      ["PayAI", 3616, 515.85],
+      ["Primer", 202, 52.74],
+      ["Meridian", 191, 3560],
+      ["Polymer", 187, 18.7],
+      ["AnySpend", 139, 233],
+      ["Mogami", 105, 0.52]
+    ],
+    "meridian_mean_ticket": 18.64,
+    "meridian_vs_eco_mean": 390,
+    "coinbase_tx_share": 0.929,
+    "sample_2026_07_15": {
+      "window_total": { "tx": 260097, "volume_usd": 36020 },
+      "coinbase_tx_share": 0.802,
+      "departed_since": ["Dexter", "Heurist", "Cascade"]
+    }
+  },
+  "networks_past_24h_live": {
+    "base_tx": 206609,
+    "base_vol_usd": 19260,
+    "solana_tx": 5043,
+    "solana_vol_usd": 572,
+    "base_tx_share": 0.976
+  },
+  "vendors_30d": [
+    ["BlockRun", 177260],
+    ["dTelecom", 18750],
+    ["StableEnrich", 1770],
+    ["sol.blockrun.ai", 1270],
+    ["twit.sh", 621],
+    ["agentutility", 589],
+    ["JarvisClaw", 560],
+    ["Nansen AI", 131],
+    ["Otto AI", 105],
+    ["OneSource", 73]
+  ],
+  "vendor_concentration": {
+    "top1_volume_share": 0.209,
+    "top1_tx_share": 0.82,
+    "top1_tx": 14480000,
+    "top1_buyers": 1130,
+    "top1_vs_top2": 9.5,
+    "adjusted_top1pct_buyers_volume_share": 0.9
+  },
+  "registries": {
+    "cdp_bazaar_resources": 25560,
+    "payai_resources": 24094,
+    "dead_services_share_21shares": 0.467
+  },
+  "npm_wow": {
+    "x402": 1.06,
+    "x402-axios": 1.14,
+    "x402-express": 0.97,
+    "@coinbase/x402": 0.61,
+    "x402-fetch": 0.58,
+    "x402_month_total": 1205461
+  },
+  "backtest_rmae_vs_snaive": {
+    "base_transfers": 0.4573,
+    "base_transfers_scrubbed": 0.4376,
+    "base_volume_usd": 1.0,
+    "solana_transfers": 0.5618,
+    "solana_transfers_scrubbed": 0.5635,
+    "solana_volume_usd": 0.6674
+  },
+  "surprise_14d": {
+    "base_transfers": 0.607,
+    "base_volume": 1.118,
+    "solana_transfers": 0.618,
+    "solana_volume": 1.063,
+    "solana_transfers_mean_z": -1.0
+  },
+  "ecosystem_registry": {
+    "rendered_live": "42-44",
+    "cached_0715_extraction": 61,
+    "note": "page lazy-loads; categories overlap"
+  },
   "run_rate_usd_yr": 10170000,
   "infra_cost_eur_month": 6.49,
   "clock_a_cumulative": {
-    "x402scan_alltime_live": {"tx": 195000000, "volume_usd": 52310000, "buyers": 843330, "sellers": 226000, "asof": "2026-07-18, real-browser"},
-    "artemis_raw": {"tx": 178300000, "volume_usd": 135700000, "asof": "2026-04-21"},
-    "dune_thechriscen": {"tx": 153312059, "volume_usd": 40872291, "board_refresh": "~2026-06-21"},
-    "dune_hashed_by_chain": {"tx_total": 144003493, "base": 72430301, "solana": 47873448, "polygon": 22694090, "board_refresh": "~2026-07-14"},
-    "arxiv_raw": {"tx": 136700000, "volume_usd": 44100000, "independent_usd": [187861, 20260000]},
-    "our_slice": {"tx": 119667480, "volume_usd": 39662922, "span": "2025-08-01..2026-07-16"},
-    "visa_artemis_adjusted": {"tx": 109600000, "volume_usd": 15000000, "asof": "2026-04-21"},
-    "defillama": {"volume_usd": 31460000, "base": 22210000, "solana": 9030000, "asof": "2026-07-18"}
+    "x402scan_alltime_live": {
+      "tx": 195000000,
+      "volume_usd": 52310000,
+      "buyers": 843330,
+      "sellers": 226000,
+      "asof": "2026-07-18, real-browser"
+    },
+    "artemis_raw": { "tx": 178300000, "volume_usd": 135700000, "asof": "2026-04-21" },
+    "dune_thechriscen": { "tx": 153312059, "volume_usd": 40872291, "board_refresh": "~2026-06-21" },
+    "dune_hashed_by_chain": {
+      "tx_total": 144003493,
+      "base": 72430301,
+      "solana": 47873448,
+      "polygon": 22694090,
+      "board_refresh": "~2026-07-14"
+    },
+    "arxiv_raw": { "tx": 136700000, "volume_usd": 44100000, "independent_usd": [187861, 20260000] },
+    "our_slice": { "tx": 119667480, "volume_usd": 39662922, "span": "2025-08-01..2026-07-16" },
+    "visa_artemis_adjusted": { "tx": 109600000, "volume_usd": 15000000, "asof": "2026-04-21" },
+    "defillama": {
+      "volume_usd": 31460000,
+      "base": 22210000,
+      "solana": 9030000,
+      "asof": "2026-07-18"
+    }
   },
   "clock_b_flow_30d": {
-    "x402scan_live": {"tx": 17280000, "volume_usd": 825260, "buyers": 47170, "sellers": 62000, "asof": "2026-07-18"},
-    "x402org_static": {"tx": 75410000, "volume_usd": 24240000, "buyers": 94060, "sellers": 22000, "page_authored": "~2026-06-24"},
-    "our_slice": {"tx": 496777, "volume_usd": 89171, "window_end": "2026-07-16"}
+    "x402scan_live": {
+      "tx": 17280000,
+      "volume_usd": 825260,
+      "buyers": 47170,
+      "sellers": 62000,
+      "asof": "2026-07-18"
+    },
+    "x402org_static": {
+      "tx": 75410000,
+      "volume_usd": 24240000,
+      "buyers": 94060,
+      "sellers": 22000,
+      "page_authored": "~2026-06-24"
+    },
+    "our_slice": { "tx": 496777, "volume_usd": 89171, "window_end": "2026-07-16" }
   },
-  "x402org_static_panel": {"finding": "Last-30-Days stats are hard-coded, manually edited page text (authored ~2026-06-24); no cumulative published on the site"},
-  "dune_queries": {"base_daily": 8001312, "solana_daily_windowed": 8009658, "size_buckets": 8001313}
+  "x402org_static_panel": {
+    "finding": "Last-30-Days stats are hard-coded, manually edited page text (authored ~2026-06-24); no cumulative published on the site"
+  },
+  "dune_queries": {
+    "base_daily": 8001312,
+    "solana_daily_windowed": 8009658,
+    "size_buckets": 8001313
+  }
 }
 ```
 

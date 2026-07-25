@@ -74,7 +74,11 @@
     try {
       var accounts = await eth.request({ method: 'eth_requestAccounts' });
       if (!accounts || !accounts[0]) {
-        setStatus(statusEl, 'No wallet account returned — unlock your wallet and try again.', 'err');
+        setStatus(
+          statusEl,
+          'No wallet account returned — unlock your wallet and try again.',
+          'err',
+        );
         return;
       }
       var addr = accounts[0];
@@ -105,7 +109,11 @@
         return {};
       });
       if (!res.ok) {
-        setStatus(statusEl, data.error || 'Subscribe failed (' + res.status + ') — try again.', 'err');
+        setStatus(
+          statusEl,
+          data.error || 'Subscribe failed (' + res.status + ') — try again.',
+          'err',
+        );
         return;
       }
       setStatus(statusEl, 'Subscribed — dispatches will arrive over XMTP.', 'ok');
