@@ -96,10 +96,16 @@ describe('name gloss (meaning + pronunciation annotation)', () => {
   });
 });
 
-describe('home page renders the accentuated hero', () => {
-  it('imports the hero segments from the shared data module', () => {
-    expect(indexAstro).toMatch(/from\s+['"]\.\.\/data\/hero['"]/);
-    expect(indexAstro).toMatch(/heroSegments/);
+// The landing hero was rebuilt in a04e42d ("landing: mirror gokhanturhan.com —
+// project index box, drop the who-i-am blurb"): the accentuated multi-segment
+// blurb was replaced by a ruled masthead whose h1 is the plain wordmark. The
+// hero.ts data module still ships and is still covered by the two suites above
+// (it feeds the meta description), but index.astro no longer renders it, so the
+// three assertions below now pin the masthead the page actually emits.
+describe('home page renders the masthead hero', () => {
+  it('pins the masthead to the shared site data module', () => {
+    expect(indexAstro).toMatch(/from\s+['"]\.\.\/data\/site['"]/);
+    expect(indexAstro).toMatch(/description=\{site\.blurb\}/);
   });
 
   it('renders the hero blurb as a single h1 with no <img> inside the hero', () => {
@@ -113,14 +119,19 @@ describe('home page renders the accentuated hero', () => {
     expect(sectionText).not.toMatch(/<img[\s>]/);
   });
 
-  it('emits an accent utility class binding on the rendered hero spans', () => {
-    expect(indexAstro).toMatch(/accent-\$\{segment\.accent\}/);
-    expect(indexAstro).toMatch(/<span\s+class=/);
+  it('wraps the h1 in the ruled masthead furniture — doc strip, stamp, foot row', () => {
+    expect(indexAstro).toMatch(/class="hero-sheet masthead"/);
+    expect(indexAstro).toMatch(/class="mast-row"/);
+    expect(indexAstro).toMatch(/class="mast-row mast-row--foot"/);
+    expect(indexAstro).toMatch(/class="stamp"/);
   });
 
   it('does not contain leftover coming-soon, agentbounty, TODO, or wrong @gokhanturhan handle copy', () => {
     expect(indexAstro).not.toMatch(/coming\s*soon/i);
-    expect(indexAstro).not.toMatch(/agent\s*accelerator/i);
+    // NOTE: the /agent accelerator/ ban was dropped here. a04e42d put
+    // "agent accelerator" into the masthead subtitle deliberately; the string is
+    // current studio copy, not leftover placeholder text. The rest of this guard
+    // still pins genuinely-dead copy.
     expect(indexAstro).not.toMatch(/agentbounty/i);
     expect(indexAstro).not.toMatch(/\bTODO\b/);
     expect(indexAstro).not.toMatch(/@gokhanturhan/);
