@@ -1,10 +1,18 @@
 ---
 /**
- * LiveTicker — rolling live-product band, site-wide (rendered in BaseLayout).
+ * LiveTicker — live-product band, site-wide (rendered in BaseLayout).
  * One track, two filings: Ishtar on the paper plane, CURB on the faint fill —
- * the shade shift is what separates the two as the band rolls. Ink only,
- * no glyph decoration; hierarchy by weight, casing, and fill. 45s loop,
- * pauses on hover; static under prefers-reduced-motion.
+ * the shade shift is what separates the two. Ink only, no glyph decoration;
+ * hierarchy by weight, casing, and fill.
+ *
+ * FROZEN (spec 1.2). The band does not scroll: what used to be the
+ * prefers-reduced-motion path is now the path everyone gets. A band pinned to
+ * the top, scrolling, with a chip on the left is the single most reproduced
+ * layout convention in crypto-landing training data — the eye classifies the
+ * shape long before it reads a word of it. A filed document does not animate.
+ *
+ * Nothing was removed to do this: the band, both filings, every segment, the
+ * tag and the markup are unchanged. Only the animation stopped.
  */
 const ISHTAR_HREF = 'https://ishtar.numetal.xyz';
 const ISHTAR_LABEL = 'Ishtar is live. Agentic dating. Use Ishtar at ishtar.numetal.xyz';
@@ -82,7 +90,12 @@ const LOOPS = [0, 1, 2, 3];
   .ticker-track {
     display: flex;
     width: max-content;
-    animation: ticker-roll 45s linear infinite;
+    /* No animation. This is the freeze — see the component note above. The
+       LOOPS repeats behind this are marquee machinery for a marquee that no
+       longer runs: they stay in the DOM (nothing is deleted, and they are
+       already aria-hidden past the first pass) and clip at the window edge
+       exactly as they have always done for reduced-motion visitors. Collapsing
+       them into a wrapping strip is the Axis-A instrument work in 4.5. */
   }
   .ticker-seg {
     flex: 0 0 auto;
@@ -108,6 +121,11 @@ const LOOPS = [0, 1, 2, 3];
   .ticker-seg:focus-visible b {
     text-decoration: underline;
   }
+  /* Retained and deliberately inert. The hover-pause, the keyframes and the
+     reduced-motion override all describe a scroll that no longer starts. They
+     are kept rather than deleted so the band's motion history stays legible in
+     one file, and so the reduced-motion guarantee still holds by construction
+     if motion is ever reintroduced here. */
   .ticker:hover .ticker-track,
   .ticker:focus-within .ticker-track {
     animation-play-state: paused;
