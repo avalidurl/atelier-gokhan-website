@@ -30,12 +30,18 @@ function leafCount(property: LinkProperty): number {
     property.contacts.length
   );
 }
+
+/** Section heading counts, derived — never typed. The heading used to read
+ *  "six tiles", hardcoded five lines below the function that already knows. */
+const propertyCount = properties.length;
+const linkCount = properties.reduce((total, property) => total + leafCount(property), 0);
 ---
 
 <section class="tree-section" id="portfolio" aria-labelledby="pedigree-title">
   <p class="tree-stamp doc-heading" id="pedigree-title">
-    <span>Portfolio · six tiles, one studio</span><span class="section-no" aria-hidden="true"
-      >§1</span
+    <span>Portfolio · {propertyCount} properties · {linkCount} links on file</span><span
+      class="section-no"
+      aria-hidden="true">§02</span
     >
   </p>
 

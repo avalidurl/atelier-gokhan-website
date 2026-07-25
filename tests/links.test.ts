@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { properties, allLeaves } from '../src/data/links';
+
+const linkTree = readFileSync(resolve(__dirname, '..', 'src/components/LinkTree.astro'), 'utf8');
 
 const EXPECTED_ORDER = ['ishtar', 'numetal', 'curb', 'gokhanvc', 'memex', 'hobby'] as const;
 
@@ -146,6 +150,30 @@ describe('link tree data — byte-exact hrefs', () => {
       expect(leaves.map((leaf) => leaf.href)).toEqual(EXPECTED_HREFS[id]);
     });
   }
+});
+
+describe('link tree section heading — derived, never typed', () => {
+  it('takes both counts from the data, not from prose', () => {
+    // The heading read "Portfolio · six tiles, one studio" — a hand-typed count
+    // five lines below leafCount(), which already knew the answer.
+    expect(linkTree).toMatch(/const propertyCount = properties\.length/);
+    expect(linkTree).toMatch(/const linkCount = properties\.reduce/);
+    expect(linkTree).toMatch(/\{propertyCount\} properties · \{linkCount\} links on file/);
+  });
+
+  it('carries no spelled-out tile count in the markup', () => {
+    const heading = linkTree.match(/<p class="tree-stamp[\s\S]*?<\/p>/)?.[0] ?? '';
+    expect(heading).not.toBe('');
+    expect(heading).not.toMatch(/\b(one|two|three|four|five|six|seven|eight|nine|ten)\b/i);
+  });
+
+  it('pads its section number the same way the tiles pad theirs', () => {
+    // The page shipped §0 and §1 alongside board indices padded by
+    // String(i + 1).padStart(2, '0') — two padding conventions, one page.
+    expect(linkTree).toMatch(/padStart\(2, '0'\)/);
+    expect(linkTree).toMatch(/§02/);
+    expect(linkTree).not.toMatch(/§\d(?!\d)/);
+  });
 });
 
 describe('link tree data — link hygiene', () => {
