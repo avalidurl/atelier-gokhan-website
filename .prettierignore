@@ -2,3 +2,7 @@ node_modules
 dist
 .astro
 package-lock.json
+
+# Own-voice prose. Formatter must not rewrite the founder's markdown
+# (it rewrites *emphasis* to _emphasis_ throughout). Content is not code.
+src/content/blog/
