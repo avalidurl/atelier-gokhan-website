@@ -288,9 +288,11 @@ const toc = headings
     text-underline-offset: 3px;
   }
 
+  /* Reading scale, calibrated 2026-08-01 against a LessWrong post body
+     (18.2px / 26px / 81ch). 14px was a UI size being asked to carry long-form. */
   .post-body {
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.6;
     max-width: 72ch;
     counter-reset: docsec;
   }

@@ -35,6 +35,7 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
               />
               <input type="hidden" name="site" value="atelier" />
               <div class="foot-sub-actions">
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAEG8CWZN8yq8G3kt" data-theme="auto" data-size="flexible"></div>
                 <button type="submit" class="foot-sub-btn foot-sub-btn--footer">
                   Subscribe
                 </button>
@@ -49,6 +50,7 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
               </div>
             </div>
           </form>
+                <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
           <p
             class="foot-sub-status foot-sub-status--footer"
             data-xmtp-status
@@ -61,6 +63,7 @@ const subscribeAction = 'https://api.gokhan.vc/newsletter/subscribe';
     <nav class="footer-nav" aria-label="Site">
       <ul class="footer-links">
         <li><a href="/blog">Blog</a></li>
+        <li><a href="/newsletter">Newsletter</a></li>
         <li><a href="/llms.txt">LLM sitemap (llms.txt)</a></li>
         <li><a href="https://status.numetal.xyz">Status</a></li>
         <li><a href="/terms">Terms</a></li>
