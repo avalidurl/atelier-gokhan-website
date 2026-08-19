@@ -110,6 +110,7 @@ const toc = headings
     max-width: 720px;
     margin: 0 auto;
     padding: var(--space-5) var(--space-4) var(--space-7);
+    overflow-x: visible;
   }
 
   .post-back,
@@ -351,6 +352,9 @@ const toc = headings
 
   .post-body :global(a) {
     color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
   }
 
   .post-body :global(blockquote) {
@@ -433,10 +437,8 @@ const toc = headings
   }
 
   @media (max-width: 640px) {
-    .post-body :global(table) {
-      display: block;
+    .post-body :global(.table-desk-scroll) {
       overflow-x: auto;
-      white-space: nowrap;
     }
   }
 

@@ -1,9 +1,17 @@
 ---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import '../styles/global.css';
 import { site } from '../data/site';
 import Header from '../components/Header.astro';
 import LiveTicker from '../components/LiveTicker.astro';
 import Footer from '../components/Footer.astro';
+
+const tableDeskVersion = createHash('sha256')
+  .update(readFileSync(resolve(process.cwd(), 'public/table-desk.js')))
+  .digest('hex')
+  .slice(0, 8);
 
 interface Props {
   title: string;
@@ -141,5 +149,6 @@ const isBlog = pagePath === '/blog' || pagePath.startsWith('/blog/');
     </main>
     <Footer showSubscribe={!isBlog} />
     <script src="/blog-collapse.js" defer></script>
+    <script src={`/table-desk.js?v=${tableDeskVersion}`} defer></script>
   </body>
 </html>

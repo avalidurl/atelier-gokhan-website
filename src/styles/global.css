@@ -264,6 +264,7 @@ a:focus-visible {
 
 .foot-sub-row {
   display: flex;
+  flex-direction: column;
   align-items: stretch;
   gap: 8px;
   width: 100%;
@@ -271,9 +272,17 @@ a:focus-visible {
 
 .foot-sub-actions {
   display: flex;
-  flex-shrink: 0;
+  flex-wrap: wrap;
   gap: 8px;
   align-items: stretch;
+  width: 100%;
+}
+
+.cf-turnstile,
+.cf-turnstile iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
 }
 
 .foot-sub-btn--xmtp {
@@ -311,8 +320,10 @@ a:focus-visible {
 }
 
 .foot-sub-input {
-  flex: 1;
-  min-width: 0;
+  display: block;
+  width: 100%;
+  min-width: 12rem;
+  flex: none;
   padding: 10px 12px;
   border: 1px solid var(--ink);
   background: var(--paper);
@@ -375,6 +386,127 @@ a:focus-visible {
 .foot-sub-btn--xmtp:disabled {
   opacity: 0.55;
   cursor: default;
+}
+
+/* Ledger tables — filter / sort / resize / wide. Applies to every
+   enhanced <table> (blog posts, legal cookie table, future tables). */
+.table-desk {
+  margin: 0 0 var(--space-4);
+  width: 100%;
+}
+
+.table-desk.is-wide {
+  width: min(1080px, calc(100vw - 32px));
+  margin-left: calc(50% - min(540px, 50vw - 16px));
+}
+
+.table-desk-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-family: var(--font-data);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.table-desk-filter {
+  flex: 1 1 12rem;
+  min-width: 12rem;
+  padding: 8px 10px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-family: var(--font-data);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.table-desk-filter:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.table-desk-count {
+  display: flex;
+  align-items: center;
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.table-desk-btn {
+  padding: 8px 12px;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.table-desk-btn:hover,
+.table-desk-btn:focus-visible {
+  text-decoration: underline;
+}
+
+.table-desk-btn[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.table-desk-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.table-desk table {
+  margin: 0;
+  min-width: 44rem;
+}
+
+.table-desk th {
+  position: relative;
+}
+
+.table-desk-sort {
+  display: block;
+  width: 100%;
+  padding: 0 10px 0 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.table-desk-sort:hover,
+.table-desk-sort:focus-visible {
+  text-decoration: underline;
+}
+
+.table-desk th[aria-sort='ascending'] .table-desk-sort::after {
+  content: ' \25B2';
+}
+
+.table-desk th[aria-sort='descending'] .table-desk-sort::after {
+  content: ' \25BC';
+}
+
+.table-desk-resize {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8px;
+  height: 100%;
+  cursor: col-resize;
 }
 
 /* Accent slots — monochrome. Hierarchy by value and weight, never hue. */
