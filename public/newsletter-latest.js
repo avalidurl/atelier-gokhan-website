@@ -12,12 +12,16 @@
   if (!a) return;
   var src = a.getAttribute('data-latest-src') || 'https://api.gokhan.vc/feed.json';
   fetch(src, { credentials: 'omit' })
-    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (r) {
+      return r.ok ? r.json() : null;
+    })
     .then(function (d) {
       var it = d && d.items && d.items[0];
       if (!it || !it.url || !it.title) return;
       a.href = it.url;
       a.textContent = it.title;
     })
-    .catch(function () { /* keep the server-rendered fallback */ });
+    .catch(function () {
+      /* keep the server-rendered fallback */
+    });
 })();
