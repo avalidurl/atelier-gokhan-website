@@ -24,7 +24,7 @@ function tickerLabels(): string[] {
 
 describe('live ticker accessible names', () => {
   it('declares one accessible name per filing', () => {
-    expect(tickerLabels()).toHaveLength(2);
+    expect(tickerLabels()).toHaveLength(3);
   });
 
   it('shares no accessible name with numetal.xyz', () => {
@@ -56,6 +56,7 @@ describe('live ticker accessible names', () => {
     const labels = tickerLabels();
     expect(labels.some((l) => l.includes('ishtar.numetal.xyz'))).toBe(true);
     expect(labels.some((l) => l.includes('curb.numetal.xyz'))).toBe(true);
+    expect(labels.some((l) => l.includes('launch.numetal.xyz'))).toBe(true);
   });
 });
 

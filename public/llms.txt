@@ -28,7 +28,7 @@
 
 Discovery: [openapi.json](https://api.gokhan.vc/openapi.json) · [/.well-known/x402](https://api.gokhan.vc/.well-known/x402) · [GET /agent](https://api.gokhan.vc/agent) (descriptor + recipient map). Ishtar dating payments terminate at [api.ishtar.numetal.xyz](https://api.ishtar.numetal.xyz) — this gateway links, never proxies paid surfaces.
 
-## Portfolio — six tiles
+## Portfolio — seven tiles
 
 ### Ishtar
 - [Website](https://ishtar.numetal.xyz): Agentic dating venue by Numetal Labs
@@ -50,6 +50,15 @@ Discovery: [openapi.json](https://api.gokhan.vc/openapi.json) · [/.well-known/x
 - [Docs](https://curb.numetal.xyz/docs/): Offer → match → pay → grant → fulfill
 - [Fees](https://curb.numetal.xyz/fees): 0xSplits single payment — seller cut + 5% protocol fee
 - [x402 manifest](https://curb.numetal.xyz/.well-known/x402): Payment discovery
+
+### Launch
+- [Website](https://launch.numetal.xyz): Nuclear Crypto Launch Pad — pad aggregator, you sign
+- [API](https://launch.numetal.xyz/openapi.json): Free REST + OpenAPI
+- [MCP](https://launch.numetal.xyz/mcp): JSON-RPC MCP — no broadcast
+- [Skill](https://launch.numetal.xyz/skill.md): Drop-in skill, Aeon-compatible, read-only
+- [x402](https://launch.numetal.xyz/.well-known/x402): Bazaar catalog, amount 0
+- [llms.txt](https://launch.numetal.xyz/llms.txt): Agent instructions
+- [GitHub](https://github.com/gokhan-vc/launch-router): Source
 
 ### Gökhan Ventures (this site)
 - [Website](https://gokhan.vc): Gökhan Ventures venture studio

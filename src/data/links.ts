@@ -316,6 +316,83 @@ export const properties: readonly LinkProperty[] = [
     ],
   },
   {
+    id: 'launch',
+    label: 'Launch',
+    domain: 'launch.numetal.xyz',
+    url: 'https://launch.numetal.xyz',
+    owner: 'Nuclear Crypto Launch Pad — pad aggregator',
+    apiTools: [
+      {
+        platform: 'API',
+        note: 'launch.numetal.xyz',
+        href: 'https://launch.numetal.xyz/openapi.json',
+        external: true,
+        tooltip:
+          'Free pad-aggregator API. Simulate Clanker / Bankr / pools.fun. User signs. Never broadcast.',
+      },
+      {
+        platform: 'MCP',
+        note: 'launch.numetal.xyz/mcp',
+        href: 'https://launch.numetal.xyz/mcp',
+        external: true,
+        tooltip: 'JSON-RPC MCP. Tools end at get_sign_payload. No broadcast.',
+      },
+      {
+        platform: 'Skill',
+        note: 'skill.md',
+        href: 'https://launch.numetal.xyz/skill.md',
+        external: true,
+        tooltip: 'Drop-in skill (Cursor, Claude, Grok, Aeon). Read-only. User signs.',
+      },
+      {
+        platform: 'x402',
+        note: '.well-known/x402',
+        href: 'https://launch.numetal.xyz/.well-known/x402',
+        external: true,
+        tooltip: 'x402 Bazaar catalog. Amount 0 — freely callable.',
+      },
+      {
+        platform: 'GitHub',
+        note: 'gokhan-vc/launch-router',
+        href: 'https://github.com/gokhan-vc/launch-router',
+        external: true,
+        tooltip: 'Source for the pad aggregator.',
+      },
+    ],
+    website: {
+      platform: 'Website',
+      note: 'launch.numetal.xyz',
+      href: 'https://launch.numetal.xyz',
+      external: true,
+      tooltip: 'Nuclear Crypto Launch Pad — joke title. Pick a pad. You sign.',
+    },
+    docs: {
+      platform: 'Docs',
+      note: 'llms.txt',
+      href: 'https://launch.numetal.xyz/llms.txt',
+      external: true,
+      tooltip: 'Agent instructions. People foyer is the homepage; machines read this.',
+    },
+    socials: [
+      {
+        platform: 'X',
+        note: '@goekhanvc',
+        href: 'https://x.com/goekhanvc',
+        external: true,
+        tooltip: 'Gökhan Ventures on X.',
+      },
+    ],
+    contacts: [
+      {
+        platform: 'Email',
+        note: 'contact@numetal.xyz',
+        href: 'mailto:contact@numetal.xyz',
+        external: false,
+        tooltip: 'Launch inbox.',
+      },
+    ],
+  },
+  {
     id: 'gokhanvc',
     label: 'Gökhan Ventures',
     domain: 'gokhan.vc',

@@ -58,6 +58,15 @@ export const studioProjects: StudioProject[] = [
       'An agent↔agent excess-inference swap: sellers post spare MTok on their own endpoints, buyers pay once over x402 (USDC on Base), and the hub never touches upstream keys.',
   },
   {
+    name: 'Launch',
+    domain: 'launch.numetal.xyz',
+    href: 'https://launch.numetal.xyz',
+    category: 'Infrastructure',
+    status: 'Live',
+    blurb:
+      'Nuclear Crypto Launch Pad (joke title): a pad aggregator. Pick Clanker, Bankr, or pools.fun — we build that pad’s payload, you sign. Free MCP / x402. Never broadcast.',
+  },
+  {
     name: 'Numetal Labs',
     domain: 'numetal.xyz',
     href: 'https://numetal.xyz',

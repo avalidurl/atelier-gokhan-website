@@ -5,7 +5,7 @@ import { properties, allLeaves } from '../src/data/links';
 
 const linkTree = readFileSync(resolve(__dirname, '..', 'src/components/LinkTree.astro'), 'utf8');
 
-const EXPECTED_ORDER = ['ishtar', 'numetal', 'curb', 'gokhanvc', 'memex', 'hobby'] as const;
+const EXPECTED_ORDER = ['ishtar', 'numetal', 'curb', 'launch', 'gokhanvc', 'memex', 'hobby'] as const;
 
 const EXPECTED_HREFS: Record<string, string[]> = {
   ishtar: [
@@ -47,6 +47,17 @@ const EXPECTED_HREFS: Record<string, string[]> = {
     'https://t.me/numetalxyz',
     'mailto:contact@numetal.xyz',
   ],
+  launch: [
+    'https://launch.numetal.xyz/openapi.json',
+    'https://launch.numetal.xyz/mcp',
+    'https://launch.numetal.xyz/skill.md',
+    'https://launch.numetal.xyz/.well-known/x402',
+    'https://github.com/gokhan-vc/launch-router',
+    'https://launch.numetal.xyz',
+    'https://launch.numetal.xyz/llms.txt',
+    'https://x.com/goekhanvc',
+    'mailto:contact@numetal.xyz',
+  ],
   gokhanvc: [
     'https://api.gokhan.vc',
     'https://github.com/gokhan-vc',
@@ -86,6 +97,7 @@ const EXPECTED_CONTACTS: Record<string, string> = {
   ishtar: 'contact@numetal.xyz',
   numetal: 'contact@numetal.xyz',
   curb: 'contact@numetal.xyz',
+  launch: 'contact@numetal.xyz',
   gokhanvc: 'contact@gokhan.vc',
   memex: 'contact@gokhanturhan.com',
   hobby: 'contact@gokhanturhan.com',
@@ -105,12 +117,13 @@ function leavesForProperty(id: string) {
 }
 
 describe('link tree data — structure', () => {
-  it('has exactly six properties in founder order', () => {
+  it('has exactly seven properties in founder order', () => {
     expect(properties.map((p) => p.id)).toEqual([...EXPECTED_ORDER]);
     expect(properties.map((p) => p.label)).toEqual([
       'Ishtar',
       'Numetal Labs',
       'CURB',
+      'Launch',
       'Gökhan Ventures',
       'Personal Memex',
       'Hobby Projects',
@@ -177,12 +190,13 @@ describe('link tree section heading — derived, never typed', () => {
 });
 
 describe('link tree data — link hygiene', () => {
-  it('has exactly six mailto leaves with correct addresses', () => {
+  it('has exactly seven mailto leaves with correct addresses', () => {
     const mailtos = allLeaves.filter((leaf) => leaf.href.startsWith('mailto:'));
     expect(mailtos.map((leaf) => leaf.href).sort()).toEqual([
       'mailto:contact@gokhan.vc',
       'mailto:contact@gokhanturhan.com',
       'mailto:contact@gokhanturhan.com',
+      'mailto:contact@numetal.xyz',
       'mailto:contact@numetal.xyz',
       'mailto:contact@numetal.xyz',
       'mailto:contact@numetal.xyz',

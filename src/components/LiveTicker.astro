@@ -35,6 +35,9 @@ const ISHTAR_LABEL =
 const CURB_HREF = 'https://curb.numetal.xyz';
 const CURB_LABEL =
   'Curb — the agent-to-agent inference clearing rail in the Gökhan Ventures portfolio. Open curb.numetal.xyz';
+const LAUNCH_HREF = 'https://launch.numetal.xyz';
+const LAUNCH_LABEL =
+  'Launch — the pad aggregator in the Gökhan Ventures portfolio. Open launch.numetal.xyz';
 const LOOPS = [0, 1, 2, 3];
 ---
 
@@ -66,6 +69,17 @@ const LOOPS = [0, 1, 2, 3];
             >
               <b>CURB</b> <em>·</em> AGENT↔AGENT INFERENCE SWAP <em>·</em> YOUR AGENT TRADES THE
               MTOK <em>·</em> USE CURB <em>·</em> curb.numetal.xyz
+            </a>
+            <a
+              class="ticker-seg seg-launch"
+              href={LAUNCH_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={LAUNCH_LABEL}
+              {...(i > 0 ? { 'aria-hidden': 'true', tabindex: '-1' } : {})}
+            >
+              <b>LAUNCH</b> <em>·</em> NUCLEAR CRYPTO LAUNCH PAD <em>·</em> PICK A PAD YOU SIGN{' '}
+              <em>·</em> USE LAUNCH <em>·</em> launch.numetal.xyz
             </a>
           </Fragment>
         ))
@@ -125,6 +139,9 @@ const LOOPS = [0, 1, 2, 3];
   /* The shade is the divider: CURB rides the faint fill, Ishtar the paper. */
   .seg-curb {
     background: var(--faint);
+  }
+  .seg-launch {
+    background: var(--paper);
   }
   .ticker-seg b {
     font-weight: 700;
