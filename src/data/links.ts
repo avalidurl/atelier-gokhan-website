@@ -368,10 +368,10 @@ export const properties: readonly LinkProperty[] = [
     contacts: [
       {
         platform: 'Email',
-        note: 'contact@gokhanturhan.com',
-        href: 'mailto:contact@gokhanturhan.com',
+        note: 'contact@gokhan.vc',
+        href: 'mailto:contact@gokhan.vc',
         external: false,
-        tooltip: 'Personal inbox — writing, speaking, and general contact.',
+        tooltip: 'Public contact.',
       },
     ],
   },
