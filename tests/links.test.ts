@@ -78,7 +78,7 @@ const EXPECTED_HREFS: Record<string, string[]> = {
     'https://gokhan.substack.com',
     'https://t.me/gokhanturhans',
     'https://discord.gg/ZcxcwRPT7R',
-    'mailto:contact@gokhanturhan.com',
+    'mailto:contact@gokhan.vc',
   ],
   hobby: [
     'https://claudelines.com/statuslines/tickerline',
@@ -89,7 +89,7 @@ const EXPECTED_HREFS: Record<string, string[]> = {
     'https://github.com/avalidurl/market-cap-tracker',
     'https://github.com/avalidurl',
     'https://x.com/goekhan',
-    'mailto:contact@gokhanturhan.com',
+    'mailto:contact@gokhan.vc',
   ],
 };
 
@@ -99,8 +99,8 @@ const EXPECTED_CONTACTS: Record<string, string> = {
   curb: 'contact@numetal.xyz',
   launch: 'contact@numetal.xyz',
   gokhanvc: 'contact@gokhan.vc',
-  memex: 'contact@gokhanturhan.com',
-  hobby: 'contact@gokhanturhan.com',
+  memex: 'contact@gokhan.vc',
+  hobby: 'contact@gokhan.vc',
 };
 
 function leavesForProperty(id: string) {
@@ -194,8 +194,8 @@ describe('link tree data — link hygiene', () => {
     const mailtos = allLeaves.filter((leaf) => leaf.href.startsWith('mailto:'));
     expect(mailtos.map((leaf) => leaf.href).sort()).toEqual([
       'mailto:contact@gokhan.vc',
-      'mailto:contact@gokhanturhan.com',
-      'mailto:contact@gokhanturhan.com',
+      'mailto:contact@gokhan.vc',
+      'mailto:contact@gokhan.vc',
       'mailto:contact@numetal.xyz',
       'mailto:contact@numetal.xyz',
       'mailto:contact@numetal.xyz',
