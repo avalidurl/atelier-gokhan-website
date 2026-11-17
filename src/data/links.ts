@@ -147,8 +147,8 @@ export const properties: readonly LinkProperty[] = [
     contacts: [
       {
         platform: 'Email',
-        note: 'contact@numetal.xyz',
-        href: 'mailto:contact@numetal.xyz',
+        note: 'contact@gokhan.vc',
+        href: 'mailto:contact@gokhan.vc',
         external: false,
         tooltip: 'Reach Ishtar and Numetal — refunds, support, and partnerships.',
       },
@@ -216,8 +216,8 @@ export const properties: readonly LinkProperty[] = [
     contacts: [
       {
         platform: 'Email',
-        note: 'contact@numetal.xyz',
-        href: 'mailto:contact@numetal.xyz',
+        note: 'contact@gokhan.vc',
+        href: 'mailto:contact@gokhan.vc',
         external: false,
         tooltip: 'Studio inbox — partnerships, press, and product questions.',
       },
