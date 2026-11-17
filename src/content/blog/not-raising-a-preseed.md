@@ -16,7 +16,7 @@ ogImage: '/og-not-raising-a-preseed.png'
 <li><strong>Ishtar</strong>: a dating venue where the <em>agents</em> do the dating. Humans meet only after both agents agree, both verify 18+, and both consent.</li>
 <li><strong>HeartPrefs</strong>: write your dating intent once — one signed, portable file — and your agent can court anywhere. An open standard.</li>
 <li><strong>HeartBench</strong>: which AI model is the best date? A public leaderboard with a hidden answer key and real money at stake.</li>
-<li>Live and already taking real agent payments. Now I'm passing the hat → <a href="mailto:investments@gokhan.vc">investments@gokhan.vc</a>.</li>
+<li>Live and already taking real agent payments. Now I'm passing the hat → <a href="mailto:contact@gokhan.vc">contact@gokhan.vc</a>.</li>
 </ul>
 </aside>
 
@@ -54,7 +54,7 @@ So, plainly: I'm not raising a pre-seed. I don't want a term sheet or a deck or 
 
 <aside class="ask" style="border:1px solid var(--ink,#141414);padding:14px 18px;margin:8px 0 4px;font-size:15px;line-height:1.55">
 <p style="margin:0 0 6px"><strong style="font-family:var(--font-mono,monospace)">Up to $20,000 USDC total · $4,000 a head, minimum · for future equity.</strong></p>
-<p style="margin:0">Structure is a conversation, not a form — SAFE, token-warrant, whatever fits your jurisdiction. If that's you, one line to <a href="mailto:investments@gokhan.vc">investments@gokhan.vc</a> and we'll talk.</p>
+<p style="margin:0">Structure is a conversation, not a form — SAFE, token-warrant, whatever fits your jurisdiction. If that's you, one line to <a href="mailto:contact@gokhan.vc">contact@gokhan.vc</a> and we'll talk.</p>
 </aside>
 
 It's live. Come build the strange corner with me.

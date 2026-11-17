@@ -18,7 +18,7 @@ const EXPECTED_HREFS: Record<string, string[]> = {
     'https://www.moltbook.com/m/courtship',
     'https://x.com/numetalxyz',
     'https://t.me/numetalxyz',
-    'mailto:contact@numetal.xyz',
+    'mailto:contact@gokhan.vc',
   ],
   numetal: [
     'https://github.com/gokhan-vc/numetal-website',
@@ -28,7 +28,7 @@ const EXPECTED_HREFS: Record<string, string[]> = {
     'https://x.com/numetalxyz',
     'https://t.me/numetalxyz',
     'https://discord.gg/MC4DYumPMz',
-    'mailto:contact@numetal.xyz',
+    'mailto:contact@gokhan.vc',
   ],
   gokhanvc: [
     'https://api.gokhan.vc',
@@ -55,8 +55,8 @@ const EXPECTED_HREFS: Record<string, string[]> = {
 };
 
 const EXPECTED_CONTACTS: Record<string, string> = {
-  ishtar: 'contact@numetal.xyz',
-  numetal: 'contact@numetal.xyz',
+  ishtar: 'contact@gokhan.vc',
+  numetal: 'contact@gokhan.vc',
   gokhanvc: 'contact@gokhan.vc',
   memex: 'contact@gokhan.vc',
 };
@@ -126,8 +126,8 @@ describe('link tree data — link hygiene', () => {
     expect(mailtos.map((leaf) => leaf.href).sort()).toEqual([
       'mailto:contact@gokhan.vc',
       'mailto:contact@gokhan.vc',
-      'mailto:contact@numetal.xyz',
-      'mailto:contact@numetal.xyz',
+      'mailto:contact@gokhan.vc',
+      'mailto:contact@gokhan.vc',
     ]);
     for (const leaf of mailtos) {
       expect(leaf.external).toBe(false);
