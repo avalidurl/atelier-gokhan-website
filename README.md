@@ -62,7 +62,7 @@ hardcoded hrefs scattered through the templates.
 
 | Layer     | Choice                                                                                      |
 | --------- | ------------------------------------------------------------------------------------------- |
-| Framework | [Astro 6](https://astro.build) (static output, Content Layer for the blog)                  |
+| Framework | [Astro 7](https://astro.build) (static output, Content Layer for the blog)                  |
 | Language  | TypeScript (strict)                                                                         |
 | Fonts     | [Fontsource](https://fontsource.org) — Archivo Variable + Geist Mono Variable (self-hosted) |
 | Feeds/SEO | `@astrojs/rss` + `@astrojs/sitemap`                                                         |

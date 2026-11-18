@@ -2,8 +2,8 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// Astro 6 Content Layer. NOTE: this file MUST live at src/content.config.ts
-// (the legacy src/content/config.ts is not loaded in Astro 6 → silently dead).
+// Content Layer. NOTE: this file MUST live at src/content.config.ts
+// (the legacy src/content/config.ts is not loaded → silently dead).
 const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
